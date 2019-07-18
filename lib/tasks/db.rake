@@ -11,7 +11,7 @@ namespace :db do
   #   end
   # end
   #
-  # desc "creating category"
+  # desc "creating categories"
   # task create_category: :environment do
   #   Category.destroy_all
   #   10.times do
@@ -23,7 +23,7 @@ namespace :db do
   #   end
   # end
 
-  desc "creating category"
+  desc "creating categories"
   task cr: :environment do
     User.destroy_all
     10.times do
@@ -33,10 +33,10 @@ namespace :db do
       )
     end
 
-    Gallery.destroy_all
+    Category.destroy_all
     10.times do
-      Gallery.create!(
-          title: Faker::Book.title,
+      Category.create!(
+          name: Faker::Book.title,
           description: Faker::Lorem.sentence(6),
           user_id: User.last.id
       )
