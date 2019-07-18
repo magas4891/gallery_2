@@ -1,2 +1,11 @@
-%h1 Gallery#index
-%p Find me in app/views/gallery/index.html.haml
+%h1 Listing articles
+%table
+  %tr
+    %th Title
+    %th Text
+    %th
+  - @gallery.each do |gallery|
+    %tr
+      %td= gallery.title
+      %td= gallery.description
+      %td= link_to 'Show', gallery_path(gallery)
