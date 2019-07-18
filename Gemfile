@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem "haml-rails", "~> 2.0"
 gem 'devise'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
