@@ -6,9 +6,8 @@
   %strong Description:
   = @category.description
 
+  = render 'images/index'
 
-%p
-  = file_field :picture, multiple: false 
-
+-#=link_to 'Add new image', new_category_image_path
 
 =link_to 'Go back', categories_path

@@ -1,0 +1,12 @@
+= form_with model: @image, url: { action: :create }, :html => { :multipart => true } do |f|
+
+  -#= f.hidden_field :gallery_is
+  %p
+    =f.label :Title
+    =f.text_field :title
+
+  %p
+    =f.file_field :picture
+
+  %p
+    =f.submit "Upload"
