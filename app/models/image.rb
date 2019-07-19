@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :gallery
+  belongs_to :category
   belongs_to :user
 
   mount_uploader :picture, PictureUploader

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_081520) do
+ActiveRecord::Schema.define(version: 2019_07_19_150046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,40 +27,30 @@ ActiveRecord::Schema.define(version: 2019_07_19_081520) do
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "text"
-    t.bigint "image_id"
+    t.bigint "images_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_comments_on_image_id"
+    t.index ["images_id"], name: "index_comments_on_images_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "galleries", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
     t.string "title"
-    t.bigint "gallery_id"
+    t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture"
-    t.index ["gallery_id"], name: "index_images_on_gallery_id"
+    t.index ["category_id"], name: "index_images_on_category_id"
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "image_id"
+    t.bigint "images_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_likes_on_image_id"
+    t.index ["images_id"], name: "index_likes_on_images_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -77,11 +67,10 @@ ActiveRecord::Schema.define(version: 2019_07_19_081520) do
   end
 
   add_foreign_key "categories", "users"
-  add_foreign_key "comments", "images"
+  add_foreign_key "comments", "images", column: "images_id"
   add_foreign_key "comments", "users"
-  add_foreign_key "galleries", "users"
-  add_foreign_key "images", "galleries"
+  add_foreign_key "images", "categories"
   add_foreign_key "images", "users"
-  add_foreign_key "likes", "images"
+  add_foreign_key "likes", "images", column: "images_id"
   add_foreign_key "likes", "users"
 end
