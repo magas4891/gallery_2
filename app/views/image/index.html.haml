@@ -1,0 +1,22 @@
+#gallery
+  %h2
+    .title
+      = t('.show')
+  - if @images.exists?
+    .row
+      - @images.each do |image|
+        .col-md-3-expand-xl
+          .photo.photo-type-line
+            %a.photo-hover{:href => image_path(image)}
+              .photo-info
+                .headline= image.name
+                .line
+                .desc= image.category.title
+                .mask{ onmouseover: 'mouseIn(this);',
+                       onmouseout: 'mouseOut(this);' }
+              .photo-img
+                = image_tag image.picture.thumb.url, class: 'img-list'
+  - else
+    %p
+      .title
+        = t('.no_images')
