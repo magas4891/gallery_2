@@ -11,19 +11,21 @@ class ImagesController < ApplicationController
   end
 
   def create
+    # @image = current_user.images.build(image_params)
     @image = Image.new(image_params)
     @image.user = current_user
-    @image.category = current_category
+    @image.save!
     if @image.save
       redirect_to category_images_path
     else
-      render :new
+      flash[:alert] = 'Image did not save'
+      render 'new'
     end
   end
 
   private
 
   def image_params
-    params.require(:image).permit(:name, :picture)
+    params.require(:image).permit(:title, :category_id, :picture)
   end
 end
