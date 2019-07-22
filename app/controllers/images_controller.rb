@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.user = current_user
-    @image.category = current_category
+    # @image.category = current_category
     if @image.save
       redirect_to category_images_path
     else
@@ -24,6 +24,6 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:name, :picture)
+    params.require(:image).permit(:title, :picture, :category_id)
   end
 end
