@@ -10,16 +10,6 @@ namespace :db do
       )
     end
 
-    # Category.destroy_all
-    # 10.times do
-    #   Category.create!(
-    #       name: Faker::Book.title,
-    #       description: Faker::Lorem.sentence(6),
-    #       user_id: User.last.id
-    #   )
-    # end
-
-
     Dir.chdir("#{Rails.root}/lib/assets/images/")
     categories = Dir['*'].select { |f| File.directory? f }
     categories.each do |item|
@@ -31,7 +21,7 @@ namespace :db do
 
       image_paths.each_with_index do |img_path, i|
         file_img = File.open(img_path)
-        puts "\tUpload #{File.basename(img_path)}" if Image.create!(title: ('d_img_' + (i + 1).to_s),
+        puts "\tUpload #{File.basename(img_path)}" if Image.create!(title: ('img_' + (i + 1).to_s),
                                                                     picture: file_img,
                                                                     user_id: 1,
                                                                     category_id: category.id)
