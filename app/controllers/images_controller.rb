@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.build(image_params)
     if @image.save
-      redirect_to category_images_path
+      redirect_to category_image_path
     else
       flash[:alert] = 'Image did not save'
       render 'new'
