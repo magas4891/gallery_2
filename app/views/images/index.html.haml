@@ -1,12 +1,3 @@
-%h1 Listing pictures in category
-%table
-  %tr
-    %th Title
-    %th Text
-    %th
-  - @image.each do |image|
-    %tr
-      %td= image.title
-      %td= image.picture
+= @image.title
 
 =link_to 'Show', categories_path

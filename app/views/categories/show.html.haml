@@ -5,9 +5,9 @@
 %p
   %strong Description:
   = @category.description
-
-  = render 'images/zxc_index'
-
--#=link_to 'Add new image', new_category_image_path
+%p
+  -if @images.exists?
+    -@images.each do |image|
+      = image_tag image.picture.small.url
 
 =link_to 'Go back', categories_path
