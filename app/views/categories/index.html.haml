@@ -1,4 +1,4 @@
-%h1 Listing categories
+%h1 Listing categoriescategories/4
 %table
   %tr
     %th Title
@@ -13,5 +13,6 @@
 %p
   = link_to 'Add new category', new_category_url
 
+= paginate @category
 
 -#= link_to 'Add new image', new_category_image_path

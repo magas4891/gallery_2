@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
   def index
-    @category = Category.all
+    @category = Category.order(:name).page params[:page]
   end
 
   def show
     @category = Category.find(params[:id])
     @images = @category.images
+    @images = @images.page params[:page]
   end
 
   def new
