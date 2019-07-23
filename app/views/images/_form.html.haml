@@ -1,15 +1,15 @@
 = form_with model: @image, url: { action: :create }, :html => { :multipart => true } do |f|
 
-  -#= f.hidden_field :gallery_is
+  = f.hidden_field :category_id, :value => params[:category_id]
   %p
     =f.label :Title
     =f.text_field :title
 
   %p
     =f.file_field :picture
-  %p
-    = f.label :category
-    = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control'
+  -#%p
+  -#  = f.label :category
+  -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control'
 
   %p
     =f.submit "Upload"

@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  # before_action :set_category, only: :create
+
   def index
     # @images = Image.all
   end
@@ -11,7 +13,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    # @category = Category.find(category_params)
     @image = current_user.images.build(image_params)
     @image.save!
     if @image.save
@@ -25,12 +26,7 @@ class ImagesController < ApplicationController
   private
 
   # def set_category
-  #   @category = Category.find(params[:category_id])
-  # end
-  #
-
-  # def category_params
-  #   params.require(:category).permit(:category_id)
+  #   @category = Category.find(params[:image][:category_id])
   # end
 
   def image_params
