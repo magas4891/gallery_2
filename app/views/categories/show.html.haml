@@ -10,4 +10,8 @@
     -@images.each do |image|
       = image_tag image.picture.small.url
 
-=link_to 'Go back', categories_path
+%p
+  = link_to 'Add new image', new_category_image_url(@category)
+
+%p
+  =link_to 'Go back', categories_path

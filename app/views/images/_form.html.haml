@@ -1,6 +1,6 @@
 = form_with model: @image, url: { action: :create }, :html => { :multipart => true } do |f|
 
-  = f.hidden_field :category_id, :value => params[:category_id]
+  = f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
   %p
     =f.label :Title
     =f.text_field :title
@@ -9,7 +9,10 @@
     =f.file_field :picture
   -#%p
   -#  = f.label :category
-  -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control'
+  -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control' # загрузка с возможностью выбора категории
 
   %p
     =f.submit "Upload"
+
+  %p
+    = link_to 'Back to category', category_url(params[:category_id])

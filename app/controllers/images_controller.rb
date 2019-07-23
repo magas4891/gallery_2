@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
   # before_action :set_category, only: :create
 
   def index
-    # @images = Image.all
   end
 
   def show

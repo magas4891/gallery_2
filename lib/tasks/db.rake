@@ -27,7 +27,9 @@ namespace :db do
                                                                     category_id: category.id)
         file_img.close
       end
-
     end
+    # 10.times do
+    #
+    # end
   end
 end

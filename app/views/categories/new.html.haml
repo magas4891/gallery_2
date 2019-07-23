@@ -1,0 +1,10 @@
+= form_with model: @category, url: {action: "create"}, html: {class: "nifty_form"} do |f|
+  = f.label :Name
+  = f.text_field :name
+  %p
+  = f.label :Description
+  = f.text_area :description
+  %p
+  = f.submit "Create"
+
+= link_to 'Go back to Categories', categories_url
