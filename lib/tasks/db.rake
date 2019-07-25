@@ -13,7 +13,9 @@ namespace :db do
     Dir.chdir("#{Rails.root}/lib/assets/images/")
     categories = Dir['*'].select { |f| File.directory? f }
     categories.each do |item|
-      puts "Create category: #{item}" if Category.create!(name: item, user_id: 1)
+      puts "Create category: #{item}" if Category.create!(name: item,
+                                                          description: Faker::Lorem.sentences(1),
+                                                          user_id: 1)
 
       Dir.chdir("#{Rails.root.to_s}/lib/assets/images/#{item}")
       image_paths = Dir['*.*']

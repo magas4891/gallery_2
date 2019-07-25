@@ -7,12 +7,24 @@
   = @category.description
 %p
   -if @images.exists?
-    -@images.each do |image|
-      = link_to(image_tag(image.picture.small.url), image.picture.normal.url)
+    -#-@images.each do |image|
+      -#= link_to(image_tag image.picture.small.url)
+        - if @images.exists?
+    - @images.each_slice(4) do |image|
+      %div
+        .row
+          - image.each do |image|
+            %a.photo-hover{"data-title" => image.title, :href => image_path(image)}
+              .photo-info
+                .headline= image.title
+                .line
+                .desc= image.category.name
+                .mask
+              .photo-img
+                = image_tag image.picture.small.url
 
 %p
-  = link_to 'Add new image', new_category_image_url(@category)
-
+  = link_to 'Add new image', category_path + new_image_path
 %p
   =link_to 'Go back', categories_path
 
