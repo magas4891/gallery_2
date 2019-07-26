@@ -7,9 +7,6 @@
   = @category.description
 %p
   -if @images.exists?
-    -#-@images.each do |image|
-      -#= link_to(image_tag image.picture.small.url)
-        - if @images.exists?
     - @images.each_slice(4) do |image|
       %div
         .row
@@ -24,7 +21,7 @@
                 = image_tag image.picture.small.url
 
 %p
-  = link_to 'Add new image', category_path + new_image_path
+  = link_to 'Add new image', new_image_path(category_id: @category)
 %p
   =link_to 'Go back', categories_path
 

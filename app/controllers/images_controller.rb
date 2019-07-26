@@ -1,13 +1,9 @@
 class ImagesController < ApplicationController
-  # before_action :set_category, only: :create
 
   def index
   end
 
   def show
-    # @category = Category.find(params[:category_id])
-    # puts @category
-    # @images = Image.find(params[:category_id])
     @image = Image.find(params[:id])
     puts @image
   end
@@ -18,9 +14,8 @@ class ImagesController < ApplicationController
 
   def create
     @image = current_user.images.build(image_params)
-    # @image.save!
     if @image.save
-      redirect_to categories_path
+      redirect_to :back
     else
       flash[:alert] = 'Image did not save'
       render 'new'
@@ -28,10 +23,6 @@ class ImagesController < ApplicationController
   end
 
   private
-
-  # def set_category
-  #   @category = Category.find(params[:image][:category_id])
-  # end
 
   def image_params
     params.require(:image).permit(:title, :category_id, :picture)
