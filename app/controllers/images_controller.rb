@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-    puts @image
+    @comments = @image.comments
   end
 
   def new
@@ -13,7 +13,9 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = current_user.images.build(image_params)
+    # @category = Category.friendly.find(params[:category_id])
+    @image = current_user.images.new(image_params)
+    @image.save!
     if @image.save
       redirect_to :back
     else

@@ -1,4 +1,16 @@
 = image_tag @image.picture.normal.url
 
+= form_with( model: [ @image, @image.comments.build ], local: true) do |form|
+  %p
+    = form.label :commenter
+    = form.text_field :commenter
+
+  %p
+    = form.label :text
+    = form.text_area :text
+
+  %p
+    = form.submit
+
 %p
   = link_to 'Back to category', :back
