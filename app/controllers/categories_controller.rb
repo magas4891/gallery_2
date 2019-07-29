@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  # before_action :set_category
+  # before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @category = Category.order(:name).page params[:page]
