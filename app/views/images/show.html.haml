@@ -1,5 +1,6 @@
 = image_tag @image.picture.normal.url
 
+
 %h2 Image comment
 - @image.comments.each do |comment|
   %p
@@ -11,6 +12,7 @@
     = comment.text
 
 %p
+
 
 = form_with( model: [ @image, @image.comments.build ], local: true) do |form|
   %p

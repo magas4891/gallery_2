@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   # before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,7 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    # @category = Category.friendly.find(params[:id])
     @images = @category.images
     @images = @images.page params[:page]
   end
@@ -27,9 +28,9 @@ class CategoriesController < ApplicationController
 
   private
 
-  # def set_category
-  #   @category = Category.find(params[:id])
-  # end
+  def set_category
+    @category = Category.friendly.find(params[:category_slug])
+  end
 
   def category_params
     params.require(:category).permit(:name, :description)

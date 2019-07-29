@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
 
-  # def show
-  #   @comment = Comment.find(params[:image_id])
-  # end
-
   def new
 
   end
@@ -16,13 +12,6 @@ class CommentsController < ApplicationController
       redirect_to image_path(@image)
     end
 
-    # @comment = Comment.new(comments_params)
-    # @comment.user = current_user
-    # # @comment = current_user.comments.build(comments_params)
-    # # @comment.save!
-    #
-    # @comment.save!
-    # render plain: params[:comment].inspect
   end
 
   private

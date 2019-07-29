@@ -1,11 +1,14 @@
 class ImagesController < ApplicationController
 
+
   # before_action :set_image, only: [:show, :edit, :update]
+
 
   def index
   end
 
   def show
+
     @image = Image.find(params[:id])
     @category_id = @image.category_id
     @comments = @image.comments
