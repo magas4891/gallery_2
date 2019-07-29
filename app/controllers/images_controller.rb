@@ -1,10 +1,12 @@
 class ImagesController < ApplicationController
 
+  before_action :set_image, only: [:show, :edit, :update]
+
   def index
   end
 
   def show
-    @image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
     @comments = @image.comments
   end
 
@@ -13,8 +15,9 @@ class ImagesController < ApplicationController
   end
 
   def create
-    # @category = Category.friendly.find(params[:category_id])
     @image = current_user.images.new(image_params)
+    @category = Category.friendly.find(params[:id])
+
     @image.save!
     if @image.save
       redirect_to :back
@@ -25,6 +28,10 @@ class ImagesController < ApplicationController
   end
 
   private
+
+  def set_image
+    @image = Image.find(params[:id])
+  end
 
   def image_params
     params.require(:image).permit(:title, :category_id, :picture)
