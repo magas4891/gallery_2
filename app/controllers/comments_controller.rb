@@ -11,9 +11,14 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to image_path(@image)
     end
-
   end
 
+  def destroy
+    @image = Image.find(params[:image_id])
+    @comment = @image.comments.find(params[:id])
+    @comment.destroy
+    redirect_to categories_path
+  end
   private
 
   def comments_params

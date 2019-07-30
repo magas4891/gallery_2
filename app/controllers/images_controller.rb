@@ -32,6 +32,13 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = Category.find(params[:category_id])
+    @image = @category.images.find(params[:id])
+    @image.destroy
+    redirect_to categories_path
+  end
+
   private
 
   # def set_image
