@@ -19,6 +19,9 @@
                 .mask
               .photo-img
                 = image_tag image.picture.small.url
+              %p
+                = image.likes.count
+                = (image.likes.count) == 1 ? 'Like' : 'Likes'
 
 %p
   = link_to 'Add new image', new_image_path(category_id: @category)

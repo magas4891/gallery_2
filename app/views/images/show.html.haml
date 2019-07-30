@@ -1,4 +1,13 @@
 = image_tag @image.picture.normal.url
+%p
+  = @image.likes.count
+  = (@image.likes.count) == 1 ? 'Like' : 'Likes'
+%p
+  - pre_like = @image.likes.find { |like| like.user_id == current_user.id }
+  - if pre_like
+    = button_to 'Unlike', image_like_path(@image, pre_like), method: :delete
+  - else
+    = button_to 'Like', image_likes_path(@image), method: :post
 
 
 %h2 Image comment

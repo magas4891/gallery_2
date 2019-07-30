@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2019_07_21_175539) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "images_id"
+    t.bigint "image_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["images_id"], name: "index_likes_on_images_id"
+    t.index ["image_id"], name: "index_likes_on_image_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -72,6 +72,6 @@ ActiveRecord::Schema.define(version: 2019_07_21_175539) do
   add_foreign_key "comments", "users"
   add_foreign_key "images", "categories"
   add_foreign_key "images", "users"
-  add_foreign_key "likes", "images", column: "images_id"
+  add_foreign_key "likes", "images"
   add_foreign_key "likes", "users"
 end
