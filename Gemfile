@@ -20,7 +20,7 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'kaminari'
-gem 'friendly_id', '~> 5.2.4'
+# gem 'friendly_id', '~> 5.2.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

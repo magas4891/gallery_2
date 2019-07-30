@@ -8,10 +8,10 @@ class ImagesController < ApplicationController
   end
 
   def show
-
     @image = Image.find(params[:id])
     @category_id = @image.category_id
     @comments = @image.comments
+    @likes = @image
   end
 
   def new

@@ -30,8 +30,14 @@ namespace :db do
         file_img.close
       end
     end
-    # 10.times do
-    #
-    # end
+
+    300.times do
+      Comment.create!(
+                 commenter: Faker::Artist.name,
+                 text: Faker::Lorem.sentence(10),
+                 image_id: Faker::Number.between(1, 190),
+                 user_id: Faker::Number.between(1, 10)
+      )
+    end
   end
 end

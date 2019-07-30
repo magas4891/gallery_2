@@ -1,6 +1,6 @@
 = form_with model: @image, url: { action: :create }, :html => { :multipart => true } do |f|
 
-  -#= f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
+  = f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
   %p
     =f.label :Title
     =f.text_field :title
