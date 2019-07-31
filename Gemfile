@@ -22,6 +22,11 @@ gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'kaminari'
 # gem 'friendly_id', '~> 5.2.4'
 gem 'omniauth-facebook'
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

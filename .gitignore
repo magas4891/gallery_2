@@ -28,3 +28,6 @@
 
 .idea/
 public/uploads
+
+.env
+
