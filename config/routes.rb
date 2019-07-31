@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :categories
+  resources :categories do
+    resources :follows
+  end
 
   resources :images do
     resources :comments

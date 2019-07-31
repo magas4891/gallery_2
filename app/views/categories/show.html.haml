@@ -6,6 +6,16 @@
   %strong Description:
   = @category.description
 %p
+  = @category.follows.count
+  = (@category.follows.count) == 1 ? 'Follower' : 'Followers'
+%p
+  - pre_follow = @category.follows.find { |follow| follow.user_id == current_user.id }
+  - if pre_follow
+    = button_to 'Unfollow', category_follow_path(@category, pre_follow), method: :delete
+  - else
+    = button_to 'Follow', category_follows_path(@category), method: :post
+
+%p
   -if @images.exists?
     - @images.each_slice(4) do |image|
       %div
@@ -22,6 +32,7 @@
               %p
                 = image.likes.count
                 = (image.likes.count) == 1 ? 'Like' : 'Likes'
+
 
 %p
   = link_to 'Add new image', new_image_path(category_id: @category)
