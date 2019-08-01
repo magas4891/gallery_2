@@ -25,7 +25,7 @@ namespace :db do
         file_img = File.open(img_path)
         puts "\tUpload #{File.basename(img_path)}" if Image.create!(title: ('img_' + (i + 1).to_s),
                                                                     picture: file_img,
-                                                                    user_id: 1,
+                                                                    user_id: Faker::Number.between(1, 10),
                                                                     category_id: category.id)
         file_img.close
       end
@@ -35,7 +35,7 @@ namespace :db do
       Comment.create!(
                  commenter: Faker::Artist.name,
                  text: Faker::Lorem.sentence(10),
-                 image_id: Faker::Number.between(1, 190),
+                 image_id: Faker::Number.between(1, 115),
                  user_id: Faker::Number.between(1, 10)
       )
     end

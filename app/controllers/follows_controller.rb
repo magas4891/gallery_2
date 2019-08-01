@@ -17,7 +17,6 @@ class FollowsController < ApplicationController
     else
       @follow.destroy
     end
-    # @follow.destroy
     redirect_to category_path(@category)
   end
 
