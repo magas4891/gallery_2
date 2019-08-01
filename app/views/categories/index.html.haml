@@ -1,15 +1,19 @@
-%h1 Listing categoriescategories/4
+%h1 Listing categories
 %table
   %tr
     %th Title
     %th Text
     %th
-  - @category.each do |category|
+  - @categories.each do |category|
     %tr
       %td= category.name
       %td= category.description
       %td= link_to 'Show', category_path(category)
-      %td= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+      -  if category.user_id == current_user.id
+        %td= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+      - else
+        %td
+
       %td= category.follows.count
       %td= (category.follows.count) == 1 ? 'Follower' : 'Followers'
 
@@ -17,6 +21,6 @@
 %p
   = link_to 'Add new category', new_category_url
 
-= paginate @category
+= paginate @categories
 
 -#= link_to 'Add new image', new_category_image_path

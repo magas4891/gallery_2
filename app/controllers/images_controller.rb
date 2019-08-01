@@ -19,12 +19,8 @@ class ImagesController < ApplicationController
 
   def create
     @image = current_user.images.new(image_params)
-    # @category = Category.find(params[:id])
-    # puts @category
-
-    # @image.save!
     if @image.save
-      # @image = Image.find(params[:id])
+      flash[:success] = 'Image created'
       redirect_to image_path(@image)
     else
       flash[:alert] = 'Image did not save'
