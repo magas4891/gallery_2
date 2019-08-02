@@ -26,6 +26,7 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 gem 'file_validators'
+gem 'activeadmin'
 
 
 # Use CoffeeScript for .coffee assets and views
