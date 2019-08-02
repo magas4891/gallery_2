@@ -18,7 +18,10 @@ class ImagesController < ApplicationController
   end
 
   def create
+    @category = Category.friendly.find(params[:image][:category_id])
     @image = current_user.images.new(image_params)
+    @image.category_id = @category.id
+    @image.save!
     if @image.save
       flash[:success] = 'Image created'
       redirect_to image_path(@image)
@@ -29,7 +32,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @image = @category.images.find(params[:id])
     @image.destroy
     redirect_to categories_path

@@ -22,16 +22,16 @@ class FollowsController < ApplicationController
 
   private
 
+  def find_category
+    @category = Category.friendly.find(params[:category_id])
+  end
+
   def find_follow
     @follow = @category.follows.find(params[:id])
   end
 
-  def find_category
-    @category = Category.find(params[:category_id])
-  end
-
   def already_foolowed?
     Follow.where(user_id: current_user.id,
-                 category_id: params[:category_id]).exists?
+                 category_id: params[:id]).exists?
   end
 end
