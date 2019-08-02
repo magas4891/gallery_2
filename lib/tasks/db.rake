@@ -39,5 +39,23 @@ namespace :db do
                  user_id: Faker::Number.between(1, 10)
       )
     end
+    (1..10).each do |x|
+      Faker::UniqueGenerator.clear
+      50.times do
+        Like.create!(
+            user_id: x,
+            image_id: Faker::Number.unique.between(1, 100)
+        )
+      end
+    end
+    (1..10).each do |x|
+      Faker::UniqueGenerator.clear
+      7.times do
+        Follow.create!(
+            user_id: x,
+            category_id: Faker::Number.unique.between(1, 13)
+        )
+      end
+    end
   end
 end

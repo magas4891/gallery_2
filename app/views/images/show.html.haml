@@ -3,11 +3,12 @@
   = @image.likes.count
   = (@image.likes.count) == 1 ? 'Like' : 'Likes'
 %p
-  - pre_like = @image.likes.find { |like| like.user_id == current_user.id }
-  - if pre_like
-    = button_to 'Unlike', image_like_path(@image, pre_like), method: :delete
-  - else
-    = button_to 'Like', image_likes_path(@image), method: :post
+  - if current_user
+    - pre_like = @image.likes.find { |like| like.user_id == current_user.id }
+    - if pre_like
+      = button_to 'Unlike', image_like_path(@image, pre_like), method: :delete
+    - else
+      = button_to 'Like', image_likes_path(@image), method: :post
 
 
 %h2 Image comment
@@ -22,18 +23,18 @@
 
 %p
 
+-if current_user
+  = form_with( model: [ @image, @image.comments.build ], local: true) do |form|
+    %p
+      = form.label :commenter
+      = form.text_field :commenter
 
-= form_with( model: [ @image, @image.comments.build ], local: true) do |form|
-  %p
-    = form.label :commenter
-    = form.text_field :commenter
+    %p
+      = form.label :text
+      = form.text_area :text
 
-  %p
-    = form.label :text
-    = form.text_area :text
-
-  %p
-    = form.submit
+    %p
+      = form.submit
 
 %p
   = link_to 'Back to category', category_path(@category_id)
