@@ -1,4 +1,5 @@
 class FollowsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
   before_action :find_category
   before_action :find_follow, only: [:destroy]
 

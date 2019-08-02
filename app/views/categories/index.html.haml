@@ -9,10 +9,11 @@
       %td= category.name
       %td= category.description
       %td= link_to 'Show', category_path(category)
-      -  if category.user_id == current_user.id
-        %td= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
-      - else
-        %td
+      - if current_user
+        -  if category.user_id == current_user.id
+          %td= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+        - else
+          %td
 
       %td= category.follows.count
       %td= (category.follows.count) == 1 ? 'Follower' : 'Followers'
