@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create :send_congra_mail
+
   validates :email, presence: true
 
   devise :database_authenticatable, :registerable,
@@ -27,4 +29,10 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def send_congra_mail
+    user = self
+    UserMailer.welcome_mail(user).deliver_now
+  end
+
 end
