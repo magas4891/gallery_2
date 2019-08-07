@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.user = current_user
     if @category.save
+      user_activity('cat_creation')
       redirect_to categories_path
     else
       render :new

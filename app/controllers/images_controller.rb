@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
     @image.category_id = @category.id
     @image.save!
     if @image.save
+      user_activity('img_creation')
       @image.category.follows.each do |followers|
         UserMailer.new_image_email(followers.user.email, @category).deliver_now
       end

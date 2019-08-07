@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comments_params)
     @comment.user = current_user
     if @comment.save
+      user_activity('comment')
       redirect_to image_path(@image)
     end
   end

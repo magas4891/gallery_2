@@ -8,6 +8,7 @@ class LikesController < ApplicationController
       flash[:notice] = 'Only 1 like for 1 photo!'
     else
       @image.likes.create(user_id: current_user.id)
+      user_activity('like')
     end
     redirect_to image_path(@image)
   end

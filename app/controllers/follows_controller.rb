@@ -8,6 +8,7 @@ class FollowsController < ApplicationController
       flash[:notice] = 'You cant follow again'
     else
       @category.follows.create(user_id: current_user.id)
+      user_activity('follow')
       UserMailer.follow_email(current_user.email, @category).deliver_now
     end
     redirect_to category_path(@category)
