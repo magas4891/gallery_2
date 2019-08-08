@@ -27,6 +27,9 @@ group :development, :test do
 end
 gem 'file_validators'
 gem 'activeadmin'
+gem 'resque', '~> 2.0'
+gem 'resque-scheduler'
+gem 'redis-rails'
 
 
 # Use CoffeeScript for .coffee assets and views
