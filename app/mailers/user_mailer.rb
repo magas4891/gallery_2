@@ -8,14 +8,18 @@ class UserMailer < ApplicationMailer
   end
 
   def follow_email(user, category)
-    @cat = category.slug
-    mail(to: user, subject: 'Follow')
+    mail(to: user.email, subject: 'Follow')
   end
 
   def new_image_email(fol, category)
     @cat = category.slug
     mail(to: fol, subject: "New Image") if fol.present?
   end
+
+  def reset_password_instructions
+
+  end
+
   private
 
   def category_url
@@ -23,6 +27,6 @@ class UserMailer < ApplicationMailer
   end
 
   # def user_params
-  #   @user = current_user.email
+  #   @user = current_user
   # end
 end

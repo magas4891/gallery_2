@@ -5,13 +5,14 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :images, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :follows, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|
