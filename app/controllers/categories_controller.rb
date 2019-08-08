@@ -4,11 +4,13 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all.order(:name).page params[:page]
+    user_activity('showing_index_category')
   end
 
   def show
     @images = @category.images
     @images = @images.page params[:page]
+    user_activity("showing_category_#{@category.slug}")
   end
 
   def new

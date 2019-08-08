@@ -11,6 +11,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @category_id = @image.category_id
     @comments = @image.comments
+    user_activity("showing_image_#{@image.id}")
   end
 
   def new
@@ -25,8 +26,7 @@ class ImagesController < ApplicationController
     if @image.save
       user_activity('img_creation')
       @image.category.follows.each do |followers|
-        #======================= AFTER MAILER FIX =================================
-      # UserMailer.new_image_email(followers.user.email, @category).deliver_now
+      UserMailer.new_image_email(followers.user.email, @category).deliver_now
       end
       flash[:success] = 'Image created'
       redirect_to image_path(@image)
