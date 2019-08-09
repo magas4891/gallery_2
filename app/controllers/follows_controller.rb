@@ -8,7 +8,7 @@ class FollowsController < ApplicationController
       flash[:notice] = 'You cant follow again'
     else
       @category.follows.create(user_id: current_user.id)
-      UserMailer.follow_email(current_user, @category).deliver_now
+      Resque.enqueue(FollowMail, current_user, @category)
       user_activity('follow')
     end
     redirect_to category_path(@category)
@@ -27,10 +27,17 @@ class FollowsController < ApplicationController
 
   def find_category
     @category = Category.friendly.find(params[:category_id])
+    puts'========================================================='
+    puts "#{@category}"
+    puts'========================================================='
   end
 
   def find_follow
-    @follow = @category.follows.find(params[:id])
+    @follow = @category.follows.where(params[:id])
+    @follow.category_id = @category.id
+    puts'========================================================='
+    puts "#{@follow}"
+    puts'========================================================='
   end
 
   def already_foolowed?

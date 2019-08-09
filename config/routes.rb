@@ -1,4 +1,6 @@
+require 'resque/server'
 Rails.application.routes.draw do
+  mount Resque::Server.new, at: "/resque"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'categories/index'
@@ -20,9 +22,9 @@ Rails.application.routes.draw do
   require 'resque/scheduler'
   require 'resque/scheduler/server'
 
-  require 'resque/server'
 
-  mount Resque::Server.new, at: "/resque"
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

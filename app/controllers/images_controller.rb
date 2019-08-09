@@ -1,8 +1,6 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-
   # before_action :set_image, only: [:show, :edit, :update]
-
 
   def index
   end
@@ -26,7 +24,7 @@ class ImagesController < ApplicationController
     if @image.save
       user_activity('img_creation')
       @image.category.follows.each do |followers|
-      UserMailer.new_image_email(followers.user.email, @category).deliver_now
+        Resque.enqueue(NewImageEmail, followers.user.email, @category)
       end
       flash[:success] = 'Image created'
       redirect_to image_path(@image)

@@ -26,16 +26,9 @@ development:
   encoding: unicode
   database: gallery_2_development
   pool: 5
-  username: developer
-  password: 123456
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: gallery_2_test
-  pool: 5
-  username: developer
-  password: 123456
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
