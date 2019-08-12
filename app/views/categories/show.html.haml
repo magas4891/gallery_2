@@ -10,12 +10,10 @@
   = @category.follows.count
   = (@category.follows.count) == 1 ? 'Follower' : 'Followers'
 %p
-  - if current_user
-    - pre_follow = @category.follows.find { |follow| follow.user_id == current_user.id }
-    - if pre_follow
-      = button_to 'Unfollow', category_follow_path(@category, pre_follow), method: :delete
-    - else
-      = button_to 'Follow', category_follows_path(@category), method: :post
+  - if @follow_owner
+    = button_to 'Unfollow', category_follow_path(@category), method: :delete
+  - else
+    = button_to 'Follow', category_follows_path(@category), method: :post
 
 %p
   -if @images.exists?

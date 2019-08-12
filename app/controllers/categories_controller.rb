@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: [:show]
+  before_action :pre_follow, only: [:show]
 
   def index
     @categories = Category.all.order(:name).page params[:page]
@@ -37,6 +38,11 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.friendly.find(params[:id])
+  end
+
+  def pre_follow
+    @follow_owner = @category.follows.where(user_id: current_user.id).first
+
   end
 
   def category_params

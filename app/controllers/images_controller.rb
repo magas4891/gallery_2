@@ -1,12 +1,13 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  # before_action :set_image, only: [:show, :edit, :update]
+  before_action :set_image, only: [:show]
+  before_action :pre_like
 
   def index
   end
 
   def show
-    @image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
     @category_id = @image.category_id
     @comments = @image.comments
     user_activity("showing_image_#{@image.id}")
@@ -43,9 +44,13 @@ class ImagesController < ApplicationController
 
   private
 
-  # def set_image
-  #   @image = Image.find(params[:id])
-  # end
+  def pre_like
+    @like_owner = @image.likes.where(user_id: current_user.id).first
+  end
+
+  def set_image
+    @image = Image.find(params[:id])
+  end
 
   def image_params
     params.require(:image).permit(:title, :category_id, :picture)

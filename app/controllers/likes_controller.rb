@@ -14,11 +14,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    if !(already_liked?)
-      flash[:notice] = 'Cannot unlike'
-    else
-      @like.destroy
-    end
+    @like.destroy!
     redirect_to image_path(@image)
   end
 
@@ -29,7 +25,7 @@ class LikesController < ApplicationController
   end
 
   def find_like
-    @like = @image.likes.find(params[:id])
+    @like = @image.likes.where(user_id: current_user.id).first
   end
 
   def already_liked?

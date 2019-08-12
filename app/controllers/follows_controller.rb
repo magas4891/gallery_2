@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   before_action :find_category
-  before_action :find_follow, only: [:destroy]
+  before_action :pre_follow, only: [:destroy]
 
   def create
     if already_foolowed?
@@ -15,11 +15,7 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    if !(already_foolowed?)
-      flash[:notice] = 'Cannot unfollow'
-    else
-      @follow.destroy
-    end
+    @follow.destroy
     redirect_to category_path(@category)
   end
 
@@ -27,17 +23,10 @@ class FollowsController < ApplicationController
 
   def find_category
     @category = Category.friendly.find(params[:category_id])
-    puts'========================================================='
-    puts "#{@category}"
-    puts'========================================================='
   end
 
-  def find_follow
-    @follow = @category.follows.where(params[:id])
-    @follow.category_id = @category.id
-    puts'========================================================='
-    puts "#{@follow}"
-    puts'========================================================='
+  def pre_follow
+    @follow = @category.follows.where(user_id: current_user.id).first
   end
 
   def already_foolowed?
