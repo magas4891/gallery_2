@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :destroy]
   before_action :pre_follow, only: [:show]
 
   def index

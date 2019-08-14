@@ -1,23 +1,42 @@
-%h1 Listing categories
-%table
-  %tr
-    %th Title
-    %th Text
-    %th
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td= category.description
-      %td= link_to 'Show', category_path(category)
-      - if current_user
-        -  if category.user_id == current_user.id
-          %td= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
-        - else
-          %td
+-#= csrf_meta_tags
+-#%h1 Listing categories
+.container
+  .row
+    - @categories.each do |category|
+      .col-md-4
+        %h2= category.name
+        %p= category.description
 
-      %td= category.follows.count
-      %td= (category.follows.count) == 1 ? 'Follower' : 'Followers'
+        %p
+          %a.btn.btn-secondary{:href => category_path(category), :role => "button"} Show »
 
+        - if current_user
+          -  if category.user_id == current_user.id
+            %p= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+          - else
+            %p
+
+        %td= category.follows.count
+        %td= (category.follows.count) == 1 ? 'Follower' : 'Followers'
+
+-#.container
+-#  / Example row of columns
+-#  .row
+-#    .col-md-4
+-#      %h2 Heading
+-#      %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+-#      %p
+-#        %a.btn.btn-secondary{:href => "#", :role => "button"} View details »
+-#    .col-md-4
+-#      %h2 Heading
+-#      %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+-#      %p
+-#        %a.btn.btn-secondary{:href => "#", :role => "button"} View details »
+-#    .col-md-4
+-#      %h2 Heading
+-#      %p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+-#      %p
+-#        %a.btn.btn-secondary{:href => "#", :role => "button"} View details »
 
 %p
   = link_to 'Add new category', new_category_url
