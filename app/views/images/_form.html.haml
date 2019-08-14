@@ -9,7 +9,7 @@
 
   = f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
   %p
-    =f.label :Title
+    =f.label :title
     =f.text_field :title
 
   %p
@@ -19,7 +19,7 @@
   -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control' # загрузка с возможностью выбора категории
 
   %p
-    =f.submit "Upload"
+    =f.submit t('image._form.upload')
 
   %p
-    = link_to 'Back to category', category_path(id: params[:category_id])
+    = link_to t('image._form.back_to_category'), category_path(id: params[:category_id])

@@ -7,22 +7,22 @@
 = image_tag @image.picture.normal.url
 %p
   = @image.likes.count
-  = (@image.likes.count) == 1 ? 'Like' : 'Likes'
+  = (@image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
 %p
   - if @like_owner
-    = button_to 'Unlike', image_like_path(@image), method: :delete
+    = button_to t('activerecord.attributes.like.like'), image_like_path(@image), method: :delete
   - else
-    = button_to 'Like', image_likes_path(@image), method: :post
+    = button_to t('activerecord.attributes.like.unlike'), image_likes_path(@image), method: :post
 
 
 %h2 Image comment
 - @image.comments.each do |comment|
   %p
-    Commenter:
+    = t('activerecord.attributes.comment.commenter')
     = comment.commenter
 
   %p
-    Comment:
+    = t('activerecord.attributes.comment.text')
     = comment.text
 
 %p
@@ -38,7 +38,7 @@
       = form.text_area :text
 
     %p
-      = form.submit
+      = form.submit t('image._form.create_comment')
 
 %p
-  = link_to 'Back to category', category_path(@category_id)
+  = link_to t('image._form.back_to_category'), category_path(@category_id)

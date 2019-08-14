@@ -30,9 +30,12 @@ gem 'activeadmin'
 gem 'resque', '~> 2.0'
 gem 'resque-scheduler'
 gem 'redis-rails'
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
-
+gem 'sassc-rails', '>= 2.1.0'
+gem 'popper_js', '~> 1.14', '>= 1.14.5'
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

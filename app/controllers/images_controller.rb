@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_image, only: [:show]
-  before_action :pre_like
+  before_action :pre_like, only: [:show]
 
   def index
   end

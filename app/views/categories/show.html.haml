@@ -1,19 +1,19 @@
 %p
-  %strong Title:
+  %strong= t('activerecord.attributes.category.name')
   = @category.name
 
 %p
-  %strong Description:
+  %strong= t('activerecord.attributes.category.description')
   = @category.description
 %p
 
   = @category.follows.count
-  = (@category.follows.count) == 1 ? 'Follower' : 'Followers'
+  = (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
 %p
   - if @follow_owner
-    = button_to 'Unfollow', category_follow_path(@category), method: :delete
+    = button_to t('activerecord.attributes.follow.unfollow'), category_follow_path(@category), method: :delete
   - else
-    = button_to 'Follow', category_follows_path(@category), method: :post
+    = button_to t('activerecord.attributes.follow.follow'), category_follows_path(@category), method: :post
 
 %p
   -if @images.exists?
@@ -31,13 +31,13 @@
                 = image_tag image.picture.small.url
               %p
                 = image.likes.count
-                = (image.likes.count) == 1 ? 'Like' : 'Likes'
+                = (image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
 
 
 %p
-  = link_to 'Add new image', new_image_path(category_id: @category)
+  = link_to t('categories.show.add_new_image'), new_image_path(category_id: @category)
 %p
-  =link_to 'Go back', categories_path
+  =link_to t('categories.new.back_to_categories'), categories_path
 
 
 = paginate @images
