@@ -25,23 +25,24 @@
       %a.navbar-brand{:href => "#"} Logo
       / Links
       %ul.navbar-nav
-        %li.nav-item
-          %a.nav-link{:href => "#"} Link 1
-        %li.nav-item
-          %a.nav-link{:href => "#"} Link 2
+        -#%li.nav-item
+        -#  %a.nav-link{:href => "#"} Link 1
+        -#%li.nav-item
+        -#  %a.nav-link{:href => "#"} Link 2
         / Dropdown
         %li.nav-item.dropdown
 
           %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Dropdown link
+            =t('devise.shared.links.user_menu')
           .dropdown-menu
             - if user_signed_in?
-              %a.dropdown-item{:href => destroy_user_session_path, method: :delete} Logout
-              %a.dropdown-item{:href => edit_user_registration_path} Edit
+              %a.dropdown-item{:href => destroy_user_session_path, "data-method" => "delete"} #{t('devise.shared.links.sign_out')}
+
+              %a.dropdown-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
             - else
-              %a.dropdown-item{:href => new_user_session_path} Sign in!
-              %a.dropdown-item{:href => new_user_registration_path} Sign up now!
-              %a.dropdown-item{:href => user_facebook_omniauth_authorize_path} Sign in with Facebook
+              %a.dropdown-item{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
+              %a.dropdown-item{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
+              %a.dropdown-item{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
 
     = yield
     -#- if user_signed_in?

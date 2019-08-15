@@ -11,8 +11,10 @@ en:
         one: 'Like'
         other: 'Likes'
       user:
-        one: User
-        other: Users
+        few: 'User'
+        one: 'User'
+        other: 'Users'
+        many: 'Users'
     attributes:
       category:
         name: 'Name:'
@@ -56,7 +58,7 @@ en:
         unlike: 'Unlike'
   welcome:
     index:
-      show_cateries: 'Show categories'
+      show_categories: 'Show categories'
   categories:
     index:
       show: 'Show'
@@ -169,13 +171,16 @@ en:
       signed_out: Signed out successfully.
     shared:
       links:
+        user_menu: User menu
         back: Back
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
         forgot_your_password: Forgot your password?
         sign_in: Log in
-        sign_in_with_provider: Sign in with %{provider}
+        sign_in_with_provider: Sign in with Facebook
         sign_up: Sign up
+        sign_out: Logout
+        edit: Edit
       minimum_password_length:
         one: "(%{count} character minimum)"
         other: "(%{count} characters minimum)"

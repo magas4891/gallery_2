@@ -12,7 +12,7 @@ module Gallery2
     config.load_defaults 5.2
 
     config.i18n.available_locales = [:en, :ru]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ru
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -2,7 +2,7 @@
 ru:
   welcome:
     index:
-      show_cateries: 'Показать категории'
+      show_categories: 'Показать категории'
   categories:
     index:
       show: 'Показать'
@@ -71,9 +71,9 @@ ru:
         one: 'Лайк'
         other: 'Лайки'
       user:
-        few: 'Пользователя'
+        few: 'пользователя'
         many: 'Пользователей'
-        one: 'Пользователь'
+        one: 'пользователя'
         other: 'Пользователи'
   devise:
     confirmations:
@@ -164,13 +164,16 @@ ru:
       signed_out: Выход из системы выполнен.
     shared:
       links:
-        back: Назад
-        didn_t_receive_confirmation_instructions: Не получили подтверждение?
-        didn_t_receive_unlock_instructions: Не получили код разблокировки?
-        forgot_your_password: Забыли пароль?
-        sign_in: Войти
-        sign_in_with_provider: 'Войти с помощью: %{provider}'
-        sign_up: Регистрация
+        user_menu: 'Меню пользователя'
+        back: 'Назад'
+        didn_t_receive_confirmation_instructions: 'Не получили подтверждение?'
+        didn_t_receive_unlock_instructions: 'Не получили код разблокировки?'
+        forgot_your_password: 'Забыли пароль?'
+        sign_in: 'Войти'
+        sign_in_with_provider: 'Войти с помощью: Facebook'
+        sign_up: 'Регистрация'
+        sign_out: 'Выйти'
+        edit: 'Редактировать'
       minimum_password_length:
         few: "(минимум %{count} знака)"
         many: "(минимум %{count} знаков)"

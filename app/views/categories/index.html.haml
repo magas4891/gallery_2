@@ -8,7 +8,7 @@
         %p= category.description
 
         %p
-          %a.btn.btn-secondary{:href => category_path(category), :role => "button"} = t('.show')
+          %a.btn.btn-secondary{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
 
         - if current_user
           -  if category.user_id == current_user.id
