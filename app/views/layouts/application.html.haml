@@ -22,11 +22,14 @@
         / Main jumbotron for a primary marketing message or call to action
     %nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
       / Brand
-      %a.navbar-brand{:href => "#"} Logo
+      %a.navbar-brand{:href => root_path} Logo
       / Links
       %ul.navbar-nav
-        -#%li.nav-item
-        -#  %a.nav-link{:href => "#"} Link 1
+        %li.nav-item
+          -if I18n.locale == :ru
+            =link_to('En', { locale: :en }, class: 'nav-link')
+          -else
+            =link_to('Ru', { locale: :ru }, class: 'nav-link')
         -#%li.nav-item
         -#  %a.nav-link{:href => "#"} Link 2
         / Dropdown

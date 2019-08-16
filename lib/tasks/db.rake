@@ -2,10 +2,10 @@ namespace :db do
 
   desc "creating categories"
   task cr: :environment do
-    User.destroy_all
     10.times do
       User.create!(
           email: Faker::Internet.email,
+          nick: Faker::Internet.username,
           password: Faker::Internet.password
       )
     end

@@ -11,16 +11,19 @@ ActiveAdmin.register_page "Dashboard" do
 
     # Here is an example of a simple dashboard with columns and panels.
     #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
+    h5 section 'Recently 10 Images' do
+      table_for(Image.last(10)) do |image|
+        image.column(:id)
+        image.column(:picture) { |img| image_tag(img.picture.url, size: '150x100') }
+        image.column(:name) { |item| link_to(item.title, admin_image_path(item)) }
+        image.column(:category)
+        image.column(:user) { |category| link_to(category.user.email, admin_image_path(category.user)) }
+      end
+    end
+
+
+
+
 
     #   column do
     #     panel "Info" do
