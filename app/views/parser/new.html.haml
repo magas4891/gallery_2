@@ -1,0 +1,7 @@
+= form_with scope: :parser, url: new_parser_path do |form|
+  %p
+    = form.label :site_path
+    %br/
+    = form.text_field :site_path
+  %p
+    = form.submit :value => "Parse"
