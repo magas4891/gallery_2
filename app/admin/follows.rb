@@ -12,4 +12,5 @@ ActiveAdmin.register Follow do
 #   permitted
 # end
 
+  permit_params :user_id, :category_id
 end

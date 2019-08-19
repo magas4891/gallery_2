@@ -12,4 +12,6 @@ ActiveAdmin.register Image do
 #   permitted
 # end
 
+  permit_params :user_id, :category_id, :picture, :title
+
 end
