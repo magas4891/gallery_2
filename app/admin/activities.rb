@@ -14,7 +14,7 @@ ActiveAdmin.register Activity do
 #
 #
   menu :priority => 3
-  actions :index, :show
+  actions :index
 
   filter :user_id
   filter :action
@@ -24,9 +24,9 @@ ActiveAdmin.register Activity do
     id_column
     column("User", :sortable => :user_id) { |user|
       sm = user.user
-      link_to "#{sm.nick}", admin_user_path(sm) }
+      link_to "#{ sm.nick }", admin_user_path(sm) }
     column("Action", :action, :sortable => :action)
-    column("Url", :url, :sortable => :url) { |activities| link_to activities.url, activities.url}
+    column("Url", :url, :sortable => :url) { |activities| link_to activities.url, activities.url }
     column("Date", :created_at, :sortable => :created_at)
   end
 

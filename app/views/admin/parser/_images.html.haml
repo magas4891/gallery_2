@@ -2,6 +2,5 @@
   - @images.each do |image|
     %p
       = image_tag(image[:src])
-      = button_to 'Save', new_admin_image_path(:params => { :remote_picture_url => "#{image[:src]}", :title => "qqqqqqqqqq",
-                                       :category_id => "18", :user_id => "11", :id => "888" })
+      = button_to 'Save', admin_parser_parser_save_path, params: {:remote_picture_url => image[:src]}
 
