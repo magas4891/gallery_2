@@ -14,6 +14,8 @@
 
   %p
     =f.file_field :picture
+
+    =f.text_field :remote_picture_url
   -#%p
   -#  = f.label :category
   -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control' # загрузка с возможностью выбора категории

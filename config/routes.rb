@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   require 'resque/scheduler'
   require 'resque/scheduler/server'
 
+  # get 'parser/grab', to: 'parser#grab'
 
 
 

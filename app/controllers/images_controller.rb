@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_image, only: [:show]
   before_action :pre_like, only: [:show]
+  # before_action :params_for_parser, only: [:parser_save]
 
   def index
   end
@@ -15,6 +16,12 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
+  end
+
+  def parser_save
+    # @category = Category.find(id: 18)
+    # @user = User.find(id: 11)
+    @image.save!
   end
 
   def create
@@ -53,6 +60,11 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:title, :category_id, :picture)
+    params.require(:image).permit(:title, :category_id, :picture, :remote_picture_url)
   end
+
+  # def params_for_parser
+  #   params.require(:image).permit(category_id: 18, user_id: 11)
+  # end
+
 end
