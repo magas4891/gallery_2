@@ -38,6 +38,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'httparty'
+gem "recaptcha"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

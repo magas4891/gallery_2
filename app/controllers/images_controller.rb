@@ -8,10 +8,9 @@ class ImagesController < ApplicationController
   end
 
   def show
-    # @image = Image.find(params[:id])
     @category_id = @image.category_id
     @comments = @image.comments
-    user_activity("showing_image_#{@image.id}")
+    user_activity("showing_image_#{@image.id}") if current_user
   end
 
   def new
@@ -19,8 +18,6 @@ class ImagesController < ApplicationController
   end
 
   def parser_save
-    # @category = Category.find(id: 18)
-    # @user = User.find(id: 11)
     @image.save!
   end
 
@@ -30,7 +27,7 @@ class ImagesController < ApplicationController
     @image.category_id = @category.id
     @image.save!
     if @image.save
-      user_activity('img_creation')
+      user_activity('img_creation') if current_user
       @image.category.follows.each do |followers|
         Resque.enqueue(NewImageEmail, followers.user.email, @category)
       end
@@ -52,7 +49,7 @@ class ImagesController < ApplicationController
   private
 
   def pre_like
-    @like_owner = @image.likes.where(user_id: current_user.id).first
+    @like_owner = @image.likes.where(user_id: current_user.id).first if current_user
   end
 
   def set_image

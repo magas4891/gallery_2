@@ -8,10 +8,14 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comments_params)
     @comment.user = current_user
+    # if verify_recaptcha
     if @comment.save
       user_activity('comment')
       redirect_to image_path(@image)
+      # end
     end
+
+
   end
 
   def destroy

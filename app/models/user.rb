@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
+  # Include default users modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_congra_mail
 
@@ -14,9 +14,11 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :activities, dependent: :destroy
 
+  mount_uploader :image, AvatarUploader
+
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      if data = session["users.facebook_data"] && session["users.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
