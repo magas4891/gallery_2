@@ -16,8 +16,8 @@ ActiveAdmin.register_page 'Parser' do
   end
 
   page_action :parser_save, method: :post do
-    @categoty = Category.find(13)
-    @user = User.find(11)
+    @categoty = Category.find(777)
+    @user = User.find(777)
     @url = params[:remote_picture_url]
     @image = Image.new
     @image.title = "NoName"

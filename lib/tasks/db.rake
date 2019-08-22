@@ -6,7 +6,9 @@ namespace :db do
       User.create!(
           email: Faker::Internet.email,
           nick: Faker::Internet.username,
-          password: Faker::Internet.password
+          name: Faker::Name.name,
+          password: Faker::Internet.password,
+          image: Faker::Avatar.image
       )
     end
 
