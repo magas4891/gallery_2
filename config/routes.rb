@@ -1,10 +1,11 @@
 require 'resque/server'
 Rails.application.routes.draw do
-  mount Resque::Server.new, at: "/resque"
+  mount Resque::Server.new, at: '/resque'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'categories/index'
   get 'welcome/index'
+
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks',
                                                 sessions: 'users/sessions' }
 

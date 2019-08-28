@@ -12,6 +12,7 @@ ActiveAdmin.register_page "Dashboard" do
     # # Here is an example of a simple dashboard with columns and panels.
     # #
     h5 section 'Recently 10 Images' do
+
       table_for(Image.last(10)) do |image|
         image.column(:id)
         image.column(:picture) { |img| image_tag(img.picture.url, size: '150x100') }

@@ -4,8 +4,8 @@ class CategoriesController < ApplicationController
   before_action :pre_follow, only: [:show]
 
   def index
-
-    @categories = Category.all.order(:name).page params[:page]
+    @categories = Category.where("name != 'NoName'").page params[:page]
+    # @categories = Category.all.order(:name).page params[:page]
     user_activity('showing_index_category') if current_user
 
   end

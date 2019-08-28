@@ -1,4 +1,9 @@
 ActiveAdmin.register_page 'Parser' do
+  content do
+    render partial: 'form'
+  end
+
+
   page_action :grab, method: :post do
     unparsed_page = HTTParty.get(params[:parser][:url])
     parsed_page = Nokogiri::HTML(unparsed_page)
@@ -8,11 +13,8 @@ ActiveAdmin.register_page 'Parser' do
           url: image.attributes['src'].value
       }
     end
-    render partial: 'images', image: @images
-  end
-
-  content do
-    render partial: 'form'
+    # redirect_to :action => 'parser_save'
+    render partial: 'form', image: @images
   end
 
   page_action :parser_save, method: :post do
@@ -25,8 +27,5 @@ ActiveAdmin.register_page 'Parser' do
     @image.user = @user
     @image.remote_picture_url = @url
     @image.save!
-
-
   end
-
 end

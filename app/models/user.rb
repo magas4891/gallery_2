@@ -2,10 +2,10 @@ class User < ApplicationRecord
   # Include default users modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_congra_mail
-
+  # attr_accessible :cached_failed_attempts
   validates :email, presence: true
 
-  devise :database_authenticatable, :registerable, :trackable,
+  devise :database_authenticatable, :registerable, :trackable, :lockable,
          :recoverable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :images, dependent: :destroy
@@ -15,6 +15,12 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
+
+
+  def self.logins_before_captcha
+    3
+  end
+
 
   def self.new_with_session(params, session)
     super.tap do |user|
