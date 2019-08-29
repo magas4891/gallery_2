@@ -1,21 +1,59 @@
-.container
-  .row
-    - @categories.each do |category|
-      .col-md-4
-        %h2= category.name
-        %p= category.description
+%section#categories.container
+  .big_title
+    .big_title_txt.montserrat_font Categories
+    .text_und_big_title
+      For ease of navigation, all images are divided into categories.
+    .big_title_txt_separ.background_color
+  .section_content.portfolio_section
+    .portfolio_items
+      - @categories.each do |category|
+        .portfolio_item.web.media.print
+          = image_tag category.images.first.picture.small.url
+          .portfolio_item_info.text-center
+            .portfolio_item_title
+              = category.name
+            %i.portfolio_item_sep.background_color
+            .portfolio_item_p
+              = category.description
+            .portfolio_item_btnblock
+              %a.portfolio_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
 
-        %p
-          %a.btn.btn-secondary{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
 
-        - if current_user
-          -  if category.user_id == current_user.id
-            %p= link_to t('.destroy'), category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
-          - else
-            %p
+    -#- @categories.each do |category|
+    -#  .col-md-4
+    -#    %h2= category.name
+    -#    %p= category.description
+    -#
+    -#    %p
+    -#      %a.btn.btn-secondary{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+    -#
+    -#    - if current_user
+    -#      -  if category.user_id == current_user.id
+    -#        %p= link_to t('.destroy'), category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+    -#      - else
+    -#        %p
+    -#
+    -#    %td= category.follows.count
+    -#    %td= (category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
 
-        %td= category.follows.count
-        %td= (category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
+-#.container
+-#  .row
+-#    - @categories.each do |category|
+-#      .col-md-4
+-#        %h2= category.name
+-#        %p= category.description
+-#
+-#        %p
+-#          %a.btn.btn-secondary{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+-#
+-#        - if current_user
+-#          -  if category.user_id == current_user.id
+-#            %p= link_to t('.destroy'), category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
+-#          - else
+-#            %p
+-#
+-#        %td= category.follows.count
+-#        %td= (category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
 
 -#.container
 -#  / Example row of columns

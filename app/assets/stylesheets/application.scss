@@ -72,8 +72,7 @@ body, a {
   border-radius: 0;
 }
 
-.navsticky .dropdown-menu>li>a, .navsticky .dropdown-menu>li>a{
-
+.navsticky .dropdown-menu>li>a {
   background-color: transparent;;
   color: #333333;
 }
@@ -93,6 +92,27 @@ body, a {
   opacity: 0.9;
 }
 
-%ul.nav.navbar-nav.navbar-right %li.dropdown {
-  display: inline;
+.navbar-collapse {
+  flex-basis: 0;
+  //flex-direction: row;
 }
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+%nav.navbar-nav.navbar-right {
+  justify-content: space-between;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
+//.dropdown .dropdown-menu {
+//  display: none;
+//}
+//
+//.dropdown > li:hover {
+//  display: block;
+//}
