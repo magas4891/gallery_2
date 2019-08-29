@@ -6,50 +6,118 @@
     -#%script{:crossorigin => "anonymous", :integrity => "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}/
     -#%script{:crossorigin => "anonymous", :integrity => "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}/
     -#%script{:crossorigin => "anonymous", :integrity => "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}/
+    -#= javascript_include_tag 'agzjud'
     = csrf_meta_tags
     = csp_meta_tag
     %title Gallery2
 
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'slider', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 
 
   %body
-    -#- if flash[:notice]
-    -#  .alert.alert-success= flash[:notice]
-    -#- if flash[:alert]
-    -#  .alert.alert-danger= flash[:alert]
-        / Main jumbotron for a primary marketing message or call to action
-    %nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
-      / Brand
-      %a.navbar-brand{:href => root_path} Logo
-      / Links
-      %ul.navbar-nav
-        %li.nav-item
-          -if I18n.locale == :ru
-            =link_to('En', { locale: :en }, class: 'nav-link')
-          -else
-            =link_to('Ru', { locale: :ru }, class: 'nav-link')
-        -#%li.nav-item
-        -#  %a.nav-link{:href => "#"} Link 2
-        / Dropdown
-        %li.nav-item.dropdown
+    #home
+      .slider-wrap
+        #slide-1.single-slide
+        #slide-2.single-slide
+        #slide-3.single-slide
+        #slide-4.single-slide
+        #slide-5.single-slide
 
-          %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            =t('devise.shared.links.user_menu')
-          .dropdown-menu
-            - if user_signed_in?
-              %a.dropdown-item{:href => destroy_user_session_path, "data-method" => "delete"} #{t('devise.shared.links.sign_out')}
 
-              %a.dropdown-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
-            - else
-              %a.dropdown-item{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
-              %a.dropdown-item{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
-              %a.dropdown-item{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
 
-    = yield
+
+
+      -##slides_background
+      -#  .slides_container
+      -#    #agzjud
+          -#- if flash[:notice]
+          -#  .alert.alert-success= flash[:notice]
+          -#- if flash[:alert]
+          -#  .alert.alert-danger= flash[:alert]
+              / Main jumbotron for a primary marketing message or call to action
+      .menu_white1
+        .navsticky
+          %nav.navbar.navbar-topaz{:role => "navigation"}
+            .container
+              .navbar-header
+                %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+                  %span.sr-only Toggle navigation
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                %a.navbar-brand{:href => root_path}
+                  %img{:alt => "Gallery", :url => "logo.png"}
+              #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                %ul.nav.navbar-nav.navbar-right
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#about"}
+                      HELLO
+                      %b.caret
+                    %ul.dropdown-menu
+                      %li
+                        %a.linkz_transition{:href => "index.html"} Full Image Background
+                      %li
+                        %a.linkz_transition{:href => "index_2.html"} Full Parallax Slider
+                      %li
+                        %a.linkz_transition{:href => "index_3.html"} Full Video Background
+                      %li
+                        %a.linkz_transition{:href => "index_4.html"} Full Animated Background
+                      %li
+                        %a.linkz_transition{:href => "index_5.html"} Full Pattern Background
+                      %li
+                        %a.linkz_transition{:href => "index_6.html"} Full Solid Background
+                  %li
+                    %a{:href => "#team"} TEAM
+                  %li
+                    %a{:href => "#services"} SERVICES
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#portfolio"}
+                      PORTFOLIO
+                      %b.caret
+                    %ul.dropdown-menu
+                      %li
+                        %a.linkz_transition{:href => "portfolio-item-1.html"} Portfolio Item 1
+                      %li
+                        %a.linkz_transition{:href => "portfolio-item-2.html"} Portfolio Item 2
+                      %li
+                        %a.linkz_transition{:href => "portfolio-item-3.html"} Portfolio Item 3
+                      %li
+                        %a.linkz_transition{:href => "portfolio-item-4.html"} Portfolio Item 4
+                      %li
+                        %a.linkz_transition{:href => "portfolio-item-5.html"} Portfolio Item 5
+                  %li
+                    %a{:href => "#contact"} CONTACT
+              / /.navbar-collapse
+
+              -#%ul.navbar-nav
+              -#  %li.nav-item
+              -#    -if I18n.locale == :ru
+              -#      =link_to('En', { locale: :en }, class: 'nav-link')
+              -#    -else
+              -#      =link_to('Ru', { locale: :ru }, class: 'nav-link')
+              -#  -#%li.nav-item
+              -#  -#  %a.nav-link{:href => "#"} Link 2
+              -#  / Dropdown
+              -#  %li.nav-item.dropdown
+              -#
+              -#    %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              -#      =t('devise.shared.links.user_menu')
+              -#    .dropdown-menu
+              -#      - if user_signed_in?
+              -#        %a.dropdown-item{:href => destroy_user_session_path, "data-method" => "delete"} #{t('devise.shared.links.sign_out')}
+              -#        %a.dropdown-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
+              -#      - else
+              -#        %a.dropdown-item{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
+              -#        %a.dropdown-item{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
+              -#        %a.dropdown-item{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
+
+      .content
+        = yield
     -#- if user_signed_in?
     -#  %p
     -#    %li= button_to "Logout", destroy_user_session_path, :method => :delete

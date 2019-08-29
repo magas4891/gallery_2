@@ -14,3 +14,85 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body, a {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #333333;
+  background: url(body_bg.png);
+  height: 100%;
+}
+
+#home {
+  width:100%;
+  height:auto;
+  position:relative;
+}
+
+//.content {
+//  height: 100vh;
+//}
+
+/* Top Menu */
+.navsticky{
+  width: 100%;
+  z-index: 99999;
+}
+
+.navbar-topaz{
+  background-color: white;
+  background-image: none;
+  opacity: 0.95;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.navbar-topaz > .container .navbar-brand, .navbar-topaz > .container-fluid .navbar-brand{
+  background-image: none;
+}
+
+.navbar-topaz:hover{
+  opacity: 1;
+}
+
+.navsticky .navbar{
+  border-radius: 0;
+}
+
+.navsticky .navbar a{
+  color: #333333;
+  line-height: 34px;
+}
+
+.navsticky .dropdown-menu{
+  background-color: white;
+  color: #333333;
+  border-radius: 0;
+}
+
+.navsticky .dropdown-menu>li>a, .navsticky .dropdown-menu>li>a{
+
+  background-color: transparent;;
+  color: #333333;
+}
+
+.navsticky .nav>li>a{
+  padding: 10px 25px;
+  line-height: 44px;
+  background-image: none;
+}
+
+.navsticky .dropdown-menu>li>a{
+  font-weight: 400;
+  background-image: none;
+}
+
+.navopacity{
+  opacity: 0.9;
+}
+
+%ul.nav.navbar-nav.navbar-right %li.dropdown {
+  display: inline;
+}
