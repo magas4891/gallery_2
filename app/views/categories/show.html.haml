@@ -1,44 +1,100 @@
 = render 'layouts/menu'
-%p
-  %strong= t('activerecord.attributes.category.name')
-  = @category.name
-
-%p
-  %strong= t('activerecord.attributes.category.description')
-  = @category.description
-%p
-
-  = @category.follows.count
-  = (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
-%p
-  - if @follow_owner
-    = button_to t('activerecord.attributes.follow.unfollow'), category_follow_path(@category), method: :delete
-  - else
-    = button_to t('activerecord.attributes.follow.follow'), category_follows_path(@category), method: :post
-
-%p
-  -if @images.exists?
-    - @images.each_slice(4) do |image|
-      %div
-        .row
-          - image.each do |image|
-            %a.photo-hover{"data-title" => image.title, :href => image_path(image)}
-              .photo-info
-                .headline= image.title
-                .line
-                .desc= image.category.name
-                .mask
-              .photo-img
-                = image_tag image.picture.small.url
-              %p
-                = image.likes.count
-                = (image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
+%section#categories.container
+  .big_title
+    -#.big_title_txt.montserrat_font #{t('activerecord.attributes.category.name')}
+    .big_title_txt.montserrat_font #{@category.name}
+    -#.text_und_big_title #{t('activerecord.attributes.category.description')}
+    .text_und_big_title #{@category.description}
+    %p
+      = @category.follows.count
+      = (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
+    %p
+      - if @follow_owner
+        = button_to t('activerecord.attributes.follow.unfollow'), category_follow_path(@category), method: :delete
+      - else
+        = button_to t('activerecord.attributes.follow.follow'), category_follows_path(@category), method: :post
+    .section_content.category_section
+      .category_items
+        .category_item.web.media.print
+          -if @images.exists?
+            - @images.each_slice(5) do |image|
+              - image.each do |image|
+                %a.photo-hover{"data-title" => image.title, :href => image_path(image)}
+                  .photo-info
+                    .headline= image.title
+                    .line
+                    .desc= image.category.name
+                    .mask
+                  .photo-img
+                    = image_tag image.picture.small.url
+                  %p
+                    = image.likes.count
+                    = (image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
 
 
-%p
-  = link_to t('categories.show.add_new_image'), new_image_path(category_id: @category)
-%p
-  =link_to t('categories.new.back_to_categories'), categories_path
 
 
-= paginate @images
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-#%p
+-#  %strong= t('activerecord.attributes.category.name')
+-#  = @category.name
+-#
+-#%p
+-#  %strong= t('activerecord.attributes.category.description')
+-#  = @category.description
+-#%p
+-#
+-#  = @category.follows.count
+-#  = (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
+-#%p
+-#  - if @follow_owner
+-#    = button_to t('activerecord.attributes.follow.unfollow'), category_follow_path(@category), method: :delete
+-#  - else
+-#    = button_to t('activerecord.attributes.follow.follow'), category_follows_path(@category), method: :post
+-#
+-#%p
+-#  -if @images.exists?
+-#    - @images.each_slice(4) do |image|
+-#      %div
+-#        .row
+-#          - image.each do |image|
+-#            %a.photo-hover{"data-title" => image.title, :href => image_path(image)}
+-#              .photo-info
+-#                .headline= image.title
+-#                .line
+-#                .desc= image.category.name
+-#                .mask
+-#              .photo-img
+-#                = image_tag image.picture.small.url
+-#              %p
+-#                = image.likes.count
+-#                = (image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
+-#
+-#
+-#%p
+-#  = link_to t('categories.show.add_new_image'), new_image_path(category_id: @category)
+-#%p
+-#  =link_to t('categories.new.back_to_categories'), categories_path
+-#
+-#
+-#= paginate @images

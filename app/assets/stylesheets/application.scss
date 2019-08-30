@@ -109,10 +109,8 @@ body, a {
   position: absolute;
 }
 
-//.dropdown .dropdown-menu {
-//  display: none;
-//}
-//
-//.dropdown > li:hover {
-//  display: block;
-//}
+.fn_btn {
+  display: flex;
+  justify-content: center;
+}
+

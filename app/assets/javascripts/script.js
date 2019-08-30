@@ -2,7 +2,8 @@
 
 $(document).ready(function(){
 
-	/* Sticky menu */
+
+    /* Sticky menu */
 	$(".navsticky").sticky({
 		topSpacing:0,
 	});

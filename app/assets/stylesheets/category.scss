@@ -65,12 +65,17 @@
   margin: 2px;
   position: relative;
   //display: inline-block;
+  display: flex;
+  align-items: stretch;
+  width: 300px;
+  height: 180px;
 
 }
 
 .category_item img{
-  display: block;
+  //display: block;
   position: relative;
+  //vertical-align: middle;
 }
 
 .category_item_info{
@@ -100,14 +105,14 @@
 
 .category_item_title{
   font-size: 18px;
-  margin-top: 20px;
+  //margin-top: 20px;
 }
 
 .category_item_sep{
   display: inline-block;
   width: 65px;
   height: 3px;
-  margin: 20px 0px 15px;
+  margin: 10px 0px 10px;
 }
 
 .background_color{
@@ -120,7 +125,10 @@
 }
 
 .category_item_btnblock{
-  //margin-top: 35px;
+  margin-top: 35px;
+  position: absolute;
+  bottom: 20px;
+  left: 94px;
 }
 
 .category_item_btn{
@@ -143,3 +151,7 @@
 }
 
 
+.pagination_block {
+  display: flex;
+  justify-content: center;
+}
