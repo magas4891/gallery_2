@@ -1,4 +1,4 @@
-
+=render 'layouts/menu'
 %h2= t('.sign_in')
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   - if User.find_by_email(resource.email)

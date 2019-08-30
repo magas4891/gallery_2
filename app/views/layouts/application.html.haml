@@ -17,127 +17,17 @@
     = stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'category', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'jquery.nicescroll', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'jquery.sticky', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'script', 'data-turbolinks-track': 'reload'
     -#= javascript_include_tag 'jquery-1.11.0.min'
 
 
 
   %body
     #home
-      .slider-wrap
-        #slide-1.single-slide
-        #slide-2.single-slide
-        #slide-3.single-slide
-        #slide-4.single-slide
-        #slide-5.single-slide
-
-
-
-
-
-      -##slides_background
-      -#  .slides_container
-      -#    #agzjud
-          -#- if flash[:notice]
-          -#  .alert.alert-success= flash[:notice]
-          -#- if flash[:alert]
-          -#  .alert.alert-danger= flash[:alert]
-              / Main jumbotron for a primary marketing message or call to action
-      .menu_white1
-        .navsticky
-          %nav.navbar.navbar-topaz{:role => "navigation"}
-            .container
-              .navbar-header
-                %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-                  %span.sr-only Toggle navigation
-                  %span.icon-bar
-                  %span.icon-bar
-                  %span.icon-bar
-                %a.navbar-brand{:href => root_path}
-                  %img{:alt => "Gallery", :url => "logo.png"}
-              #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                %ul.nav.navbar-nav.navbar-right
-                  %li.dropdown
-                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#about"}
-                      HELLO
-                      -#%b.caret    /one more arrow
-                    %ul.dropdown-menu
-                      %li
-                        %a.linkz_transition{:href => "index.html"} Full Image Background
-                      %li
-                        %a.linkz_transition{:href => "index_2.html"} Full Parallax Slider
-                      %li
-                        %a.linkz_transition{:href => "index_3.html"} Full Video Background
-                      %li
-                        %a.linkz_transition{:href => "index_4.html"} Full Animated Background
-                      %li
-                        %a.linkz_transition{:href => "index_5.html"} Full Pattern Background
-                      %li
-                        %a.linkz_transition{:href => "index_6.html"} Full Solid Background
-                  %li
-                    %a{:href => "#team"} TEAM
-                  %li
-                    %a{:href => "#services"} SERVICES
-                  %li.dropdown
-                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#portfolio"}
-                      USER MENU
-                      -#%b.caret    /one more arrow
-                    %ul.dropdown-menu
-                      - if user_signed_in?
-                        %li
-                          %a.linkz_transition-item{:href => destroy_user_session_path, "data-method" => "delete"} #{t('devise.shared.links.sign_out')}
-                        %li
-                          %a.linkz_transition-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
-                      - else
-                        %li
-                          %a.linkz_transition{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
-                        %li
-                          %a.linkz_transition{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
-                        %li
-                          %a.linkz_transition{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
-                  %li
-                    %a{:href => "#contact"} CONTACT
-                  %li.nav-item
-                    -if I18n.locale == :ru
-                      =link_to('En', { locale: :en }, class: 'nav-link')
-                    -else
-                      =link_to('Ru', { locale: :ru }, class: 'nav-link')
-              / /.navbar-collapse
-
-              -#%ul.navbar-nav
-              -#  %li.nav-item
-              -#    -if I18n.locale == :ru
-              -#      =link_to('En', { locale: :en }, class: 'nav-link')
-              -#    -else
-              -#      =link_to('Ru', { locale: :ru }, class: 'nav-link')
-              -#  -#%li.nav-item
-              -#  -#  %a.nav-link{:href => "#"} Link 2
-              -#  / Dropdown
-              -#  %li.nav-item.dropdown
-              -#
-              -#    %a#navbardrop.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              -#      =t('devise.shared.links.user_menu')
-              -#    .dropdown-menu
-              -#      - if user_signed_in?
-              -#        %a.dropdown-item{:href => destroy_user_session_path, "data-method" => "delete"} #{t('devise.shared.links.sign_out')}
-              -#        %a.dropdown-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
-              -#      - else
-              -#        %a.dropdown-item{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
-              -#        %a.dropdown-item{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
-              -#        %a.dropdown-item{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
-
+      -#= render 'layouts/slider'
+      -#= render 'layouts/menu'
       .content
         = yield
-    -#- if user_signed_in?
-    -#  %p
-    -#    %li= button_to "Logout", destroy_user_session_path, :method => :delete
-    -#  %p
-    -#    %li= link_to "Edit", edit_user_registration_path
-    -#    -#%li= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete
-    -#- else
-    -#  %p
-    -#    %li= button_to "Sign in!", new_user_session_path
-    -#  %p
-    -#    %li= link_to "Sign up now!",  new_user_registration_path
-    -#  %p
-    -#    %li= button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
 

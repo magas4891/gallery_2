@@ -1,22 +1,24 @@
+= render 'layouts/slider'
+= render 'layouts/menu'
 %section#categories.container
   .big_title
     .big_title_txt.montserrat_font Categories
     .text_und_big_title
       For ease of navigation, all images are divided into categories.
     .big_title_txt_separ.background_color
-  .section_content.portfolio_section
-    .portfolio_items
+  .section_content.category_section
+    .category_items
       - @categories.each do |category|
-        .portfolio_item.web.media.print
+        .category_item.web.media.print
           = image_tag category.images.first.picture.small.url
-          .portfolio_item_info.text-center
-            .portfolio_item_title
+          .category_item_info.text-center
+            .category_item_title
               = category.name
-            %i.portfolio_item_sep.background_color
-            .portfolio_item_p
+            %i.category_item_sep.background_color
+            .category_item_p
               = category.description
-            .portfolio_item_btnblock
-              %a.portfolio_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+            .category_item_btnblock
+              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
 
 
     -#- @categories.each do |category|

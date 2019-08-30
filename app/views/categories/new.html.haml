@@ -1,3 +1,4 @@
+= render 'layouts/menu'
 = form_with model: @category, url: {action: "create"}, html: {class: "nifty_form"} do |f|
   = f.label :name
   = f.text_field :name
