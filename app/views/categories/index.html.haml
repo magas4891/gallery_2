@@ -1,4 +1,5 @@
-= render 'layouts/slider'
+- if current_page?(root_path)
+  = render 'layouts/slider'
 = render 'layouts/menu'
 %section#categories.container
   .big_title
