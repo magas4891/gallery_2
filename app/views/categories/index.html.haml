@@ -22,7 +22,7 @@
               %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
 
   .fn_btn.montserrat_font
-    .btn.btn-primary.btn-lg{ :href => new_category_path, :role => "button" } #{t('.add_new_category')}
+    = button_to "#{t('.add_new_category')}", new_category_path, :class => "btn btn-primary btn-lg", :method => "get"
 
   .pagination_block.montserrat_font
     = paginate @categories

@@ -1,11 +1,17 @@
 = render 'layouts/menu'
-= form_with model: @category, url: {action: "create"}, html: {class: "nifty_form"} do |f|
-  = f.label :name
-  = f.text_field :name
-  %p
-  = f.label :description
-  = f.text_area :description
-  %p
-  = f.submit t('.create')
+%section#form-container
+  .big_title
+    .big_title_txt.montserrat_font ADDING NEW CATEGORY
+    .text_und_big_title
+      Please, input name of the new category and provide a short description.
+  = bootstrap_form_for @category, url: {action: "create"} do |f|
+    -#= f.label :name
+    = f.text_field :name
+    %p
+    -#= f.label :description
+    = f.text_area :description
+    %p
+    = f.submit t('.create'), :class => "btn btn-primary btn-lg"
 
-= link_to t('.back_to_categories'), categories_url
+%a.button-back{ :href => categories_path }
+  = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "100x75"

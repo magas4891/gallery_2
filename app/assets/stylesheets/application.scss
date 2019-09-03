@@ -11,7 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
 
+
+
+ *= require rails_bootstrap_forms
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -53,6 +57,11 @@ body, a {
   background-image: none;
 }
 
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .navbar-topaz:hover{
   opacity: 1;
 }
@@ -64,6 +73,10 @@ body, a {
 .navsticky .navbar a{
   color: #333333;
   line-height: 34px;
+}
+
+.navbar-brand>img {
+  height: 100%;
 }
 
 .navsticky .dropdown-menu{
@@ -114,3 +127,6 @@ body, a {
   justify-content: center;
 }
 
+.button-back {
+  margin-left: 18%;
+}
