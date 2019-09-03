@@ -64,7 +64,6 @@
 .category_item{
   margin: 2px;
   position: relative;
-  //display: inline-block;
   display: flex;
   align-items: stretch;
   width: 300px;
@@ -73,9 +72,8 @@
 }
 
 .category_item img{
-  //display: block;
   position: relative;
-  //vertical-align: middle;
+  margin: 0 auto;
 }
 
 .category_item_info{

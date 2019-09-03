@@ -11,7 +11,10 @@
     .category_items
       - @categories.each do |category|
         .category_item.web.media.print
-          = image_tag category.images.first.picture.small.url
+          - if category.images.exists?
+            = image_tag category.images.first.picture.small.url
+          -else
+            = image_tag "jpg.png", size: "200x200"
           .category_item_info.text-center
             .category_item_title
               = category.name
