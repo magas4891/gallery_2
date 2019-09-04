@@ -16,6 +16,7 @@
   margin-bottom: 55px;
   text-align: center;
   font-size: 0px;
+  position: relative;
 }
 
 .big_title_txt{
@@ -75,6 +76,9 @@
   position: relative;
   margin: 0 auto;
 }
+.category_item a{
+  display: flex;
+}
 
 .category_item_info{
   position: absolute;
@@ -84,7 +88,7 @@
   height: 100%;
   background-color: white;
   border: solid 2px #333333;
-  padding: 20px;
+  padding: 15px;
   opacity: 0;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -122,10 +126,27 @@
   font-size: 14px;
 }
 
-.category_item_btnblock{
-  margin-top: 35px;
+.category_follows {
   position: absolute;
-  bottom: 20px;
+  top: 10px;
+  right: 10px;
+}
+.category_follow {
+  position: absolute;
+  //float: right;
+  margin-right: 10%;
+  top: 0;
+  right: 0;
+}
+
+.button_follow {
+  background-image: url("followers_unfollow.png");
+}
+
+.category_item_btnblock{
+  //margin-top: 35px;
+  position: absolute;
+  bottom: 15px;
   left: 94px;
 }
 

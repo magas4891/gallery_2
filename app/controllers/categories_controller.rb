@@ -5,7 +5,6 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.where("name != 'NoName'").page params[:page]
-    # @categories = Category.all.order(:name).page params[:page]
     user_activity('showing_index_category') if current_user
 
   end

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'categories/index'
   get 'welcome/index'
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks',
-                                                sessions: 'users/sessions' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'devise/omniauth_callbacks',
+                                       sessions: 'devise/sessions' }
 
   root :to => 'categories#index'
 

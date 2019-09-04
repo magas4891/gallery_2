@@ -18,6 +18,9 @@
           .category_item_info.text-center
             .category_item_title
               = category.name
+            .category_follows
+              = image_tag "followers_index_page.png", title: "Followers"
+              = category.follows.count
             %i.category_item_sep.background_color
             .category_item_p
               = truncate("#{category.description}", length: 50)

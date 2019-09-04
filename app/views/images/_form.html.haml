@@ -1,27 +1,31 @@
-= form_with model: @image, url: { action: :create }, :html => { :multipart => true } do |f|
-  - if @image.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@image.errors.count, "error")
-      %ul
-        - @image.errors.full_messages.each do |msg|
-          %li= msg
+%section#form-container
+  .big_title
+    .big_title_txt.montserrat_font ADDING NEW IMAGE
+    .text_und_big_title
+      Upload new image from local storage or other site .
+  = bootstrap_form_for @image, url: { action: :create } do |f|
+    - if @image.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@image.errors.count, "error")
+        %ul
+          - @image.errors.full_messages.each do |msg|
+            %li= msg
 
-  = f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
-  %p
-    =f.label :title
+    = f.hidden_field :category_id, :value => params[:category_id] #загрузка картинки в текущую категорию
+    %p
     =f.text_field :title
 
-  %p
+    %p
     =f.file_field :picture
 
     =f.text_field :remote_picture_url
-  -#%p
-  -#  = f.label :category
-  -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control' # загрузка с возможностью выбора категории
+    -#%p
+    -#  = f.label :category
+    -#  = f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, class:'form-control' # загрузка с возможностью выбора категории
 
-  %p
-    =f.submit t('image._form.upload')
+    %p
+    =f.submit t('image._form.upload'), :class => "btn btn-primary btn-lg"
 
-  %p
-    = link_to t('image._form.back_to_category'), category_path(id: params[:category_id])
+%a.button-back{ :href => categories_path }
+  = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "100x75"
