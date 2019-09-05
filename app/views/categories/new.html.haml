@@ -1,6 +1,8 @@
 = render 'layouts/menu'
 %section#form-container
   .big_title
+    %a.button-back{ :href => categories_path }
+      = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "64x64"
     .big_title_txt.montserrat_font ADDING NEW CATEGORY
     .text_und_big_title
       Please, input name of the new category and provide a short description.
@@ -12,6 +14,3 @@
     = f.text_area :description
     %p
     = f.submit t('.create'), :class => "btn btn-primary btn-lg"
-
-%a.button-back{ :href => categories_path }
-  = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "100x75"

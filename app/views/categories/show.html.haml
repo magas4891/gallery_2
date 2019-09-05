@@ -1,17 +1,19 @@
 = render 'layouts/menu'
 %section#categories.container
   .big_title
+    %a.button-back{ :href => categories_path }
+      = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "64x64"
     .big_title_txt.montserrat_font #{@category.name}
     .text_und_big_title #{@category.description}
     .category_follow
-      -#= @category.follows.count
-      -#= (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
       - if @follow_owner
         = link_to category_follow_path(@category), method: :delete do
-          = image_tag "followers_unfollow.png", title: "UnFollow"
+          = image_tag "unfollow.png", title: "UnFollow", size: "48x48"
       - else
         = link_to category_follows_path(@category), method: :post do
-          = image_tag "followers_follow.png", title: "Follow"
+          = image_tag "follow.png", title: "Follow", size: "48x48"
+      .text_und_big_title
+        = @category.follows.count
     .big_title_txt_separ.background_color
   .section_content.category_section
     .category_items
@@ -27,6 +29,3 @@
 
   .pagination_block.montserrat_font
     = paginate @images
-
-    %a.button-back{ :href => categories_path }
-      = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "100x75"
