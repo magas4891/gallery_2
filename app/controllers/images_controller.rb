@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   before_action :pre_like, only: [:show]
 
   def index
+    @images = Image.all.page(params[:page]).per(20)
   end
 
   def show
