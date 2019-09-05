@@ -17,4 +17,12 @@ $(document).ready(function(){
     });
 
 
+    /* Pretty Photo */
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+        animationSpeed: 'fast',
+        opacity: 0.7,
+        social_tools: "",
+        deeplinking: false
+    });
+
 });

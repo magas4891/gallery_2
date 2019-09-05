@@ -12,11 +12,15 @@
   height: 100vh;
 }
 .big_title{
-  margin-top: 100px;
-  margin-bottom: 55px;
+  margin-top: 50px;
+  margin-bottom: 35px;
   text-align: center;
-  font-size: 0px;
+  //font-size: 0px;
   position: relative;
+}
+
+.big_title > img {
+  margin: 0 auto;
 }
 
 .big_title_txt{

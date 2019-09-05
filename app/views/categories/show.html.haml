@@ -8,11 +8,9 @@
       -#= (@category.follows.count) == 1 ? t('activerecord.attributes.follow.follower') : t('activerecord.attributes.follow.followers')
       - if @follow_owner
         = link_to category_follow_path(@category), method: :delete do
-          t('activerecord.attributes.follow.follow')
           = image_tag "followers_unfollow.png", title: "UnFollow"
       - else
         = link_to category_follows_path(@category), method: :post do
-          t('activerecord.attributes.follow.follow')
           = image_tag "followers_follow.png", title: "Follow"
     .big_title_txt_separ.background_color
   .section_content.category_section

@@ -1,47 +1,46 @@
 =render 'layouts/menu'
-
 - if flash[:notice]
   .alert.alert-success= flash[:notice]
 - if flash[:alert]
   .alert.alert-danger= flash[:alert]
-
-
-= image_tag @image.picture.normal.url
-%p
-  = @image.likes.count
-  = (@image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
-%p
-  - if @like_owner
-    = button_to t('activerecord.attributes.like.unlike'), image_like_path(@image), method: :delete
-  - else
-    = button_to t('activerecord.attributes.like.like'), image_likes_path(@image), method: :post
-
-
-%h2 Image comment
-- @image.comments.each do |comment|
-  %p
-    = t('activerecord.attributes.comment.commenter')
-    = comment.commenter
-
-  %p
-    = t('activerecord.attributes.comment.text')
-    = comment.text
-
-%p
-
--if current_user
-  = form_with( model: [ @image, @image.comments.build ], local: true) do |form|
-    %p
-      = form.label :commenter
-      = form.text_field :commenter
+%section#image.container
+  .big_title
+    .big_title_txt.montserrat_font #{@image.title}
+    .like_items
+      - if @like_owner
+        = link_to image_like_path(@image), method: :delete do
+          =image_tag "like.png", title: "UnLike"
+      - else
+        = link_to image_likes_path(@image), method: :post do
+          =image_tag "unlike.png", title: "Like"
+      .text_und_big_title
+        = @image.likes.count
+      -#= (@image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
+  .section_content.image_section
+    .image_items
+      = image_tag  @image.picture.normal.url, :title => "#{@image.title}"
 
     %p
-      = form.label :text
-      = form.text_area :text
-
-    %p
-      -#= recaptcha_tags
-      = form.submit t('image._form.create_comment')
-
-%p
-  = link_to t('image._form.back_to_category'), category_path(@category_id)
+    .comment_items
+      %h2 Image comment
+      - @image.comments.each do |comment|
+        %p
+          = t('activerecord.attributes.comment.commenter')
+          = comment.commenter
+        %p
+          = t('activerecord.attributes.comment.text')
+          = comment.text
+      %p
+      -if current_user
+        = form_with( model: [ @image, @image.comments.build ], local: true) do |form|
+          %p
+            = form.label :commenter
+            = form.text_field :commenter
+          %p
+            = form.label :text
+            = form.text_area :text
+          %p
+            -#= recaptcha_tags
+            = form.submit t('image._form.create_comment')
+      %p
+        = link_to t('image._form.back_to_category'), category_path(@category_id)

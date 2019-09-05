@@ -5,3 +5,23 @@
 .new_image {
   text-align: center;
 }
+
+#image.container {
+  height: 100vh;
+}
+
+.image_section {
+  position: relative;
+}
+
+.image_items {
+  display: flex;
+  justify-content: center;
+}
+
+.like_items {
+  position: absolute;
+  margin-right: 10%;
+  top: 0;
+  right: 0;
+}
