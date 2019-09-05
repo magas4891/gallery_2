@@ -15,32 +15,28 @@
           =image_tag "unlike.png", title: "Like"
       .text_und_big_title
         = @image.likes.count
-      -#= (@image.likes.count) == 1 ? t('activerecord.models.like.one') : t('activerecord.models.like.many')
   .section_content.image_section
     .image_items
       = image_tag  @image.picture.normal.url, :title => "#{@image.title}"
-
-    %p
     .comment_items
-      %h2 Image comment
-      - @image.comments.each do |comment|
-        %p
-          = t('activerecord.attributes.comment.commenter')
-          = comment.commenter
-        %p
-          = t('activerecord.attributes.comment.text')
-          = comment.text
-      %p
-      -if current_user
-        = form_with( model: [ @image, @image.comments.build ], local: true) do |form|
-          %p
-            = form.label :commenter
-            = form.text_field :commenter
-          %p
-            = form.label :text
-            = form.text_area :text
-          %p
-            -#= recaptcha_tags
-            = form.submit t('image._form.create_comment')
-      %p
-        = link_to t('image._form.back_to_category'), category_path(@category_id)
+      #leave_comment
+        .big_title_txt.montserrat_font
+          Leave your comment
+        .comments_form.text_und_big_title
+          -if current_user
+            = bootstrap_form_for([ @image, @image.comments.build ], local: true) do |form|
+              = form.text_area :text
+              = form.submit t('image._form.create_comment')
+      #comments
+        .big_title_txt.montserrat_font
+          Comments list
+        .text_und_big_title
+          - @comments.each do |comment|
+            %p
+              = t('activerecord.attributes.comment.commenter')
+              = comment.commenter
+            %p
+              = t('activerecord.attributes.comment.text')
+              = comment.text
+            %p
+              .big_title_txt_separ.background_color

@@ -1,3 +1,17 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#leave_comment, #comments  {
+  margin: 20px 10px;
+}
+
+.comment_items {
+  display: flex;
+  justify-content: center;
+
+}
+
+#comments .big_title_txt_separ.background_color {
+  margin-top: 0;
+}

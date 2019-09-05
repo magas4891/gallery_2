@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comments_params)
     @comment.user = current_user
+    @comment.commenter = current_user.nick
     # if verify_recaptcha
     if @comment.save
       user_activity('comment')

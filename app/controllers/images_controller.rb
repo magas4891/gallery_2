@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
 
   def show
     @category_id = @image.category_id
-    @comments = @image.comments
+    @comments = Comment.where(image_id: @image).order('created_at DESC')
     user_activity("showing_image_#{@image.id}") if current_user
   end
 
