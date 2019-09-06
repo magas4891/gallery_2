@@ -1,0 +1,31 @@
+= render 'layouts/menu'
+%section#image.container
+  .section_content.image_section
+    .comment_items
+      #comments
+        .big_title_txt.montserrat_font
+          Comments list
+        .text_und_big_title
+          -@comments.each_slice(2) do |comment1, comment2|
+            .text_und_big_title.left_side
+              %p
+                = t('activerecord.attributes.comment.commenter')
+                = comment1.commenter
+              %p
+                = t('activerecord.attributes.comment.text')
+                = comment1.text
+              %p
+                = comment1.created_at
+              %p
+                .big_title_txt_separ.background_color
+            .text_und_big_title.right_side
+              %p
+                = t('activerecord.attributes.comment.commenter')
+                = comment2.commenter
+              %p
+                = t('activerecord.attributes.comment.text')
+                = comment2.text
+              %p
+                = comment2.created_at
+              %p
+                .big_title_txt_separ.background_color

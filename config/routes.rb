@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'categories/index'
   get 'welcome/index'
-
+  get 'comments/index'
   devise_for :users, :controllers => { omniauth_callbacks: 'devise/omniauth_callbacks',
                                        sessions: 'devise/sessions' }
 

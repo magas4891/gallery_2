@@ -9,30 +9,15 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{:href => root_path}
-            = image_tag "logo.png", alt: "We are FACEit"
+            = image_tag "logo.png", title: "We are FACEit"
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#about"}
-                HELLO
-                -#%b.caret    /one more arrow
-              %ul.dropdown-menu
-                %li
-                  %a.linkz_transition{:href => "index.html"} Full Image Background
-                %li
-                  %a.linkz_transition{:href => "index_2.html"} Full Parallax Slider
-                %li
-                  %a.linkz_transition{:href => "index_3.html"} Full Video Background
-                %li
-                  %a.linkz_transition{:href => "index_4.html"} Full Animated Background
-                %li
-                  %a.linkz_transition{:href => "index_5.html"} Full Pattern Background
-                %li
-                  %a.linkz_transition{:href => "index_6.html"} Full Solid Background
+            %li
+              %a{:href => images_path } TOP CATEGORIES
             %li
               %a{:href => images_path } IMAGES
             %li
-              %a{:href => images_path } COMMENTS
+              %a{:href => comments_index_path } COMMENTS
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#portfolio"}
                 USER MENU
