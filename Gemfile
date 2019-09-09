@@ -40,6 +40,7 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'httparty'
 gem "recaptcha"
 gem 'bootstrap_form', '~> 2.3'
+gem "fog-aws"
 
 
 # Use CoffeeScript for .coffee assets and views
