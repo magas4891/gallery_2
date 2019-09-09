@@ -41,7 +41,7 @@ gem 'httparty'
 gem "recaptcha"
 gem 'bootstrap_form', '~> 2.3'
 gem "fog-aws"
-# gem 'aws-sdk', '~> 3'
+gem 'aws-sdk', '~> 2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
