@@ -1,22 +1,86 @@
 =render 'layouts/menu'
-%h2= t('.sign_in')
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  - if User.find_by_email(resource.email)
-    - if User.find_by_email(resource.email).failed_attempts >= User.logins_before_captcha
-      = recaptcha_tags
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
+-#.modal-dialog.modal-dialog-centered
+-#  %h2= t('.sign_in')
+-#  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#    - if User.find_by_email(resource.email)
+-#      - if User.find_by_email(resource.email).failed_attempts >= User.logins_before_captcha
+-#        = recaptcha_tags
+-#    .field
+-#      = f.label :email
+-#      %br/
+-#      = f.email_field :email, autofocus: true, autocomplete: "email"
+-#    .field
+-#      = f.label :password
+-#      %br/
+-#      = f.password_field :password, autocomplete: "current-password"
+-#    - if devise_mapping.rememberable?
+-#      .field
+-#        = f.check_box :remember_me
+-#        = f.label :remember_me
+-#
+-#    .actions
+-#      = f.submit t('.sign_in')
+-#  = render "devise/shared/links"
+= stylesheet_link_tag 'login/vendor/bootstrap/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/fonts/font-awesome-4.7.0/css/font-awesome.min', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/iconic/css/material-design-iconic-font.min', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/animate/animate.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/css-hamburgers/hamburgers.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/animsition/css/animsition.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/select2/select2.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/daterangepicker/daterangepicker.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/css/util', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/css/main', media: 'all', 'data-turbolinks-track': 'reload'
+%section#login.container
+  .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      %span.login100-form-title.p-b-49.login100-form.validate-form
+        Login
 
-  .actions
-    = f.submit t('.sign_in')
-= render "devise/shared/links"
+        .wrap-input100.validate-input.m-b-23{"data-validate" => "Email is required"}
+          %span.label-input100 Email
+          = f.text_field :email, autofocus: true, :placeholder => "Type your email", autocomplete: "email", class: "input100"
+          -#= f.email_field :email, autofocus: true, autocomplete: "email"
+          -#%input.input100{:name => "email", :placeholder => "Type your email", :type => "email"}/
+          %span.focus-input100
+        .wrap-input100.validate-input{"data-validate" => "Password is required"}
+          %span.label-input100 Password
+          = f.text_field :password, autocomplete: "current-password", :placeholder => "Type your password", class: "input100"
+          -#= f.password_field :password, autocomplete: "current-password", :placeholder => "Type your password"
+          -#%input.input100{:name => "password", , :type => "password"}/
+          %span.focus-input100
+        .text-right.p-t-8.p-b-31
+          %a{:href => new_user_password_path}
+            Forgot password?
+        .container-login100-form-btn
+          .wrap-login100-form-btn
+            .login100-form-bgbtn
+            %button.login100-form-btn
+              Login
+        .txt1.text-center.p-t-54.p-b-20
+          %span
+            Or Sign Up Using
+        .flex-c-m
+          %a.login100-social-item.bg1{:href => user_facebook_omniauth_authorize_path, :method => "GET|POST" }
+            %i.fa.fa-facebook
+          -#= link_to user_facebook_omniauth_authorize_path, class: "login100-social-item.bg1" do
+          -#  %i.fa.fa-facebook
+          -#%a.login100-social-item.bg2{:href => "#"}
+            -#%i.fa.fa-twitter
+          -#%a.login100-social-item.bg3{:href => "#"}
+            -#%i.fa.fa-google
+        .flex-col-c.p-t-155
+          %span.txt1.p-b-17
+            Or Sign Up Using
+          %a.txt2{:href => new_user_registration_path}
+            Sign Up
+
+= javascript_include_tag 'login/vendor/jquery/jquery-3.2.1.min.js'
+= javascript_include_tag 'login/vendor/animsition/js/animsition.min.js'
+= javascript_include_tag 'login/vendor/bootstrap/js/popper.js'
+= javascript_include_tag 'login/vendor/bootstrap/js/bootstrap.min.js'
+= javascript_include_tag 'login/vendor/select2/select2.min.js'
+= javascript_include_tag 'login/vendor/daterangepicker/moment.min.js'
+= javascript_include_tag 'login/vendor/daterangepicker/daterangepicker.js'
+= javascript_include_tag 'login/vendor/countdowntime/countdowntime.js'
+= javascript_include_tag 'login/js/main'

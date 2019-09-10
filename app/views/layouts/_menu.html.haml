@@ -30,11 +30,12 @@
                     %a.linkz_transition-item{:href => edit_user_registration_path} #{t('devise.shared.links.edit')}
                 - else
                   %li
-                    %a.linkz_transition{:href => new_user_session_path} #{t('devise.shared.links.sign_in')}
+                    -#= link_to t('devise.shared.links.sign_in'), new_user_session_path, 'data-toggle' => "modal", 'data-target' => "#login_modal"
+                    %a.linkz_transition{:href => new_user_session_path } #{t('devise.shared.links.sign_in')}
                   %li
                     %a.linkz_transition{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
-                  %li
-                    %a.linkz_transition{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
+                  -#%li
+                  -#  %a.linkz_transition{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
             %li
               %a{:href => "#contact"} CONTACT
             %li.nav-item

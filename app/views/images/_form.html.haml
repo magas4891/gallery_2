@@ -1,6 +1,8 @@
 %section#form-container
   .big_title
     .big_title_txt.montserrat_font ADDING NEW IMAGE
+    %a.button-back{ :href => categories_path }
+      = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "64x64"
     .text_und_big_title
       Upload new image from local storage or other site .
   = bootstrap_form_for @image, url: { action: :create } do |f|
@@ -26,6 +28,3 @@
 
     %p
     =f.submit t('image._form.upload'), :class => "btn btn-primary btn-lg"
-
-%a.button-back{ :href => categories_path }
-  = image_tag "left.png", alt: "#{t('.back_to_categories')}", size: "100x75"
