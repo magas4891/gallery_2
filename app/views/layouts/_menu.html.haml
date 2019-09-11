@@ -19,9 +19,8 @@
             %li
               %a{:href => comments_index_path } COMMENTS
             %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#portfolio"}
+              %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#portfolio" }
                 USER MENU
-                -#%b.caret    /one more arrow
               %ul.dropdown-menu
                 - if user_signed_in?
                   %li

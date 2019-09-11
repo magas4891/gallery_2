@@ -8,22 +8,25 @@
     %title Gallery2
 
 
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'slider', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'category', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'images', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'script', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'jquery-3.4.1', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'jquery.nicescroll', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'jquery.sticky', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'jquery.prettyPhoto', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'script'
+    = javascript_include_tag 'jquery-3.4.1'
+    = javascript_include_tag 'jquery.nicescroll'
+    = javascript_include_tag 'jquery.sticky'
+    = javascript_include_tag 'jquery.prettyPhoto'
 
   %body
     #home
       .content
         = yield
+
 
 

@@ -1,4 +1,4 @@
-=render 'layouts/menu'
+-#=render 'layouts/menu'
 -#%h2= t('.sign_up')
 -#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 -#  = render "devise/shared/error_messages", resource: resource
@@ -30,36 +30,6 @@
 = stylesheet_link_tag 'login/vendor/daterangepicker/daterangepicker.css', media: 'all', 'data-turbolinks-track': 'reload'
 = stylesheet_link_tag 'login/css/util', media: 'all', 'data-turbolinks-track': 'reload'
 = stylesheet_link_tag 'login/css/main', media: 'all', 'data-turbolinks-track': 'reload'
-%section#login.container
-  .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      %span.login100-form-title.p-b-49.login100-form.validate-form
-        Sign UP
-        .wrap-input100.validate-input.m-b-23{"data-validate" => "Email is required"}
-          %span.label-input100 Email
-          = f.text_field :email, autofocus: true, :placeholder => "Type your email", autocomplete: "email", class: "input100"
-          %span.focus-input100
-        .wrap-input100.validate-input{"data-validate" => "Password is required"}
-          %span.label-input100 Password
-          = f.text_field :password, autocomplete: "current-password", :placeholder => "Type your password", class: "input100"
-            - if @minimum_password_length
-              %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
-        .wrap-input100.validate-input{"data-validate" => "Password is required"}
-          %span.label-input100 Password
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-
-          %span.focus-input100
-        .text-right.p-t-8.p-b-31
-          %a{:href => new_user_password_path}
-            Forgot password?
-        .container-login100-form-btn
-          .wrap-login100-form-btn
-            .login100-form-bgbtn
-            %button.login100-form-btn
-              Login
-
-= javascript_include_tag 'login/vendor/jquery/jquery-3.2.1.min.js'
 = javascript_include_tag 'login/vendor/animsition/js/animsition.min.js'
 = javascript_include_tag 'login/vendor/bootstrap/js/popper.js'
 = javascript_include_tag 'login/vendor/bootstrap/js/bootstrap.min.js'
@@ -68,3 +38,38 @@
 = javascript_include_tag 'login/vendor/daterangepicker/daterangepicker.js'
 = javascript_include_tag 'login/vendor/countdowntime/countdowntime.js'
 = javascript_include_tag 'login/js/main'
+%section#login.container
+  .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      %span.login100-form-title.p-b-49.login100-form.validate-form
+        Sign up
+        .wrap-input100.validate-input.m-b-23{"data-validate" => "Email is required"}
+          %span.label-input100 Email
+          = f.text_field :email, autofocus: true, :placeholder => "Type your email", autocomplete: "email", class: "input100"
+          %span.focus-input100
+        .wrap-input100.validate-input{"data-validate" => "Password is required"}
+          %span.label-input100 Password
+          = f.password_field :password, autocomplete: "current-password", :placeholder => "Type your password", class: "input100"
+          %span.focus-input100
+        .wrap-input100.validate-input{"data-validate" => "Password is required"}
+          %span.label-input100 Password confirmation
+          = f.password_field :password_confirmation, autocomplete: "current-password", :placeholder => "Type your password again", class: "input100"
+          %span.focus-input100
+        .wrap-input100
+          %span.label-input100 Name
+          = f.text_field :name, :placeholder => "Type your name", class: "input100"
+          %span.focus-input100
+        .wrap-input100
+          %span.label-input100 Nick-name
+          = f.text_field :nick, :placeholder => "Type your nick-name", class: "input100"
+          %span.focus-input100
+        .text-right.p-t-8.p-b-31
+        .container-login100-form-btn
+          .wrap-login100-form-btn
+            .login100-form-bgbtn
+            %button.login100-form-btn
+              Register
+
+-#= javascript_include_tag 'login/vendor/jquery/jquery-3.2.1.min.js'
+
