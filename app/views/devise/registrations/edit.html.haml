@@ -1,42 +1,102 @@
-= render 'layouts/menu'
-%h2= t('.title', resource: resource.model_name.human)
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
-  .field
-    -#- if current_user.image.present?
-    -#  = image_tag(current_user.image)
-    -#  = f.label :remove_avatar do
-    -#    = f.check_box :remove_avatar
-    -#= f.file_field :image
-    -#= f.hidden_field :avatar_cache
-    = f.label :password
-    %i
-      (#{t('.leave_blank_if_you_don_t_want_to_change_it')})
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i
-      (#{t('.we_need_your_current_password_to_confirm_your_changes')})
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit t('.update')
-%h3= t('.cancel_my_account')
-%p
-  = t('.unhappy')
-  = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
-= link_to t('devise.shared.links.back'), :back
+-#%h2= t('.title', resource: resource.model_name.human)
+-#= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+-#  = render "devise/shared/error_messages", resource: resource
+-#  .field
+-#    = f.label :email
+-#    %br/
+-#    = f.email_field :email, autofocus: true, autocomplete: "email"
+-#  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+-#    %div= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
+-#  .field
+-#    = f.label :password
+-#    %i
+-#      (#{t('.leave_blank_if_you_don_t_want_to_change_it')})
+-#    %br/
+-#    = f.password_field :password, autocomplete: "new-password"
+-#    - if @minimum_password_length
+-#      %br/
+-#      %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
+-#  .field
+-#    = f.label :password_confirmation
+-#    %br/
+-#    = f.password_field :password_confirmation, autocomplete: "new-password"
+-#  .field
+-#    = f.label :current_password
+-#    %i
+-#      (#{t('.we_need_your_current_password_to_confirm_your_changes')})
+-#    %br/
+-#    = f.password_field :current_password, autocomplete: "current-password"
+-#  .actions
+-#    = f.submit t('.update')
+-#%h3= t('.cancel_my_account')
+-#%p
+-#  = t('.unhappy')
+-#  = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
+-#= link_to t('devise.shared.links.back'), :back
+= stylesheet_link_tag 'login/vendor/bootstrap/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/fonts/font-awesome-4.7.0/css/font-awesome.min', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/iconic/css/material-design-iconic-font.min', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/animate/animate.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/css-hamburgers/hamburgers.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/animsition/css/animsition.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/select2/select2.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/vendor/daterangepicker/daterangepicker.css', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/css/util', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag 'login/css/main', media: 'all', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'login/vendor/animsition/js/animsition.min.js'
+= javascript_include_tag 'login/vendor/bootstrap/js/popper.js'
+= javascript_include_tag 'login/vendor/bootstrap/js/bootstrap.min.js'
+= javascript_include_tag 'login/vendor/select2/select2.min.js'
+= javascript_include_tag 'login/vendor/daterangepicker/moment.min.js'
+= javascript_include_tag 'login/vendor/daterangepicker/daterangepicker.js'
+= javascript_include_tag 'login/vendor/countdowntime/countdowntime.js'
+= javascript_include_tag 'login/js/main'
+%section#login.container
+  .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      %span.login100-form-title.p-b-49.login100-form.validate-form
+        = t('.title', resource: resource.model_name.human)
+        .wrap-input100.validate-input.m-b-23
+          %span.label-input100 Email
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input100"
+          %span.focus-input100
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
+        .wrap-input100.validate-input
+          %span.label-input100 Password
+          = f.password_field :password, autocomplete: "current-password", :placeholder => "#{t('.leave_blank_if_you_don_t_want_to_change_it')}", class: "input100"
+          %span.focus-input100
+          -#- if @minimum_password_length
+          -#  %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
+        .wrap-input100.validate-input
+          %span.label-input100 Password confirmation
+          = f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "Type your new password", class: "input100"
+          %span.focus-input100
+        .wrap-input100
+          %span.label-input100 Name
+          = f.password_field :current_password, :placeholder => "#{t('.we_need_your_current_password_to_confirm_your_changes')}", autocomplete: "current-password", class: "input100"
+          %span.focus-input100
+        .wrap-input100
+          %span.label-input100 Nick-name
+          = f.text_field :nick, :placeholder => "Type your nick-name", class: "input100"
+          %span.focus-input100
+        .text-right.p-t-8.p-b-31
+        .container-login100-form-btn
+          .wrap-login100-form-btn
+            .login100-form-bgbtn
+            %button.login100-form-btn
+              #{t('.update')}
+    -#.wrap-input100
+    -#  %span.login100-form-title.p-b-49.login100-form
+    -#    = t('.cancel_my_account')
+    -#    .wrap-input100
+    -#      %span.label-input100
+    -#        = t('.unhappy')
+    -#.container-login100-form-btn
+    -#  .wrap-login100-form-btn
+    -#    .login100-form-bgbtn
+    -#    = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, :method => "delete", :class => "login100-form-btn", :type => "button"
+        -#%button.login100-form-btn{:href => registration_path(resource_name), :action => "destroy", :method => "delete", data: { confirm: t('.are_you_sure') } }
+
+

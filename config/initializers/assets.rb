@@ -27,12 +27,13 @@ Rails.application.config.assets.precompile += %w( login/vendor/select2/select2.m
 Rails.application.config.assets.precompile += %w( login/vendor/daterangepicker/daterangepicker.css )
 Rails.application.config.assets.precompile += %w( login/css/util.css )
 Rails.application.config.assets.precompile += %w( login/css/main.css )
-Rails.application.config.assets.precompile += %w( jquery-3.4.1.js )
 Rails.application.config.assets.precompile += %w( script.js )
-Rails.application.config.assets.precompile += %w( jquery.prettyPhoto.js )
+Rails.application.config.assets.precompile += %w( jquery-3.4.1.js )
+
+# Rails.application.config.assets.precompile += %w( jquery.prettyPhoto.js )
 Rails.application.config.assets.precompile += %w( jquery.sticky.js )
 Rails.application.config.assets.precompile += %w( jquery.nicescroll.js )
-# Rails.application.config.assets.precompile += %w( login/vendor/jquery/jquery-3.2.1.min.js )
+Rails.application.config.assets.precompile += %w( login/vendor/jquery/jquery-3.2.1.min.js )
 Rails.application.config.assets.precompile += %w( login/vendor/animsition/js/animsition.min.js )
 Rails.application.config.assets.precompile += %w( login/vendor/bootstrap/js/popper.js )
 Rails.application.config.assets.precompile += %w( login/vendor/bootstrap/js/bootstrap.min.js )
@@ -41,4 +42,3 @@ Rails.application.config.assets.precompile += %w( login/vendor/daterangepicker/m
 Rails.application.config.assets.precompile += %w( login/vendor/daterangepicker/daterangepicker.js )
 Rails.application.config.assets.precompile += %w( login/vendor/countdowntime/countdowntime.js )
 Rails.application.config.assets.precompile += %w( login/js/main.js )
-
