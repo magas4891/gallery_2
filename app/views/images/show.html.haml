@@ -8,7 +8,7 @@
       %a.button-back{ :href => comments_index_path }
         = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     - else
-      %a.button-back{ :href => images_path }
+      %a.button-back{ :href => images_path + "#" + "#{@image.id}" }
         = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     .big_title_txt.montserrat_font #{@image.title}
     .like_items
