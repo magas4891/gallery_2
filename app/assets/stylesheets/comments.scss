@@ -6,6 +6,10 @@
   margin: 20px 10px;
 }
 
+#leave_comment {
+  min-width: 40%;
+}
+
 .comment_items {
   display: flex;
   justify-content: center;
@@ -17,9 +21,20 @@
 }
 
 .left_side {
+  padding: 10px;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
 
 .right_side {
+  padding: 10px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
+
+.comment {
+  padding: 15px;
+}
+

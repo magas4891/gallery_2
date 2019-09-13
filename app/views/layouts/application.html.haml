@@ -22,12 +22,14 @@
     = javascript_include_tag 'jquery.nicescroll', 'data-turbolinks-track' => true
     = javascript_include_tag 'jquery.sticky', 'data-turbolinks-track' => true
 
-    -#= javascript_include_tag 'jquery.prettyPhoto'
+    -#= javascript_include_tag 'jquery.prettyPhoto', 'data-turbolinks-track' => true
 
   %body
     #home
       .content
+        - if flash[:notice]
+          .alert.alert-success= flash[:notice]
+        - if flash[:alert]
+          .alert.alert-danger= flash[:alert]
         = yield
-
-
 

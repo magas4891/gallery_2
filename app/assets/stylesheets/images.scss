@@ -26,3 +26,14 @@
   top: 5px;
   right: 0;
 }
+
+
+
+.scale {
+  transition: 1s;
+}
+
+.scale:hover {
+  transform: scale(1.2);
+  z-index: 999999;
+}

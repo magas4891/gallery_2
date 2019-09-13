@@ -40,6 +40,11 @@
 .text_und_big_title{
   font-size: 17px;
   color: #4d4943;
+  padding: 10px;
+  //display: flex;
+  //flex-direction: column;
+  //flex-wrap: nowrap;
+  //justify-content: space-between;
 }
 
 .big_title_txt_separ{
@@ -75,7 +80,7 @@
   align-items: stretch;
   width: 300px;
   height: 180px;
-
+  overflow: visible;
 }
 
 .category_item img{

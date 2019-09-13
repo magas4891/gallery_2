@@ -1,12 +1,15 @@
 =render 'layouts/menu'
-- if flash[:notice]
-  .alert.alert-success= flash[:notice]
-- if flash[:alert]
-  .alert.alert-danger= flash[:alert]
 %section#image.container
   .big_title
-    %a.button-back{ :href => category_path(@category_id) }
-      = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+    - if @activity.second_to_last.action == "img_creation"
+      %a.button-back{ :href => category_path(@category_id) }
+        = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+    - elsif @activity.second_to_last.action == "showing_index_comments"
+      %a.button-back{ :href => comments_index_path }
+        = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+    - else
+      %a.button-back{ :href => images_path }
+        = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     .big_title_txt.montserrat_font #{@image.title}
     .like_items
       - if @like_owner
@@ -19,6 +22,7 @@
         = @image.likes.count
   .section_content.image_section
     .image_items
+      -#=link_to image_tag(@image.picture.small.url.to_s, :alt => "#{@image.title}" ,:class => "img-polaroid"), @image.picture.normal.url, :rel => "prettyPhoto"
       = image_tag  @image.picture.normal.url, :title => "#{@image.title}"
     .comment_items
       #leave_comment

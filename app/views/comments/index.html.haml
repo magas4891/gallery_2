@@ -5,27 +5,38 @@
       #comments
         .big_title_txt.montserrat_font
           Comments list
-        .text_und_big_title
-          -@comments.each_slice(2) do |comment1, comment2|
-            .text_und_big_title.left_side
+        -@comments.each_slice(2) do |comment1, comment2|
+          .text_und_big_title.left_side
+            .comment
               %p
-                = t('activerecord.attributes.comment.commenter')
+                %strong
+                  = t('activerecord.attributes.comment.commenter')
                 = comment1.commenter
               %p
-                = t('activerecord.attributes.comment.text')
+                %strong
+                  = t('activerecord.attributes.comment.text')
                 = comment1.text
               %p
                 = comment1.created_at
+            .image_preview
               %p
-                .big_title_txt_separ.background_color
-            .text_und_big_title.right_side
+                =link_to image_tag(comment1.image.picture.small.url, :class => "scale"),  image_path(comment1.image_id)
+          %p
+            .big_title_txt_separ.background_color
+          .text_und_big_title.right_side
+            .image_preview
               %p
-                = t('activerecord.attributes.comment.commenter')
+                = link_to image_tag(comment2.image.picture.small.url, :class => "scale"), image_path(comment2.image_id)
+            .comment
+              %p
+                %strong
+                  = t('activerecord.attributes.comment.commenter')
                 = comment2.commenter
               %p
-                = t('activerecord.attributes.comment.text')
+                %strong
+                  = t('activerecord.attributes.comment.text')
                 = comment2.text
               %p
                 = comment2.created_at
-              %p
-                .big_title_txt_separ.background_color
+          %p
+            .big_title_txt_separ.background_color

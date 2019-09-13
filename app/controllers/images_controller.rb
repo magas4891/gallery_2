@@ -5,12 +5,14 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all.page(params[:page]).per(20)
+    user_activity("showing_index_images") if current_user
   end
 
   def show
     @category_id = @image.category_id
     @comments = Comment.where(image_id: @image).order('created_at DESC')
     user_activity("showing_image_#{@image.id}") if current_user
+    @activity = Activity.all
   end
 
   def new

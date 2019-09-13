@@ -29,7 +29,6 @@ Rails.application.config.assets.precompile += %w( login/css/util.css )
 Rails.application.config.assets.precompile += %w( login/css/main.css )
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( jquery-3.4.1.js )
-
 # Rails.application.config.assets.precompile += %w( jquery.prettyPhoto.js )
 Rails.application.config.assets.precompile += %w( jquery.sticky.js )
 Rails.application.config.assets.precompile += %w( jquery.nicescroll.js )

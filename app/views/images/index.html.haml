@@ -1,10 +1,11 @@
 = render 'layouts/menu'
-%section.image.container
-  .section_content.image_section
-    .image_items
+%section.categories.container
+  .section_content.category_section
+    .category_items
       - @images.each_slice(20) do |image|
         -image.each do |img|
-          = image_tag img.picture.small.url, :title => "#{img.title}"
+          .category_item.web.media.print
+            = link_to image_tag(img.picture.small.url, :title => "#{img.title}", :class => "scale"), image_path(img)
 
 .pagination_block.montserrat_font
   = paginate @images
