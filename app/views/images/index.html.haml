@@ -5,7 +5,8 @@
       - @images.each_slice(20) do |image|
         -image.each do |img|
           .category_item.web.media.print{:id => "#{img.id}"}
-            = link_to image_tag(img.picture.small.url, :title => "#{img.title}", :class => "scale"), image_path(img)
+            = link_to image_tag(img.picture.small.url, :title => "#{img.title}", :class => "scale"),
+             image_path(img, page: :page != nil ? params[:page] : nil )
 
 .pagination_block.montserrat_font
   = paginate @images

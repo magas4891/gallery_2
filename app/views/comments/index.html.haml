@@ -6,7 +6,7 @@
         .big_title_txt.montserrat_font
           Comments list
         -@comments.each_slice(2) do |comment1, comment2|
-          .text_und_big_title.left_side
+          .text_und_big_title.left_side{ :id => "#{comment1.id}" }
             .comment
               %p
                 %strong
@@ -20,13 +20,15 @@
                 = comment1.created_at
             .image_preview
               %p
-                =link_to image_tag(comment1.image.picture.small.url, :class => "scale"),  image_path(comment1.image_id)
+                =link_to image_tag(comment1.image.picture.small.url, :class => "scale"),
+                  image_path(comment1.image_id, :comment_id => comment1.id)
           %p
             .big_title_txt_separ.background_color
-          .text_und_big_title.right_side
+          .text_und_big_title.right_side{ :id => "#{comment2.id}" }
             .image_preview
               %p
-                = link_to image_tag(comment2.image.picture.small.url, :class => "scale"), image_path(comment2.image_id)
+                = link_to image_tag(comment2.image.picture.small.url, :class => "scale"),
+                 image_path(comment2.image_id, :comment_id => comment2.id)
             .comment
               %p
                 %strong

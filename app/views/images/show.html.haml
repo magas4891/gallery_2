@@ -5,11 +5,15 @@
       %a.button-back{ :href => category_path(@category_id) }
         = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     - elsif @activity.second_to_last.action == "showing_index_comments"
-      %a.button-back{ :href => comments_index_path }
+      %a.button-back{ :href => comments_index_path + "#" + params[:comment_id] }
         = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     - else
-      %a.button-back{ :href => images_path + "#" + "#{@image.id}" }
-        = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+      - if params[:page] != nil
+        %a.button-back{ :href => images_path + "&page=" + params[:page] + "#" + "#{@image.id}" }
+          = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+      - else
+        %a.button-back{ :href => images_path + "&page=1" + "#" + "#{@image.id}" }
+          = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
     .big_title_txt.montserrat_font #{@image.title}
     .like_items
       - if @like_owner
