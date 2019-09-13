@@ -27,13 +27,14 @@
   right: 0;
 }
 
-
-
 .scale {
+
   transition: 1s;
 }
 
 .scale:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
   transform: scale(1.2);
   z-index: 999999;
 }

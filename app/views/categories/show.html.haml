@@ -22,7 +22,7 @@
           - image.each do |img|
             .category_item.web.media.print
               %a{"data-title" => img.title, :href => image_path(img)}
-                = image_tag img.picture.small.url
+                = image_tag img.picture.small.url, :class => "scale"
 
   .fn_btn.montserrat_font
     = link_to "#{t('.add_new_image')}", new_image_path(category_id: @category), :class => "btn btn-primary btn-lg"
