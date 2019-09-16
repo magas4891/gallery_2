@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   def send_congra_mail
     user = self
-    UserMailer.welcome_mail(user).deliver_now
+    Resque.enqueue(WelcomeMail, (user).deliver_now)
   end
 
 end

@@ -27,7 +27,7 @@ class UserMailer < ApplicationMailer
   # def category_url
   #   @url = "localhost:3000/categories/"
   # end
-
+  #
   # def user_params
   #   @user = current_user
   # end
