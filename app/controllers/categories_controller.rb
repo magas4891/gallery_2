@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_category, only: [:show, :destroy]
   before_action :pre_follow, only: [:show]
+  # before_action :imgs_likes_sum, only: [:show]
 
   def index
     @categories = Category.where("name != 'NoName'").page params[:page]
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
     @images = @category.images
     @images = @images.page params[:page]
     user_activity("showing_category_#{@category.slug}") if current_user
+
   end
 
   def new
@@ -35,6 +37,24 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def top
+    categories = Category.all
+    @top_categories = {}
+    categories.each do |category|
+      images = category.images
+      imgs_likes_arr = []
+      imgs_cmmnts_arr = []
+      images.each do |f|
+        imgs_likes_arr.append(f.likes.count)
+        imgs_cmmnts_arr.append(f.comments.count)
+      end
+      @top_categories[category] = category.images.count + imgs_likes_arr.sum + imgs_cmmnts_arr.sum
+    end
+    @top_categories.sort_by { |k, v| -v}
+
+  end
+
+
   private
 
   def set_category
@@ -48,4 +68,15 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name, :description)
   end
+
+  # def imgs_likes_sum
+  #   @images = @category.images
+  #   @imgs_likes_arr = []
+  #   @imgs_cmmnts_arr = []
+  #   @images.each do |f|
+  #     @imgs_likes_arr.append(f.likes.count)
+  #     @imgs_cmmnts_arr.append(f.comments.count)
+  #   end
+  # end
+
 end

@@ -1,0 +1,6 @@
+-#- @top.each do | k |
+-#  %p
+-#    = image_tag(k[0].images[0].picture.small.url)
+- @top_categories.each do |f|
+  %p
+    = f.fetch(0).images[1]
