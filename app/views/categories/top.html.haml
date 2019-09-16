@@ -1,6 +1,29 @@
--#- @top.each do | k |
--#  %p
--#    = image_tag(k[0].images[0].picture.small.url)
-- @top_categories.each do |f|
-  %p
-    = f.fetch(0).images[1]
+= render 'layouts/menu'
+%section#categories.container
+  .big_title
+    = link_to :back, class: "button-back" do
+      = image_tag("left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64")
+    .big_title_txt.montserrat_font Top categories
+    .text_und_big_title
+      The most popular categories, with the largest number of pictures, likes and comments.
+    .big_title_txt_separ.background_color
+  .section_content.category_section
+    .category_items
+      - @top_categories.each do |category|
+        .category_item.web.media.print
+          - if category.images.exists?
+            = image_tag category.images.first.picture.small.url
+          -else
+            = image_tag "jpg.png", size: "200x200"
+          .category_item_info.text-center
+            .category_item_title
+              = category.name
+            .category_follows
+              = image_tag "followers_index_page.png", title: "Followers"
+              = category.follows.count
+            %i.category_item_sep.background_color
+            .category_item_p
+              = truncate("#{category.description}", length: 50)
+            .category_item_btnblock
+              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+

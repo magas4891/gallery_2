@@ -24,6 +24,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.user = current_user
+    @category.rank = 0
     if @category.save
       user_activity('cat_creation') if current_user
       redirect_to categories_path
@@ -39,7 +40,6 @@ class CategoriesController < ApplicationController
 
   def top
     categories = Category.all
-    @top_categories = {}
     categories.each do |category|
       images = category.images
       imgs_likes_arr = []
@@ -48,9 +48,10 @@ class CategoriesController < ApplicationController
         imgs_likes_arr.append(f.likes.count)
         imgs_cmmnts_arr.append(f.comments.count)
       end
-      @top_categories[category] = category.images.count + imgs_likes_arr.sum + imgs_cmmnts_arr.sum
+      category.rank = category.images.count + imgs_likes_arr.sum + imgs_cmmnts_arr.sum
+      category.save!
     end
-    @top_categories.sort_by { |k, v| -v}
+    @top_categories = Category.where("name != 'NoName'").order('rank desc').limit(5)
 
   end
 
