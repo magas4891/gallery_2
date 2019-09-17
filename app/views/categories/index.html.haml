@@ -3,9 +3,9 @@
 = render 'layouts/menu'
 %section#categories.container
   .big_title
-    .big_title_txt.montserrat_font Categories
+    .big_title_txt.montserrat_font= t('categories')
     .text_und_big_title
-      For ease of navigation, all images are divided into categories.
+      = t('categories_description')
     .big_title_txt_separ.background_color
   .section_content.category_section
     .category_items
@@ -19,16 +19,16 @@
             .category_item_title
               = category.name
             .category_follows
-              = image_tag "followers_index_page.png", title: "Followers"
+              = image_tag "followers_index_page.png", title: t('followers')
               = category.follows.count
             %i.category_item_sep.background_color
             .category_item_p
               = truncate("#{category.description}", length: 50)
             .category_item_btnblock
-              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('show')}
 
   .fn_btn.montserrat_font
-    = button_to "#{t('.add_new_category')}", new_category_path, :class => "btn btn-primary btn-lg", :method => "get"
+    = button_to "#{t('add_new_category')}", new_category_path, :class => "btn btn-primary btn-lg", :method => "get"
 
   .pagination_block.montserrat_font
     = paginate @categories

@@ -4,31 +4,31 @@
     - if user_signed_in?
       - if @activity.second_to_last.action == "img_creation"
         %a.button-back{ :href => category_path(@category_id) }
-          = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+          = image_tag "left.png", size: "64x64"
       - elsif @activity.second_to_last.action == "showing_index_comments"
         %a.button-back{ :href => comments_index_path + "#" + params[:comment_id] }
-          = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+          = image_tag "left.png", size: "64x64"
       - elsif @activity.second_to_last.action == "showing_index_images"
         - if params[:page] != nil
           %a.button-back{ :href => images_path + "&page=" + params[:page] + "#" + "#{@image.id}" }
-            = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+            = image_tag "left.png", size: "64x64"
         - else
           %a.button-back{ :href => images_path + "&page=1" + "#" + "#{@image.id}" }
-            = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+            = image_tag "left.png", size: "64x64"
       - else
         %a.button-back{ :href => category_path(@category_id) }
-          = image_tag "left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64"
+          = image_tag "left.png", size: "64x64"
     - else
       = link_to :back, class: "button-back" do
-        = image_tag("left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64")
+        = image_tag("left.png", size: "64x64")
     .big_title_txt.montserrat_font #{@image.title}
     .like_items
       - if @like_owner
         = link_to image_like_path(@image), method: :delete do
-          =image_tag "like.png", title: "UnLike", size: "48x48"
+          =image_tag "like.png", title: t('activerecord.attributes.like.like'), size: "48x48"
       - else
         = link_to image_likes_path(@image), method: :post do
-          =image_tag "unlike.png", title: "Like", size: "48x48"
+          =image_tag "unlike.png", title: t('activerecord.attributes.like.unlike'), size: "48x48"
       .text_und_big_title
         = @image.likes.count
   .section_content.image_section
@@ -38,7 +38,7 @@
     .comment_items
       #leave_comment
         .big_title_txt.montserrat_font
-          Leave your comment
+          #{t('leave_comment')}
         .comments_form.text_und_big_title
           -if current_user
             = bootstrap_form_for([ @image, @image.comments.build ], local: true) do |form|
@@ -46,7 +46,7 @@
               = form.submit t('image._form.create_comment')
       #comments
         .big_title_txt.montserrat_font
-          Comments list
+          #{t('comments')}
         .text_und_big_title
           - @comments.each do |comment|
             %p

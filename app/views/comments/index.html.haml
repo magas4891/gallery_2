@@ -4,7 +4,7 @@
     .comment_items
       #comments
         .big_title_txt.montserrat_font
-          Comments list
+          #{t('comments')}
         -@comments.each_slice(2) do |comment1, comment2|
           .text_und_big_title.left_side{ :id => "#{comment1.id}" }
             .comment

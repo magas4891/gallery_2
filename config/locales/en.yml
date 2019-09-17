@@ -59,27 +59,18 @@ en:
   welcome:
     index:
       show_categories: 'Show categories'
-  categories:
-    index:
-      show: 'Show'
-      destroy: 'Destroy'
-      add_new_category: 'Add new category'
-    new:
-      create: 'Create'
-      back_to_categories: 'Go to categories'
-    show:
-      add_new_image: 'Add new image'
+  categories: "CATEGORIES"
   image:
     _form:
-      upload: 'Upload'
-      back_to_category: 'Back to category'
-      create_comment: 'Create comment'
+      create_comment: "Create comment"
+      upload: "UPLOAD"
   views:
     pagination:
-      first: "First"
-      last: "Last"
-      next: "Next"
-      previous: "Previous"
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
   devise:
@@ -200,5 +191,38 @@ en:
         not_saved:
           one: '1 error prohibited this %{resource} from being saved:'
           other: "%{count} errors prohibited this %{resource} from being saved:"
+  top_categories: "TOP CATEGORIES"
+  images: "IMAGES"
+  comments: "COMMENTS"
+  user_menu: "USER MENU"
+  categories_description: "For ease of navigation, all images are divided into categories."
+  followers: "Followers"
+  adding_new_category: "ADDING NEW CATEGORY"
+  name_description: "Please, input name of the new category and provide a short description."
+  create: "CREATE"
+  back_to_categies: "Back to categories"
+  show: "SHOW"
+  add_new_category: "ADD NEW CATEGORY"
+  back_to_categories: "Back to categories"
+  add_new_image: "ADD NEW IMAGE"
+  unfollow: "UnFollow"
+  follow: "Follow"
+  top_categories_description: "The most popular categories, with the largest number of pictures, likes and comments."
+  top_categories_info: "Top categories"
+  leave_comment: "Leave comment"
+  adding_new_image_description: "Upload new image from local storage or other site."
+  password: "Password"
+  password_cofirmation: "Password confirmation"
+  confirm_new_password: "Type your new password"
+  name: "Name"
+  nick_name: "Nick-name"
+  type_nick_name: "Type your nick-name"
+  type_name: "Type your name"
+  confirm_changes: "Confirm changes"
+  login: "Login"
+  email_required: "Email is required"
+  type_email: "Type your email"
+  password_required: "Password is required"
+  type_password: "Type your password"
 
 

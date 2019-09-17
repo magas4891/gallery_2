@@ -16,11 +16,14 @@
  *= require rails_bootstrap_forms
  */
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 body, a {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Ubuntu Condensed', sans-serif;
   font-weight: 400;
   color: #333333;
   background: url(body_bg.png);
@@ -28,14 +31,17 @@ body, a {
 }
 
 #home {
+
+  font-family: 'Ubuntu Condensed', sans-serif;
+
   width:100%;
   height:auto;
   position:relative;
 }
 
-//.content {
-//  height: 100vh;
-//}
+.content {
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
 
 /* Top Menu */
 .navsticky{

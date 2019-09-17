@@ -65,25 +65,25 @@
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
         .wrap-input100.validate-input
-          %span.label-input100 Password
+          %span.label-input100 #{t('password')}
           = f.password_field :password, autocomplete: "current-password", :placeholder => "#{t('.leave_blank_if_you_don_t_want_to_change_it')}", class: "input100"
           %span.focus-input100
           -#- if @minimum_password_length
           -#  %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
         .wrap-input100.validate-input
-          %span.label-input100 Password confirmation
-          = f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "Type your new password", class: "input100"
+          %span.label-input100= t('password_cofirmation')
+          = f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => t('confirm_new_password'), class: "input100"
           %span.focus-input100
         .wrap-input100
-          %span.label-input100 Name
-          = f.text_field :name, :placeholder => "Type your name", class: "input100"
+          %span.label-input100= t('name')
+          = f.text_field :name, :placeholder => t('type_name'), class: "input100"
           %span.focus-input100
         .wrap-input100
-          %span.label-input100 Nick-name
-          = f.text_field :nick, :placeholder => "Type your nick-name", class: "input100"
+          %span.label-input100= t('nick_name')
+          = f.text_field :nick, :placeholder => t('type_nick_name'), class: "input100"
           %span.focus-input100
         .wrap-input100
-          %span.label-input100 Confirm changes
+          %span.label-input100= t('confirm_changes')
           = f.password_field :current_password, :placeholder => "#{t('.we_need_your_current_password_to_confirm_your_changes')}", autocomplete: "current-password", class: "input100"
           %span.focus-input100
         .text-right.p-t-8.p-b-31

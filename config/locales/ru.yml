@@ -3,19 +3,10 @@ ru:
   welcome:
     index:
       show_categories: 'Показать категории'
-  categories:
-    index:
-      show: 'Показать'
-      destroy: 'Уничтожить'
-      add_new_category: 'Добавить новую категорию'
-    new:
-      create: 'Создать'
-      back_to_categories: 'Вернуться к категориям'
-    show:
-      add_new_image: 'Добавить новое изображение'
+  categories: "КАТЕГОРИИ"
   image:
     _form:
-      upload: 'Загрузить'
+      upload: 'ЗАГРУЗИТЬ'
       back_to_category: 'Вернуться в категорию'
       create_comment: 'Создать комментарий'
   activerecord:
@@ -52,6 +43,8 @@ ru:
         text: 'Текст:'
       image:
         title: 'Название'
+        picture: 'Изображение'
+        remote_picture_url: 'Адрес удаленного изображения'
       follow:
         follow: 'Подписаться'
         unfollow: 'Отписаться'
@@ -459,7 +452,42 @@ ru:
     pm: вечера
   views:
     pagination:
-      first: "Начало"
-      last: "Конец"
-      next: "Следующая"
-      previous: "Предыдущая"
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Пред."
+      next: "Следующая &rsaquo;"
+      truncate: "&hellip;"
+  top_categories: "ТОП КАТЕГОРИЙ"
+  images: "ИЗОБРАЖЕНИЯ"
+  comments: "КОММЕНТАРИИ"
+  user_menu: "МЕНЮ ПОЛЬЗОВАТЕЛЯ"
+  categories_description: "Для улучшеной навигации, изображения объеденены в категории."
+  followers: "Подписчиков"
+  adding_new_category: "ДОБАВЛЕНИЕ НОВОЙ КАТЕГОРИИ"
+  name_description: "Пожалуйста, введите имя новой категории и короткое описание."
+  create: "СОЗДАТЬ"
+  back_to_categies: "Назад к категориям"
+  show: "ПОКАЗАТЬ"
+  add_new_category: "ДОБАВИТЬ НОВУЮ КАТЕГОРИЮ"
+  back_to_categories: "Назад к категориям"
+  add_new_image: "ДОБАВИТЬ НОВОЕ ИЗОБРАЖЕНИЕ"
+  unfollow: "Отписаться"
+  follow: "Подписаться"
+  top_categories_description: "Популярные категории, с наибольшим колличеством изображений, лайков и комментариев."
+  top_categories_info: "Топ категории"
+  leave_comment: "Оставить комментарий"
+  adding_new_image: "ДОБАВЛЕНИЕ НОВОГО ИЗОБРАЖЕНИЯ"
+  adding_new_image_description: "Загрузите новое изображение из локального хранилища или укажите ссылку."
+  password: "Пароль"
+  password_cofirmation: "Подтверджение пароля"
+  confirm_new_password: "Введите новый пароль"
+  name: "Имя"
+  nick_name: "Псевдоним"
+  type_nick_name: "Введит псевдоним"
+  type_name: "Введите имя"
+  confirm_changes: "Подтвердите изменения"
+  login: "Вход"
+  email_required: "Email - обязательное поле"
+  type_email: "Введите email"
+  password_required: "Пароль - обязательное поле"
+  type_password: "Введите пароль"

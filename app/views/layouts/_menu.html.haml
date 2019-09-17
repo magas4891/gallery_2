@@ -4,23 +4,19 @@
       .container
         .navbar-header
           %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
           %a.navbar-brand{:href => root_path}
             = image_tag "logo.png", title: "We are FACEit", :class => "swing"
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => categories_top_path } TOP CATEGORIES
+              %a{:href => categories_top_path }= t('top_categories')
             %li
-              %a{:href => images_path } IMAGES
+              %a{:href => images_path }= t('images')
             %li
-              %a{:href => comments_index_path } COMMENTS
+              %a{:href => comments_index_path }= t('comments')
             %li.dropdown
               %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#portfolio" }
-                USER MENU
+                = t('user_menu')
               %ul.dropdown-menu
                 - if user_signed_in?
                   %li
@@ -35,8 +31,8 @@
                     %a.linkz_transition{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
                   -#%li
                   -#  %a.linkz_transition{:href => user_facebook_omniauth_authorize_path} #{t('devise.shared.links.sign_in_with_provider')}
-            %li
-              %a{:href => "#contact"} CONTACT
+            -#%li
+            -#  %a{:href => "#contact"} CONTACT
             %li.nav-item
               -if I18n.locale == :ru
                 =link_to('En', { locale: :en }, class: 'nav-link')

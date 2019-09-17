@@ -2,10 +2,10 @@
 %section#categories.container
   .big_title
     = link_to :back, class: "button-back" do
-      = image_tag("left.png", alt: "#{t('image._form.back_to_category')}", size: "64x64")
-    .big_title_txt.montserrat_font Top categories
+      = image_tag("left.png", size: "64x64")
+    .big_title_txt.montserrat_font= t('top_categories_info')
     .text_und_big_title
-      The most popular categories, with the largest number of pictures, likes and comments.
+      = t('top_categories_description')
     .big_title_txt_separ.background_color
   .section_content.category_section
     .category_items
@@ -19,11 +19,11 @@
             .category_item_title
               = category.name
             .category_follows
-              = image_tag "followers_index_page.png", title: "Followers"
+              = image_tag "followers_index_page.png", title: t('followers')
               = category.follows.count
             %i.category_item_sep.background_color
             .category_item_p
               = truncate("#{category.description}", length: 50)
             .category_item_btnblock
-              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('categories.index.show')}
+              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('show')}
 
