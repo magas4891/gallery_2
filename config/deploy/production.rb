@@ -8,9 +8,9 @@ server "ec2-3-17-146-220.us-east-2.compute.amazonaws.com", user: "ubuntu", roles
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :ssh_options, {
-    keys: %w(/home/developer/Downloads/demo.pem),
-    forward_agent: false,
-    auth_methods: %w(publickey)
+    keys: %w[/home/developer/Downloads/demo.pem],
+    forward_agent: true
+    # auth_methods: %w[publickey]
 }
 
 # role-based syntax
