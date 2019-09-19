@@ -4,7 +4,7 @@ lock "~> 3.11.1"
 set :application, "gallery"
 set :repo_url, "git@github.com:magas4891/gallery_2.git"
 set :rvm_ruby_version, '2.5.5'
-set :rvm_map_bins, %w{gem rake ruby rails bundle}
+# set :rvm_map_bins, %w{gem rake ruby rails bundle}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

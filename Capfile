@@ -40,6 +40,7 @@ install_plugin Capistrano::SCM::Git
 #
 require 'capistrano/rails'
 require 'capistrano/bundler'
+# require 'bundler/capistrano'
 
 require 'capistrano/passenger'
 # require 'capistrano/rvm'
