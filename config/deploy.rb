@@ -4,14 +4,12 @@ lock "~> 3.11.1"
 set :application, "gallery"
 set :repo_url, "git@github.com:magas4891/gallery_2.git"
 set :rvm_ruby_version, '2.5.5'
-set :branch, :master
-
+set :rvm_map_bins, %w{gem rake ruby rails bundle}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/gallery"
-
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
@@ -24,8 +22,8 @@ set :deploy_to, "/var/www/gallery"
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
-set :linked_files, 'config/database.yml'
-set :linked_files, %w(config/master.key)
+# set :linked_files, 'config/database.yml'
+# set :linked_files, %w(config/master.key)
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
@@ -35,6 +33,7 @@ set :linked_files, %w(config/master.key)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+# set :env_file, '.env'
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
@@ -47,6 +46,7 @@ set :linked_files, %w(config/master.key)
 # set :migration_role, :app
 set :passenger_environment_variables, { :path => '/path-to-passenger/bin:$PATH' }
 set :passenger_restart_command, '/path-to-passenger/bin/passenger-config restart-app'
+# set :passenger_restart_with_touch, true
 
 namespace :deploy do
 

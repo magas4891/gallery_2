@@ -45,7 +45,7 @@ require 'capistrano/passenger'
 # require 'capistrano/rvm'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
-
+require 'capistrano/figaro'
 # set :rvm_type, :user
 # set :rvm_ruby_version, '2.5.5'
 
