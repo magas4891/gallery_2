@@ -23,12 +23,14 @@ set :deploy_to, "/var/www/gallery"
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 # set :linked_files, 'config/database.yml'
-# set :linked_files, %w(config/master.key)
+set :linked_files, %w(config/master.key)
 # append :linked_files, *%w(
 #   config/database.yml
 #   config/master.key
 # )
-#
+
+
+
 append :linked_dirs, *%w(
   log
   public/system
