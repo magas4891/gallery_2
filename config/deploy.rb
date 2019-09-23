@@ -3,8 +3,9 @@ lock "~> 3.11.1"
 
 set :application, "gallery"
 set :repo_url, "git@github.com:magas4891/gallery_2.git"
-set :rvm_ruby_version, '2.5.5'
-# set :rvm_map_bins, %w{gem rake ruby rails bundle}
+set :rvm1_ruby_version, '2.5.5'
+set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
+# set :rvm1_map_bins, %w{rake gem bundle ruby}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -20,11 +21,24 @@ set :deploy_to, "/var/www/gallery"
 # Default value for :pty is false
 # set :pty, true
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 # set :linked_files, 'config/database.yml'
 # set :linked_files, %w(config/master.key)
-
+# append :linked_files, *%w(
+#   config/database.yml
+#   config/master.key
+# )
+#
+append :linked_dirs, *%w(
+  log
+  public/system
+  public/uploads
+  tmp/cache
+  tmp/pids
+  tmp/sockets
+  tmp/letter_opener
+  .bundle
+)
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
 
@@ -48,14 +62,14 @@ set :passenger_environment_variables, { :path => '/path-to-passenger/bin:$PATH' 
 set :passenger_restart_command, '/path-to-passenger/bin/passenger-config restart-app'
 # set :passenger_restart_with_touch, true
 
-namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-end
+# namespace :deploy do
+#
+#   after :restart, :clear_cache do
+#     on roles(:web), in: :groups, limit: 3, wait: 10 do
+#       # Here we can do anything such as:
+#       # within release_path do
+#       #   execute :rake, 'cache:clear'
+#       # end
+#     end
+#   end
+# end

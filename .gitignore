@@ -30,6 +30,4 @@
 public/uploads
 
 .env
-
-Gemfile
-Gemfile.lock
+/vendor/*
