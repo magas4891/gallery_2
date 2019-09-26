@@ -14,11 +14,12 @@ FactoryBot.define do
       user_id { 1 }
     end
   end
-  # factory :image do
-  #   factory :valid_image do
-  #     title { "best_picture_ever" }
-  #     category_id { "2" }
-  #     user_id { "1" }
-  #   end
-  # end
+  factory :image do
+    factory :valid_image do
+      title { Faker::Lorem.words }
+      user_id { 1 }
+      category_id { 1 }
+      picture { File.open("/home/developer/RoR/gallery_2/public/uploads/image/picture/1/04.jpg") }
+    end
+  end
 end

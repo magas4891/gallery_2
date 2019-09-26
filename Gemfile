@@ -108,6 +108,7 @@ group :development, :test do
   gem 'fuubar', '~> 2.4', '>= 2.4.1'
 end
 group :test do
+  gem 'shoulda-matchers'
   gem 'database_cleaner', '~> 1.7'
 end
 
