@@ -12,12 +12,14 @@ RSpec.describe Image, :type => :model do
     it { should have_many(:likes) }
   end
   context 'creation' do
-    before(:all) do
-      @user = create(:valid_user)
-      @category = create(:valid_category)
-    end
+    # before(:all) do
+    #   @user = create(:valid_user)
+    #   @category = create(:valid_category)
+    # end
+    let(:image) { create(:valid_image) }
+
     it "is valid with valid attributes" do
-      expect(image = create(:valid_image)).to be_valid
+      expect(image).to be_valid
     end
   end
 end

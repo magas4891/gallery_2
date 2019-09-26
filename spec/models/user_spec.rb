@@ -12,28 +12,29 @@ RSpec.describe User, :type => :model do
     it { should have_many(:activities) }
   end
   context 'creation' do
-    before(:all) do
-      @user = create(:valid_user)
-    end
+    # before(:all) do
+    #   @user = create(:valid_user)
+    # end
+    let(:user) { create(:valid_user) }
 
     it "is valid with valid attributes" do
-      expect(@user).to be_valid
+      expect(user).to be_valid
     end
 
     it "is valid without name" do
-      expect(user2 = build(:valid_user, email: Faker::Internet::email, name: nil)).to be_valid
+      expect(user = build(:valid_user, name: nil)).to be_valid
     end
 
-    it "is not with not uniq email" do
-      expect(user2 = build(:valid_user)).to_not be_valid
-    end
+    # it "is not with not uniq email" do
+    #   expect(user2 = build(:valid_user)).to_not be_valid
+    # end
 
     it "is not valid withoit password" do
-      expect(user2 = build(:valid_user, password: nil)).to_not be_valid
+      expect(user = build(:valid_user, password: nil)).to_not be_valid
     end
 
     it "is not valid withoit password confirmation" do
-      expect(user2 = build(:valid_user, password_confirmation: nil)).to_not be_valid
+      expect(user = build(:valid_user, password_confirmation: "121212")).to_not be_valid
     end
   end
 end

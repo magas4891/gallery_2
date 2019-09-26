@@ -13,12 +13,13 @@ RSpec.describe Category, type: :model do
   end
 
   context 'creation' do
-    before(:all) do
-      @user = create(:valid_user)
-    end
+    # before(:all) do
+    #   @user = create(:valid_user)
+    # end
+    let(:category) { create(:valid_category) }
 
     it "is valid with valid attributes" do
-      expect(category = create(:valid_category)).to be_valid
+      expect(category).to be_valid
     end
 
     it "is valid without description" do
