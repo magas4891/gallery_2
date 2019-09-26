@@ -1,25 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Image, :type => :model do
+  let!(:image) { create(:valid_image) }
+
   context 'validation' do
-    it { should validate_presence_of(:title) }
-    it { should validate_presence_of(:picture) }
+    it { expect(image).to validate_presence_of(:title) }
+    it { expect(image).to validate_presence_of(:picture) }
   end
+
   context 'associations' do
-    it { should belong_to(:category) }
-    it { should belong_to(:user) }
-    it { should have_many(:comments) }
-    it { should have_many(:likes) }
+    it { expect(image).to belong_to(:category) }
+    it { expect(image).to belong_to(:user) }
+    it { expect(image).to have_many(:comments) }
+    it { expect(image).to have_many(:likes) }
   end
   context 'creation' do
-    # before(:all) do
-    #   @user = create(:valid_user)
-    #   @category = create(:valid_category)
-    # end
-    let(:image) { create(:valid_image) }
 
     it "is valid with valid attributes" do
       expect(image).to be_valid
+    end
+  end
+
+  context 'deleting' do
+    it "count of images became less on 1" do
+      expect { image.destroy }.to change { Image.count }.by(-1)
     end
   end
 end

@@ -6,6 +6,12 @@ FactoryBot.define do
       password_confirmation { "password" }
       name { "Bob" }
     end
+    factory :user_with_not_uniq_email do
+      email { 'bob_smith@gmail.com' }
+      password { "password" }
+      password_confirmation { "password" }
+      name { "Bob" }
+    end
   end
   factory :category do
     factory :valid_category do
@@ -40,6 +46,13 @@ FactoryBot.define do
     factory :valid_like do
       user_id { create(:valid_user).id }
       image_id { create(:valid_image).id }
+    end
+  end
+  factory :activity do
+    factory :valid_activity do
+      action { "something do" }
+      url { "http://some.url" }
+      user_id { create(:valid_user).id }
     end
   end
 end

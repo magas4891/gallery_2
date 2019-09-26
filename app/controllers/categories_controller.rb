@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_category, only: [:show, :destroy]
   before_action :pre_follow, only: [:show]
-  # before_action :imgs_likes_sum, only: [:show]
 
   def index
     @categories = Category.where("name != 'NoName'").page params[:page]

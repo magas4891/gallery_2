@@ -1,19 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Follow, type: :model do
+  let!(:follow) { create(:valid_follow) }
+
   context 'association' do
-    it { should belong_to(:user) }
-    it { should belong_to(:category) }
+    it { expect(follow).to belong_to(:user) }
+    it { expect(follow).to belong_to(:category) }
   end
-  # before(:all) do
-  #   @user = create(:valid_user)
-  #   @category = create(:valid_category)
-  #   @image = create(:valid_image)
-  # end
-  let(:follow) { create(:valid_follow) }
+
   context 'createion' do
     it "is valid with valid attributes" do
-      expect(follow = create(:valid_follow)).to be_valid
+      expect(follow).to be_valid
+    end
+  end
+
+  context 'deleting' do
+    it "count of follows became less on 1" do
+      expect { follow.destroy }.to change { Follow.count }.by(-1)
     end
   end
 end
