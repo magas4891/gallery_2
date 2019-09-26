@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+  context 'validation' do
+    it { should validate_presence_of(:email) }
+  end
+  context 'association' do
+    it { should have_many(:images) }
+    it { should have_many(:categories) }
+    it { should have_many(:likes) }
+    it { should have_many(:follows) }
+    it { should have_many(:activities) }
+  end
   context 'creation' do
     before(:all) do
       @user = create(:valid_user)
@@ -16,10 +26,6 @@ RSpec.describe User, :type => :model do
 
     it "is not with not uniq email" do
       expect(user2 = build(:valid_user)).to_not be_valid
-    end
-
-    it "is not valid without email" do
-      expect(user2 = build(:valid_user, email: nil)).to_not be_valid
     end
 
     it "is not valid withoit password" do
