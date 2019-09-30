@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
+  let!(:user) { create(:valid_user) }
+  let!(:category) { create(:valid_category) }
+  let!(:image) { create(:valid_image) }
   let!(:comment) { create(:valid_comment) }
 
   context 'association' do

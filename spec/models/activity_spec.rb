@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Activity, type: :model do
-
+  let!(:user) { create(:valid_user) }
   let!(:activity) { create(:valid_activity) }
 
   context 'association' do

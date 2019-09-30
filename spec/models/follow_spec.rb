@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Follow, type: :model do
+  let!(:user) { create(:valid_user) }
+  let!(:category) { create(:valid_category) }
   let!(:follow) { create(:valid_follow) }
 
   context 'association' do

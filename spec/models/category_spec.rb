@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
+  let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
 
   context 'associations' do

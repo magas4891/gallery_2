@@ -6,14 +6,12 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.where("name != 'NoName'").page params[:page]
     user_activity('showing_index_category') if current_user
-
   end
 
   def show
     @images = @category.images
     @images = @images.page params[:page]
     user_activity("showing_category_#{@category.slug}") if current_user
-
   end
 
   def new
@@ -51,9 +49,7 @@ class CategoriesController < ApplicationController
       category.save!
     end
     @top_categories = Category.where("name != 'NoName'").order('rank desc').limit(5)
-
   end
-
 
   private
 
@@ -68,15 +64,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name, :description)
   end
-
-  # def imgs_likes_sum
-  #   @images = @category.images
-  #   @imgs_likes_arr = []
-  #   @imgs_cmmnts_arr = []
-  #   @images.each do |f|
-  #     @imgs_likes_arr.append(f.likes.count)
-  #     @imgs_cmmnts_arr.append(f.comments.count)
-  #   end
-  # end
-
 end

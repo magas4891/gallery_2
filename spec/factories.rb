@@ -4,7 +4,8 @@ FactoryBot.define do
       email { Faker::Internet::email }
       password { "password" }
       password_confirmation { "password" }
-      name { "Bob" }
+      name { Faker::DcComics.name }
+      nick { Faker::Food.dish }
     end
     factory :user_with_not_uniq_email do
       email { 'bob_smith@gmail.com' }
@@ -15,44 +16,45 @@ FactoryBot.define do
   end
   factory :category do
     factory :valid_category do
-      name { "Category" }
-      description { Faker::Lorem.sentence(6) }
-      user_id { create(:valid_user).id }
+      name { Faker::DcComics.hero }
+      description { Faker::ChuckNorris.fact }
+      user_id { User.last.id }
+      rank { 0 }
     end
   end
   factory :image do
     factory :valid_image do
       title { Faker::Lorem.words }
-      user_id { create(:valid_user).id }
-      category_id { create(:valid_category).id }
-      picture { File.open("/home/developer/RoR/gallery_2/public/uploads/image/picture/1/04.jpg") }
+      user_id { User.last.id }
+      category_id { Category.last.id }
+      picture { File.open("/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg") }
     end
   end
   factory :comment do
     factory :valid_comment do
       commenter { Faker::Internet::name }
       text { Faker::Lorem.sentence(6) }
-      image_id { create(:valid_image).id }
-      user_id { create(:valid_user).id }
+      user_id { User.last.id }
+      image_id { Image.last.id }
     end
   end
   factory :follow do
     factory :valid_follow do
-      user_id { create(:valid_user).id}
-      category_id { create(:valid_category).id }
+      user_id { User.last.id }
+      category_id { Category.last.id }
     end
   end
   factory :like do
     factory :valid_like do
-      user_id { create(:valid_user).id }
-      image_id { create(:valid_image).id }
+      user_id { User.last.id }
+      image_id { Image.last.id }
     end
   end
   factory :activity do
     factory :valid_activity do
       action { "something do" }
-      url { "http://some.url" }
-      user_id { create(:valid_user).id }
+      url { Faker::Internet.url }
+      user_id { User.last.id }
     end
   end
 end
