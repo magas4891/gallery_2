@@ -22,7 +22,7 @@ RSpec.describe Category, type: :model do
     end
 
     it "is valid without description" do
-      expect( category = build(:valid_category, description: nil) ).to be_valid
+      expect(category = build(:valid_category, description: nil)).to be_valid
     end
   end
 

@@ -19,12 +19,13 @@ FactoryBot.define do
       name { Faker::DcComics.hero }
       description { Faker::ChuckNorris.fact }
       user_id { User.last.id }
+      slug { Faker::Internet.slug }
       rank { 0 }
     end
   end
   factory :image do
     factory :valid_image do
-      title { Faker::Lorem.words }
+      title { Faker::Lorem.word }
       user_id { User.last.id }
       category_id { Category.last.id }
       picture { File.open("/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg") }

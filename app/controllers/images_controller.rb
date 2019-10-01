@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
     @category = Category.friendly.find(params[:image][:category_id])
     @image = current_user.images.new(image_params)
     @image.category_id = @category.id
-    @image.save!
+    # @image.save!
     if @image.save
       user_activity('img_creation') if current_user
       @image.category.follows.each do |followers|
