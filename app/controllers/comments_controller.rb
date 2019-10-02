@@ -5,9 +5,6 @@ class CommentsController < ApplicationController
     user_activity("showing_index_comments") if current_user
   end
 
-  def new
-  end
-
   def create
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comments_params)
@@ -23,12 +20,12 @@ class CommentsController < ApplicationController
 
   end
 
-  def destroy
-    @image = Image.find(params[:image_id])
-    @comment = @image.comments.find(params[:id])
-    @comment.destroy
-    redirect_to categories_path
-  end
+  # def destroy
+  #   @image = Image.find(params[:image_id])
+  #   @comment = @image.comments.find(params[:id])
+  #   @comment.destroy
+  #   redirect_to categories_path
+  # end
   private
 
   def comments_params

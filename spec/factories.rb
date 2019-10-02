@@ -33,7 +33,7 @@ FactoryBot.define do
   end
   factory :comment do
     factory :valid_comment do
-      commenter { Faker::Internet::name }
+      commenter { User.last.name }
       text { Faker::Lorem.sentence(6) }
       user_id { User.last.id }
       image_id { Image.last.id }
