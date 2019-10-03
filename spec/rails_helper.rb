@@ -11,6 +11,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -71,4 +72,17 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Capybara::DSL
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.register_driver :headless_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        chromeOptions: { args: %w(headless disable-gpu window-size=1024,768) }
+    )
+
+    Capybara::Selenium::Driver.new app,
+                                   browser: :chrome,
+                                   desired_capabilities: capabilities
+  end
 end

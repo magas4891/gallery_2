@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     @category.user = current_user
     @category.rank = 0
     if @category.save
-      # flash[:notice] = 'Category succesfull created'
+      flash[:notice] = 'Category successful created'
       user_activity('cat_creation') if current_user
       redirect_to categories_path
     else
