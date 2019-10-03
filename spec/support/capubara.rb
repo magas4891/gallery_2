@@ -1,5 +1,6 @@
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
+  profile.native_events = true
 end
 
 Capybara.configure do |config|

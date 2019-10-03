@@ -5,7 +5,7 @@
       = image_tag "left.png", alt: "#{t('back_to_categories')}", size: "64x64"
     .big_title_txt.montserrat_font #{@category.name}
     .text_und_big_title #{@category.description}
-    .category_follow
+    #follow.category_follow
       - if @follow_owner
         = link_to category_follow_path(@category), method: :delete do
           = image_tag "unfollow.png", title: t('unfollow'), size: "48x48"
