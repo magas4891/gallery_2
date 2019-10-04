@@ -46,15 +46,22 @@ feature 'Category create', driver: :selenium_chrome do
     scenario 'you can follow the category' do
       visit category_path(:id => category.slug)
       page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
-      expect(page).to have_content '1'
+      expect(page).to have_selector '#follow', text: '1'
     end
 
     scenario 'you can unfollow the category' do
       visit category_path(:id => category.slug)
       page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
       page.find(:css, "a[href='/categories/#{category.slug}/follows/#{category.slug}?locale=en']").click
-      expect(page).to have_content '0'
+      expect(page).to have_selector '#follow', text: '0'
     end
+
+    scenario 'you can return back' do
+      visit category_path(:id => category.slug)
+      page.find(:css, 'a[href="/categories?locale=en"]').click
+      expect(page).to have_content 'CATEGORIES'
+    end
+
   end
 end
 
