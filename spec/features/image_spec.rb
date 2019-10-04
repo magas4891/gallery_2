@@ -32,6 +32,7 @@ feature 'Image,', driver: :selenium_chrome do
     given!(:user) { create(:valid_user) }
     given!(:category) { create(:valid_category) }
     given!(:image) { create(:valid_image) }
+
     before { visit new_user_session_path
             within '#new_user' do
               fill_in 'user_email', with: user.email
@@ -40,7 +41,7 @@ feature 'Image,', driver: :selenium_chrome do
             end
             visit categories_path
             visit category_path(:id => category.slug)
-    }
+            }
 
     scenario 'should view form adding new category' do
       click_link 'ADD NEW IMAGE'

@@ -43,7 +43,7 @@
           -if current_user
             = bootstrap_form_for([ @image, @image.comments.build ], local: true) do |form|
               = form.text_area :text
-              = form.submit t('image._form.create_comment')
+              = form.submit t('image._form.create_comment'), id: 'create_comment'
       #comments
         .big_title_txt.montserrat_font
           #{t('comments')}
