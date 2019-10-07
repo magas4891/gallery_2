@@ -24,11 +24,11 @@
     .big_title_txt.montserrat_font #{@image.title}
     .like_items
       - if @like_owner
-        = link_to image_like_path(@image), method: :delete do
-          =image_tag "like.png", title: t('activerecord.attributes.like.like'), size: "48x48"
+        = link_to image_like_path(@image), id: 'unlike', method: :delete do
+          =image_tag "like.png", title: t('activerecord.attributes.like.unlike'), size: "48x48"
       - else
-        = link_to image_likes_path(@image), method: :post do
-          =image_tag "unlike.png", title: t('activerecord.attributes.like.unlike'), size: "48x48"
+        = link_to image_likes_path(@image), id: 'like', method: :post do
+          =image_tag "unlike.png", title: t('activerecord.attributes.like.like'), size: "48x48"
       .text_und_big_title
         = @image.likes.count
   .section_content.image_section
