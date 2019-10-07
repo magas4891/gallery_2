@@ -1,5 +1,5 @@
-require 'rails_helper'
-
+# require 'rails_helper'
+require 'spec_helper'
 RSpec.describe Activity, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:activity) { create(:valid_activity) }

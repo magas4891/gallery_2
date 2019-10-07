@@ -1,5 +1,5 @@
-require 'rails_helper'
-
+# require 'rails_helper'
+require 'spec_helper'
 RSpec.describe Image, :type => :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
