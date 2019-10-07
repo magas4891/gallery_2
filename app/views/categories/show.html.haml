@@ -5,12 +5,12 @@
       = image_tag "left.png", alt: "#{t('back_to_categories')}", size: "64x64"
     .big_title_txt.montserrat_font #{@category.name}
     .text_und_big_title #{@category.description}
-    #follow.category_follow
+    .category_follow
       - if @follow_owner
-        = link_to category_follow_path(@category), method: :delete do
+        = link_to category_follow_path(@category), id: 'unfollow', method: :delete do
           = image_tag "unfollow.png", title: t('unfollow'), size: "48x48"
       - else
-        = link_to category_follows_path(@category), method: :post do
+        = link_to category_follows_path(@category), id: 'follow', method: :post do
           = image_tag "follow.png", title: t('follow'), size: "48x48"
       .text_und_big_title
         = @category.follows.count

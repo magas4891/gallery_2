@@ -13,13 +13,6 @@ feature 'Image,', driver: :selenium_chrome do
       expect(page).to have_selector 'img'
     end
 
-    scenario 'can not leave comment' do
-      visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
-      expect(page).to have_no_css 'comment_text'
-    end
-
     scenario 'should view form for sign_in' do
       visit categories_path
       visit category_path(:id => category.slug)
@@ -33,22 +26,23 @@ feature 'Image,', driver: :selenium_chrome do
     given!(:category) { create(:valid_category) }
     given!(:image) { create(:valid_image) }
 
-    before { visit new_user_session_path
-            within '#new_user' do
-              fill_in 'user_email', with: user.email
-              fill_in 'user_password', with: 'password'
-              click_button 'Login'
-            end
-            visit categories_path
-            visit category_path(:id => category.slug)
-            }
+    before do
+      visit new_user_session_path
+      within '#new_user' do
+        fill_in 'user_email', with: user.email
+        fill_in 'user_password', with: 'password'
+        click_button 'Login'
+      end
+      visit categories_path
+      visit category_path(:id => category.slug)
+    end
 
-    scenario 'should view form adding new category' do
+    scenario 'should view form adding new image' do
       click_link 'ADD NEW IMAGE'
       expect(page).to have_content 'ADDING NEW IMAGE'
     end
 
-    scenario 'after creating should appear new category' do
+    scenario 'after creating should show new image' do
       click_link 'ADD NEW IMAGE'
       within '#new_image' do
         fill_in 'image_title', with: image.title
@@ -58,28 +52,10 @@ feature 'Image,', driver: :selenium_chrome do
       expect(page).to have_selector 'img'
     end
 
-    scenario 'after creating you can visit new category' do
-      visit category_path(:id => category.slug)
-      expect(page).to have_link 'ADD NEW IMAGE'
-    end
-
-    scenario 'you can follow the category' do
-      visit category_path(:id => category.slug)
-      page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
-      expect(page).to have_selector '#follow', text: '1'
-    end
-
-    scenario 'you can unfollow the category' do
-      visit category_path(:id => category.slug)
-      page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
-      page.find(:css, "a[href='/categories/#{category.slug}/follows/#{category.slug}?locale=en']").click
-      expect(page).to have_selector '#follow', text: '0'
-    end
-
     scenario 'you can return back' do
-      visit category_path(:id => category.slug)
-      page.find(:css, 'a[href="/categories?locale=en"]').click
-      expect(page).to have_content 'CATEGORIES'
+      visit image_path(:id => image.id)
+      page.find(:css, "a[class='button-back']").click
+      expect(page).to have_content category.name.upcase
     end
   end
 end

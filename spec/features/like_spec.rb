@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Image,', driver: :selenium_chrome do
+feature 'Like,', driver: :selenium_chrome do
   feature 'with not signing in user' do
     given!(:user) { create(:valid_user) }
     given!(:category) { create(:valid_category) }
