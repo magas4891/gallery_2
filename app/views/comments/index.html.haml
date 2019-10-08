@@ -24,21 +24,22 @@
                   image_path(comment1.image_id, :comment_id => comment1.id)
           %p
             .big_title_txt_separ.background_color
-          .text_und_big_title.right_side{ :id => "#{comment2.id}" }
-            .image_preview
-              %p
-                = link_to image_tag(comment2.image.picture.small.url, :class => "scale"),
-                 image_path(comment2.image_id, :comment_id => comment2.id)
-            .comment
-              %p
-                %strong
-                  = t('activerecord.attributes.comment.commenter')
-                = comment2.commenter
-              %p
-                %strong
-                  = t('activerecord.attributes.comment.text')
-                = comment2.text
-              %p
-                = comment2.created_at
-          %p
-            .big_title_txt_separ.background_color
+          -if comment2
+            .text_und_big_title.right_side{ :id => "#{comment2.id}" }
+              .image_preview
+                %p
+                  = link_to image_tag(comment2.image.picture.small.url, :class => "scale"),
+                   image_path(comment2.image_id, :comment_id => comment2.id)
+              .comment
+                %p
+                  %strong
+                    = t('activerecord.attributes.comment.commenter')
+                  = comment2.commenter
+                %p
+                  %strong
+                    = t('activerecord.attributes.comment.text')
+                  = comment2.text
+                %p
+                  = comment2.created_at
+            %p
+              .big_title_txt_separ.background_color
