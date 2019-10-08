@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default users modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # after_create :send_congra_mail
+  after_create :send_congra_mail
   # attr_accessible :cached_failed_attempts
   validates :email, presence: true
 
