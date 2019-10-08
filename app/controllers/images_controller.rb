@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
       user_activity('img_creation') if current_user
       unless Rails.env.test?
         @image.category.follows.each do |followers|
-          Resque.enqueue(NewImageEmail, followers.user.email, @category).deliver_now
+          Resque.enqueue(NewImageEmail, followers.user.email, @category)
         end
       end
       flash[:success] = 'Image created'

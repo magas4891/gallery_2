@@ -9,7 +9,7 @@ class FollowsController < ApplicationController
     else
       @category.follows.create(user_id: current_user.id)
       unless Rails.env.test?
-        Resque.enqueue(FollowMail, current_user, @category).deliver_now
+        Resque.enqueue(FollowMail, current_user, @category)
       end
       user_activity('follow')
     end
