@@ -39,9 +39,9 @@ class User < ApplicationRecord
     end
   end
 
-  # def send_congra_mail
-  #   user = self
-  #   Resque.enqueue(WelcomeMail, [user])
-  # end
+  def send_congra_mail
+    user = self
+    Resque.enqueue(WelcomeMail, (user).deliver_now)
+  end
 
 end
