@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 feature 'Login', driver: :selenium_chrome do
-
   given(:user) { create(:valid_user) }
 
   before do
@@ -9,7 +8,6 @@ feature 'Login', driver: :selenium_chrome do
   end
 
   scenario 'should authentificate with Omniauth' do
-
     find("a[class='login100-social-item bg1']").click
     expect(page).to have_content 'Facebook'
   end

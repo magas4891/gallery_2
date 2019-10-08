@@ -8,7 +8,9 @@ class FollowsController < ApplicationController
       flash[:notice] = 'You cant follow again'
     else
       @category.follows.create(user_id: current_user.id)
-      # Resque.enqueue(FollowMail, current_user, @category)
+      unless Rails.env.test?
+        Resque.enqueue(FollowMail, current_user, @category)
+      end
       user_activity('follow')
     end
     redirect_to category_path(@category)

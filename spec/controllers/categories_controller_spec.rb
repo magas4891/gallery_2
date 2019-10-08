@@ -90,12 +90,10 @@ RSpec.describe CategoriesController, type: :controller do
       end
 
       it "creates .activity 'cat_ctreation' after creation" do
-
         expect(Activity.last.action).to eq("cat_creation")
       end
 
       it "after #create redirect to 'categories/index'" do
-
         expect(response).to redirect_to(categories_path)
       end
 

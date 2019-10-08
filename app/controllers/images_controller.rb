@@ -26,8 +26,10 @@ class ImagesController < ApplicationController
     # @image.save!
     if @image.save
       user_activity('img_creation') if current_user
-      @image.category.follows.each do |followers|
-        Resque.enqueue(NewImageEmail, followers.user.email, @category)
+      unless Rails.env.test?
+        @image.category.follows.each do |followers|
+          Resque.enqueue(NewImageEmail, followers.user.email, @category)
+        end
       end
       flash[:success] = 'Image created'
       redirect_to image_path(@image)
