@@ -40,7 +40,7 @@ development:
 production:
   <<: *default
   database: gallery
-  username: deploy
+  username: deploy_user
   password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
