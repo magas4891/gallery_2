@@ -3,7 +3,7 @@ lock "~> 3.11.1"
 
 set :application, "gallery"
 set :repo_url, "git@github.com:magas4891/gallery_2.git"
-set :deploy_to, "/var/www/public/gallery"
+set :deploy_to, "/home/deploy_user/www/public/gallery"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :rvm1_ruby_version, '2.5.5'
 
