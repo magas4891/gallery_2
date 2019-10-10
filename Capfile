@@ -27,6 +27,14 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/passenger
 #
 # require "capistrano/rvm"
+#
+require 'rvm1/capistrano3'
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano/passenger'
+require 'capistrano/figaro_yml'
+
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 # require "capistrano/bundler"
@@ -38,15 +46,9 @@ install_plugin Capistrano::SCM::Git
 # Include default deployment tasks
 # require 'capistrano/deploy'
 #
-require 'capistrano/rails'
-require 'capistrano/bundler'
+# require 'capistrano/rails'
 # require 'bundler/capistrano'
 
-require 'capistrano/passenger'
-require 'rvm1/capistrano3'
-require 'capistrano/rails/assets'
-require 'capistrano/rails/migrations'
-require 'capistrano/figaro_yml'
 # set :rvm_type, :user
 # set :rvm_ruby_version, '2.5.5'
 
