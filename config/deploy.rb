@@ -5,9 +5,9 @@ set :application, "gallery"
 set :repo_url, "git@github.com:magas4891/gallery_2.git"
 set :deploy_to, "/home/deploy_user/www/public/gallery"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-# set :rvm_ruby_version, '2.5.5'
+set :rvm_ruby_version, '2.5.5'
 # set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
-
+set :rvm_custom_path, '/usr/share/rvm/bin/rvm'
 # set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
 # set :rvm1_map_bins, %w{rake gem bundle ruby}
 # Default branch is :master
