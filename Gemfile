@@ -81,10 +81,10 @@ group :development do
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano-passenger', '~> 0.2.0'
-  # gem 'capistrano-rvm'
+  gem 'capistrano-rvm'
   gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
   gem 'sshkit', '~> 1.20'
-  gem 'rvm1-capistrano3', require: false
+  # gem 'rvm1-capistrano3', require: false
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
