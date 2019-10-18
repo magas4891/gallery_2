@@ -41,7 +41,9 @@ class User < ApplicationRecord
 
   def send_congra_mail
     user = self
-    Resque.enqueue(WelcomeMail, [user])
+    unless Rails.env.test?
+      Resque.enqueue(WelcomeMail, [user])
+    end
   end
 
 end

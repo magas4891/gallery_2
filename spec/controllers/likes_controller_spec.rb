@@ -1,5 +1,4 @@
-# require 'rails_helper'
-require 'spec_helper'
+
 RSpec.describe LikesController, type: :controller do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
