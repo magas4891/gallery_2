@@ -16,20 +16,11 @@ class CommentsController < ApplicationController
       redirect_to image_path(@image)
       # end
     end
-
-
   end
 
-  # def destroy
-  #   @image = Image.find(params[:image_id])
-  #   @comment = @image.comments.find(params[:id])
-  #   @comment.destroy
-  #   redirect_to categories_path
-  # end
   private
 
   def comments_params
     params.require(:comment).permit(:commenter, :text, :user_id, :image_id)
   end
-
 end

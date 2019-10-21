@@ -46,10 +46,12 @@ class CategoriesController < ApplicationController
         imgs_likes_arr.append(f.likes.count)
         imgs_cmmnts_arr.append(f.comments.count)
       end
-      category.rank = category.images.count + imgs_likes_arr.sum + imgs_cmmnts_arr.sum
+      category.rank = category.images.count + imgs_likes_arr.sum
+      + imgs_cmmnts_arr.sum
       category.save!
     end
-    @top_categories = Category.where("name != 'NoName'").order('rank desc').limit(5)
+    @top_categories = Category.where("name != 'NoName'")
+                              .order('rank desc').limit(5)
   end
 
   private
@@ -59,7 +61,9 @@ class CategoriesController < ApplicationController
   end
 
   def pre_follow
-    @follow_owner = @category.follows.where(user_id: current_user.id).first if current_user
+    if current_user
+      @follow_owner = @category.follows.where(user_id: current_user.id).first
+    end
   end
 
   def category_params

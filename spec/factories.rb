@@ -13,7 +13,9 @@ FactoryBot.define do
       password_confirmation { "password" }
       name { "Bob" }
     end
-    factory :admin_user do
+  end
+  factory :admin_user do
+    factory :valid_admin_user do
       email { Faker::Internet::email }
       password { 'password' }
       password_confirmation { "password" }

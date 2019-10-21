@@ -148,15 +148,13 @@ RSpec.describe CategoriesController, type: :controller do
                            image_id: rand(Image.first.id..Image.last.id) )
         end
         get :top
-        top_categories = Category.order('rank desc').limit(5)
 
-        expect(top_categories.count).to eq(5)
-        expect(top_categories[0].rank).to be >= top_categories[1].rank
-        expect(top_categories[1].rank).to be >= top_categories[2].rank
-        expect(top_categories[2].rank).to be >= top_categories[3].rank
-        expect(top_categories[3].rank).to be >= top_categories[4].rank
+        expect(assigns(:top_categories).count).to eq(5)
+        expect(assigns(:top_categories)[0].rank).to be >= assigns(:top_categories)[1].rank
+        expect(assigns(:top_categories)[1].rank).to be >= assigns(:top_categories)[2].rank
+        expect(assigns(:top_categories)[2].rank).to be >= assigns(:top_categories)[3].rank
+        expect(assigns(:top_categories)[3].rank).to be >= assigns(:top_categories)[4].rank
       end
-
     end
   end
 end
