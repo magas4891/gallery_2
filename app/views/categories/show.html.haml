@@ -25,7 +25,8 @@
                 = image_tag img.picture.small.url, :class => "scale"
 
   .fn_btn.montserrat_font
-    = link_to t('add_new_image'), new_image_path(category_id: @category), :class => "btn btn-primary btn-lg"
+    = link_to t('add_new_image'), new_image_path(category_id: @category),
+    :class => "btn btn-primary btn-lg"
 
   .pagination_block.montserrat_font
     = paginate @images

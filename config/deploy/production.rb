@@ -5,21 +5,12 @@
 set :branch, :master
 set :stage, :production
 set :rails_env, :production
-server "18.216.131.184", user: "deploy_user", roles: %w{app db web}
-# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
-# server "db.example.com", user: "deploy", roles: %w{db}
+server '18.216.131.184', user: 'deploy_user', roles: %w[app db web]
 
-# set :ssh_options, {
-#     keys: %w[/home/developer/Downloads/demo.pem],
-#     forward_agent: true,
-#     auth_methods: %w(publickey password)
-# }
-set :ssh_options, {
-                    keys: %w[/home/developer/Downloads/demo.pem],
-                    forward_agent: true,
-                    # user: 'deploy_user',
-                    auth_methods: %w(publickey)
-                  }
+
+set :ssh_options, keys: %w[/home/developer/Downloads/demo.pem],
+                  forward_agent: true,
+                  auth_methods: %w[publickey]
 # role-based syntax
 # ==================
 

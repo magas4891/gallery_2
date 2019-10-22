@@ -1,10 +1,12 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.1"
+lock '~> 3.11.1'
 
-set :application, "gallery"
-set :repo_url, "git@github.com:magas4891/gallery_2.git"
-set :deploy_to, "/home/deploy_user/www/public/gallery"
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :application, :gallery
+set :repo_url, 'git@github.com:magas4891/gallery_2.git'
+set :deploy_to, '/home/deploy_user/www/public/gallery'
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache',
+                                               'tmp/sockets', 'vendor/bundle',
+                                               'public/system', 'public/uploads')
 set :rvm_ruby_version, '2.5.5'
 # set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
 set :rvm_custom_path, '/usr/share/rvm'
@@ -26,8 +28,8 @@ set :rvm_custom_path, '/usr/share/rvm'
 # set :pty, true
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-set :linked_files, %w(config/database.yml)
-set :linked_files, %w(config/master.key)
+set :linked_files, %w[config/database.yml]
+set :linked_files, %w[config/master.key]
 # append :linked_files, *%w(
 #   config/database.yml
 #   config/master.key

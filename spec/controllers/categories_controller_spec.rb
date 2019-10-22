@@ -125,40 +125,40 @@ RSpec.describe CategoriesController, type: :controller do
         expect(response).to be_successful
       end
 
-      it 'after execute creates 5 categories and rank of previous is greater then next' do
+      it 'after execute creates 5 categories
+          and rank of previous is greater then next' do
         10.times do
-          Category.create!( name: Faker::DcComics.hero,
-                            description: Faker::ChuckNorris.fact,
-                            user_id: user.id )
+          Category.create!(name: Faker::DcComics.hero,
+                           description: Faker::ChuckNorris.fact,
+                           user_id: user.id)
         end
         20.times do
-          Image.create!( title: Faker::Games::HeroesOfTheStorm.hero,
-                         user_id: user.id,
-                         category_id: rand(Category.first.id..Category.last.id),
-                         picture: image.picture )
+          Image.create!(title: Faker::Games::HeroesOfTheStorm.hero,
+                        user_id: user.id,
+                        category_id: rand(Category.first.id..Category.last.id),
+                        picture: image.picture)
         end
         30.times do
-          Like.create!( user_id: user.id,
-                        image_id: rand(Image.first.id..Image.last.id) )
+          Like.create!(user_id: user.id,
+                       image_id: rand(Image.first.id..Image.last.id))
         end
         30.times do
-          Comment.create!( commenter: user.name,
-                           text: Faker::Lorem.sentence(6),
-                           user_id: user.id,
-                           image_id: rand(Image.first.id..Image.last.id) )
+          Comment.create!(commenter: user.name,
+                          text: Faker::Lorem.sentence(6),
+                          user_id: user.id,
+                          image_id: rand(Image.first.id..Image.last.id))
         end
         get :top
-
         expect(assigns(:top_categories).count).to eq(5)
-        expect(assigns(:top_categories)[0].rank).to be >= assigns(:top_categories)[1].rank
-        expect(assigns(:top_categories)[1].rank).to be >= assigns(:top_categories)[2].rank
-        expect(assigns(:top_categories)[2].rank).to be >= assigns(:top_categories)[3].rank
-        expect(assigns(:top_categories)[3].rank).to be >= assigns(:top_categories)[4].rank
+        expect(assigns(:top_categories)[0].rank)
+          .to be >= assigns(:top_categories)[1].rank
+        expect(assigns(:top_categories)[1].rank)
+          .to be >= assigns(:top_categories)[2].rank
+        expect(assigns(:top_categories)[2].rank)
+          .to be >= assigns(:top_categories)[3].rank
+        expect(assigns(:top_categories)[3].rank)
+          .to be >= assigns(:top_categories)[4].rank
       end
     end
   end
 end
-
-
-
-

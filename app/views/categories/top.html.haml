@@ -25,5 +25,6 @@
             .category_item_p
               = truncate("#{category.description}", length: 50)
             .category_item_btnblock
-              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category), :role => "button"} #{t('show')}
+              %a.category_item_btn.background_color.linkz_transition{:href => category_path(category),
+              :role => "button"} #{t('show')}
 

@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all.page(params[:page]).per(20)
-    user_activity("showing_index_images") if current_user
+    user_activity('showing_index_images') if current_user
   end
 
   def show
@@ -23,7 +23,6 @@ class ImagesController < ApplicationController
     @category = Category.friendly.find(params[:image][:category_id])
     @image = current_user.images.new(image_params)
     @image.category_id = @category.id
-    # @image.save!
     if @image.save
       user_activity('img_creation') if current_user
       unless Rails.env.test?

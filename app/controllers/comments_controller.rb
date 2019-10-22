@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.all.order('created_at DESC')
-    user_activity("showing_index_comments") if current_user
+    user_activity('showing_index_comments') if current_user
   end
 
   def create
@@ -10,11 +10,9 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comments_params)
     @comment.user = current_user
     @comment.commenter = current_user.nick
-    # if verify_recaptcha
     if @comment.save
       user_activity('comment') if current_user
       redirect_to image_path(@image)
-      # end
     end
   end
 

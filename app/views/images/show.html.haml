@@ -33,7 +33,6 @@
         = @image.likes.count
   .section_content.image_section
     .image_items
-      -#=link_to image_tag(@image.picture.small.url.to_s, :alt => "#{@image.title}" ,:class => "img-polaroid"), @image.picture.normal.url, :rel => "prettyPhoto"
       = image_tag  @image.picture.normal.url, :title => "#{@image.title}"
     .comment_items
       #leave_comment

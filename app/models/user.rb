@@ -1,12 +1,10 @@
 class User < ApplicationRecord
-  # Include default users modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_congra_mail
-  # attr_accessible :cached_failed_attempts
   validates :email, presence: true
 
   devise :database_authenticatable, :registerable, :trackable, :lockable,
-         :recoverable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :validatable, :omniauthable,
+         omniauth_providers: [:facebook]
 
   has_many :images, dependent: :destroy
   has_many :categories, dependent: :destroy
@@ -16,16 +14,15 @@ class User < ApplicationRecord
 
   mount_uploader :image, AvatarUploader
 
-
   def self.logins_before_captcha
     3
   end
 
-
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["users.facebook_data"] && session["users.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+      if (data = session['users.facebook_data'] &&
+          session['users.facebook_data']['extra']['raw_info'])
+        user.email = data['email'] if user.email.blank?
       end
     end
   end
@@ -41,9 +38,6 @@ class User < ApplicationRecord
 
   def send_congra_mail
     user = self
-    unless Rails.env.test?
-      Resque.enqueue(WelcomeMail, [user])
-    end
+    Resque.enqueue(WelcomeMail, [user]) unless Rails.env.test?
   end
-
 end

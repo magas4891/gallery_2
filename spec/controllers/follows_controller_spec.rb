@@ -1,4 +1,3 @@
-
 RSpec.describe LikesController, type: :controller do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -9,13 +8,13 @@ RSpec.describe LikesController, type: :controller do
   end
 
   context '#create' do
-    it "increases db .Follow counter" do
+    it 'increases db .Follow counter' do
       expect { create(:valid_follow) }.to change { Follow.count }.by(1)
     end
   end
 
   context '#delete' do
-    it "decrease db .Follow counter" do
+    it 'decrease db .Follow counter' do
       expect { follow.destroy }.to change { Follow.count }.by(-1)
     end
   end

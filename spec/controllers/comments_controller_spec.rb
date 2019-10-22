@@ -1,4 +1,3 @@
-
 RSpec.describe CommentsController, type: :controller do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -7,11 +6,11 @@ RSpec.describe CommentsController, type: :controller do
 
   context 'when user NOT loged in' do
     context 'GET #index' do
-      it "returns successful response" do
+      it 'returns successful response' do
         get :index
         expect(response).to be_successful
       end
-      it "NOT creates any .activity record" do
+      it 'NOT creates any .activity record' do
         get :index
         expect(Activity.count).to eq(0)
       end
@@ -24,39 +23,35 @@ RSpec.describe CommentsController, type: :controller do
     end
 
     context 'GET #index' do
-      it "returns successful response" do
+      it 'returns successful response' do
         get :index
         expect(response).to be_successful
       end
 
       it "creates activity record with 'showing_index_comments' action" do
         get :index
-        expect(Activity.last.action).to eq("showing_index_comments")
+        expect(Activity.last.action).to eq('showing_index_comments')
       end
     end
 
     context 'POST #create' do
       before do
         post :create, params: { image_id: image.id,
-                                comment: { :text => Faker::Lorem.sentence(6),
-                                           :user_id => user.id }
-        }
+                                comment: { text: Faker::Lorem.sentence(6),
+                                           user_id: user.id } }
       end
 
-      it "after #create redirect to this image" do
+      it 'after #create redirect to this image' do
         expect(response).to redirect_to(image_path(id: image.id))
       end
 
       it "creates .activity 'comment' after creation" do
-        expect(Activity.last.action).to eq("comment")
+        expect(Activity.last.action).to eq('comment')
       end
 
-      it "increases comment counter by 1" do
+      it 'increases comment counter by 1' do
         expect { create(:valid_comment) }.to change { Comment.count }.by(1)
       end
     end
   end
 end
-
-
-
