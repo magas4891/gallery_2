@@ -1,6 +1,4 @@
-# require 'rails_helper'
-require 'spec_helper'
-RSpec.describe Image, :type => :model do
+RSpec.describe Image, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
   let!(:image) { create(:valid_image) }
@@ -18,13 +16,13 @@ RSpec.describe Image, :type => :model do
   end
   context 'creation' do
 
-    it "is valid with valid attributes" do
+    it 'is valid with valid attributes' do
       expect(image).to be_valid
     end
   end
 
   context 'deleting' do
-    it "count of images became less on 1" do
+    it 'count of images became less on 1' do
       expect { image.destroy }.to change { Image.count }.by(-1)
     end
   end

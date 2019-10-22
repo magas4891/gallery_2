@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Comment,', driver: :selenium_chrome do
   feature 'with not signing in user' do
     given!(:user) { create(:valid_user) }
@@ -9,15 +7,15 @@ feature 'Comment,', driver: :selenium_chrome do
 
     scenario 'can be show' do
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
       expect(page).to have_selector '#comments'
     end
 
     scenario 'can not leave comment' do
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
       expect(page).to have_no_css 'comment_text'
     end
   end
@@ -29,7 +27,6 @@ feature 'Comment,', driver: :selenium_chrome do
     given!(:comment) { create(:valid_comment) }
     given(:comment2) { create(:valid_comment) }
 
-
     before  do
       visit new_user_session_path
       within '#new_user' do
@@ -38,8 +35,8 @@ feature 'Comment,', driver: :selenium_chrome do
         click_button 'Login'
       end
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
     end
 
     scenario 'can be show' do
@@ -47,17 +44,17 @@ feature 'Comment,', driver: :selenium_chrome do
     end
 
     scenario 'should view form adding new comment' do
-      expect(page).to have_selector ('.comments_form')
+      expect(page).to have_selector('.comments_form')
     end
 
     scenario 'after creating should appear new comment' do
-      page.execute_script "window.scrollBy(0,1000)"
+      page.execute_script 'window.scrollBy(0,1000)'
       within '#new_comment' do
         fill_in 'comment_text', with: comment2.text
         click_button 'Create comment'
       end
       find('.comments_form').click
-      page.execute_script "window.scrollBy(0,1000)"
+      page.execute_script 'window.scrollBy(0,1000)'
       expect(page).to have_content comment2.text
     end
 
@@ -67,5 +64,3 @@ feature 'Comment,', driver: :selenium_chrome do
     end
   end
 end
-
-

@@ -1,11 +1,10 @@
-require 'spec_helper'
-
 feature 'Category create', driver: :selenium_chrome do
   feature 'with not signing in user' do
     scenario 'should view form for sign_in' do
       visit categories_path
       click_button 'ADD NEW CATEGORY'
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      expect(page)
+        .to have_content 'You need to sign in or sign up before continuing.'
     end
   end
 
@@ -39,30 +38,15 @@ feature 'Category create', driver: :selenium_chrome do
     end
 
     scenario 'after creating you can visit new category' do
-      visit category_path(:id => category.slug)
+      visit category_path(id: category.slug)
       # print page.html
       expect(page).to have_link 'ADD NEW IMAGE'
     end
 
-    # scenario 'you can follow the category' do
-    #   visit category_path(:id => category.slug)
-    #   page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
-    #   expect(page).to have_selector '#follow', text: '1'
-    # end
-    #
-    # scenario 'you can unfollow the category' do
-    #   visit category_path(:id => category.slug)
-    #   page.find(:css, "a[href='/categories/#{category.slug}/follows?locale=en']").click
-    #   page.find(:css, "a[href='/categories/#{category.slug}/follows/#{category.slug}?locale=en']").click
-    #   expect(page).to have_selector '#follow', text: '0'
-    # end
-
     scenario 'you can return back' do
-      visit category_path(:id => category.slug)
+      visit category_path(id: category.slug)
       page.find(:css, 'a[href="/categories?locale=en"]').click
       expect(page).to have_content 'CATEGORIES'
     end
   end
 end
-
-

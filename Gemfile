@@ -15,33 +15,33 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-gem "haml-rails", "~> 2.0"
-gem 'devise'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
-gem 'kaminari'
+gem 'devise'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'friendly_id', '~> 5.2.4'
+gem 'haml-rails', '~> 2.0'
+gem 'kaminari'
 gem 'omniauth-facebook'
 group :development, :test do
   gem 'dotenv-rails'
 end
-gem 'file_validators'
 gem 'activeadmin'
-gem 'resque', '~> 2.0'
-gem 'resque-scheduler'
-gem 'redis-rails'
+gem 'aws-sdk', '~> 3'
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap_form', '~> 2.3'
+gem 'devise-i18n'
+gem 'file_validators'
+gem 'fog-aws'
+gem 'httparty'
 gem 'jquery-rails'
-gem 'sassc-rails', '>= 2.1.0'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'popper_js', '~> 1.14', '>= 1.14.5'
 gem 'rails-i18n', '~> 5.1'
-gem 'devise-i18n'
-gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-gem 'httparty'
-gem "recaptcha"
-gem 'bootstrap_form', '~> 2.3'
-gem "fog-aws"
-gem 'aws-sdk', '~> 3'
+gem 'recaptcha'
+gem 'redis-rails'
+gem 'resque', '~> 2.0'
+gem 'resque-scheduler'
+gem 'sassc-rails', '>= 2.1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -65,7 +65,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -78,15 +78,15 @@ group :development do
 end
 
 group :development do
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.4", require: false
-  gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rvm'
+  gem 'capistrano', '~> 3.10', require: false
   gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano-rvm'
   gem 'sshkit', '~> 1.20'
   # gem 'rvm1-capistrano3', require: false
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
 end
 group :development do
   gem 'capistrano-figaro-yml', '~> 1.0.2'
@@ -103,15 +103,15 @@ end
 
 # Run against the latest stable release
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'fuubar', '~> 2.4', '>= 2.4.1'
+  gem 'rspec-rails', '~> 3.8'
 end
 group :test do
+  gem 'database_cleaner', '~> 1.7'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
-  gem 'database_cleaner', '~> 1.7'
 end
 gem 'simplecov', require: false, group: :test
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

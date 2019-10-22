@@ -8,11 +8,11 @@ class Burger
 end
 
 RSpec.describe Burger do
-  it "is with ketchup" do
+  it 'is with ketchup' do
     burger = Burger.new(ketchup: true)
     expect(burger).to be_with_ketchup
   end
-  it "is without ketchup" do
+  it 'is without ketchup' do
     burger = Burger.new(ketchup: false)
     expect(burger).not_to be_with_ketchup
   end

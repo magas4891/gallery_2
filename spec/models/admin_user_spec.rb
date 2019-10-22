@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe User, type: :model do
   let(:admin_user) { create(:admin_user) }
   subject { admin_user }

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Follow,', driver: :selenium_chrome do
   feature 'with not signing in user' do
     given!(:user) { create(:valid_user) }
@@ -8,15 +6,16 @@ feature 'Follow,', driver: :selenium_chrome do
 
     scenario 'can be show' do
       visit categories_path
-      visit category_path(:id => category.slug)
+      visit category_path(id: category.slug)
       expect(page).to have_selector '.category_follow', text: '1'
     end
 
     scenario 'should view form for sign_in' do
       visit categories_path
-      visit category_path(:id => category.slug)
+      visit category_path(id: category.slug)
       find('#follow').click
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      expect(page)
+        .to have_content 'You need to sign in or sign up before continuing.'
     end
   end
 
@@ -34,9 +33,8 @@ feature 'Follow,', driver: :selenium_chrome do
         click_button 'Login'
       end
       visit categories_path
-      visit category_path(:id => category.slug)
+      visit category_path(id: category.slug)
     end
-
 
     scenario 'should view counter of existing follows' do
       expect(page).to have_selector '.category_follow', text: '0'
@@ -65,5 +63,3 @@ feature 'Follow,', driver: :selenium_chrome do
     end
   end
 end
-
-

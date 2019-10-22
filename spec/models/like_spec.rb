@@ -1,5 +1,3 @@
-# require 'rails_helper'
-require 'spec_helper'
 RSpec.describe Like, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }

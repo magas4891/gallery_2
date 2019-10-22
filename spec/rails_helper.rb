@@ -8,7 +8,7 @@ require 'support/database_cleaner'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
@@ -77,9 +77,10 @@ RSpec.configure do |config|
   end
 
   Capybara.register_driver :headless_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-        chromeOptions: { args: %w(headless disable-gpu window-size=1280,1024) }
-    )
+    capabilities = Selenium::WebDriver::Remote::Capabilities
+                   .chrome(chromeOptions: { args: %w[headless
+                                                     disable-gpu
+                                                     window-size=1280,1024] })
 
     Capybara::Selenium::Driver.new app,
                                    browser: :chrome,

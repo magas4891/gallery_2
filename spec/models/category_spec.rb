@@ -1,5 +1,3 @@
-# require 'rails_helper'
-require 'spec_helper'
 RSpec.describe Category, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -16,18 +14,17 @@ RSpec.describe Category, type: :model do
   end
 
   context 'creation' do
-
-    it "is valid with valid attributes" do
+    it 'is valid with valid attributes' do
       expect(category).to be_valid
     end
 
-    it "is valid without description" do
+    it 'is valid without description' do
       expect(category = build(:valid_category, description: nil)).to be_valid
     end
   end
 
   context 'deleting' do
-    it "count of categories became less on 1" do
+    it 'count of categories became less on 1' do
       expect { category.destroy }.to change { Category.count }.by(-1)
     end
   end

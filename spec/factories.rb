@@ -2,23 +2,23 @@ FactoryBot.define do
   factory :user do
     factory :valid_user do
       email { Faker::Internet::email }
-      password { "password" }
-      password_confirmation { "password" }
+      password { 'password' }
+      password_confirmation { 'password' }
       name { Faker::DcComics.name }
       nick { Faker::Food.dish }
     end
     factory :user_with_not_uniq_email do
       email { 'bob_smith@gmail.com' }
-      password { "password" }
-      password_confirmation { "password" }
-      name { "Bob" }
+      password { 'password' }
+      password_confirmation { 'password' }
+      name { 'Bob' }
     end
   end
   factory :admin_user do
     factory :valid_admin_user do
       email { Faker::Internet::email }
       password { 'password' }
-      password_confirmation { "password" }
+      password_confirmation { 'password' }
     end
   end
   factory :category do
@@ -35,7 +35,7 @@ FactoryBot.define do
       title { Faker::Lorem.word }
       user_id { User.last.id }
       category_id { Category.last.id }
-      picture { File.open("/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg") }
+      picture { File.open('/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg') }
     end
   end
   factory :comment do
@@ -60,7 +60,7 @@ FactoryBot.define do
   end
   factory :activity do
     factory :valid_activity do
-      action { "something do" }
+      action { 'something do' }
       url { Faker::Internet.url }
       user_id { User.last.id }
     end

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Like,', driver: :selenium_chrome do
   feature 'with not signing in user' do
     given!(:user) { create(:valid_user) }
@@ -9,17 +7,18 @@ feature 'Like,', driver: :selenium_chrome do
 
     scenario 'can be show' do
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
       expect(page).to have_selector '.like_items', text: '1'
     end
 
     scenario 'should view form for sign_in' do
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
       find('#like').click
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      expect(page)
+        .to have_content 'You need to sign in or sign up before continuing.'
     end
   end
 
@@ -38,10 +37,9 @@ feature 'Like,', driver: :selenium_chrome do
         click_button 'Login'
       end
       visit categories_path
-      visit category_path(:id => category.slug)
-      visit image_path(:id => image.id)
+      visit category_path(id: category.slug)
+      visit image_path(id: image.id)
     end
-
 
     scenario 'should view counter of existing likes' do
       expect(page).to have_selector '.like_items', text: '0'
@@ -70,5 +68,3 @@ feature 'Like,', driver: :selenium_chrome do
     end
   end
 end
-
-
