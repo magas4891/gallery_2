@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 describe User, type: :model do
-  let(:admin_user) { create(:admin_user) }
+  let(:admin_user) { create(:valid_admin_user) }
   subject { admin_user }
 
   context 'valid' do

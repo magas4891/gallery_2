@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Like,', driver: :selenium_chrome do
   feature 'with not signing in user' do
     given!(:user) { create(:valid_user) }
@@ -27,7 +29,6 @@ feature 'Like,', driver: :selenium_chrome do
     given!(:category) { create(:valid_category) }
     given!(:image) { create(:valid_image) }
     given(:like) { create(:valid_like) }
-
 
     before do
       visit new_user_session_path

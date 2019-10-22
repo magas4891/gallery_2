@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.11.1'
 
@@ -6,7 +8,8 @@ set :repo_url, 'git@github.com:magas4891/gallery_2.git'
 set :deploy_to, '/home/deploy_user/www/public/gallery'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache',
                                                'tmp/sockets', 'vendor/bundle',
-                                               'public/system', 'public/uploads')
+                                               'public/system',
+                                               'public/uploads')
 set :rvm_ruby_version, '2.5.5'
 # set :rvm1_map_bins,   -> { %w{rake gem bundle ruby} }
 set :rvm_custom_path, '/usr/share/rvm'
@@ -22,20 +25,22 @@ set :rvm_custom_path, '/usr/share/rvm'
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+# set :format_options, command_output: true, log_file: "log/capistrano.log",
+#                                           color: :auto, truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true
-# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
+#           'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids',
+#           'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system',
+#                                         'public/uploads')
 set :linked_files, %w[config/database.yml]
 set :linked_files, %w[config/master.key]
 # append :linked_files, *%w(
 #   config/database.yml
 #   config/master.key
 # )
-
-
 
 # append :linked_dirs, *%w(
 #   log
@@ -51,7 +56,8 @@ set :linked_files, %w[config/master.key]
 # append :linked_files, "config/database.yml"
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets",
+#                                                     "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -63,11 +69,14 @@ set :linked_files, %w[config/master.key]
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# Uncomment the following to require manually verifying the host key before first deploy.
+# Uncomment the following to require manually verifying the host key before
+#                                                         first deploy.
 # set :ssh_options, verify_host_key: :secure
 # set :migration_role, :app
-# set :passenger_environment_variables, { :path => '/path-to-passenger/bin:$PATH' }
-# set :passenger_restart_command, '/path-to-passenger/bin/passenger-config restart-app'
+# set :passenger_environment_variables,
+#                       { :path => '/path-to-passenger/bin:$PATH' }
+# set :passenger_restart_command, '/path-to-passenger/bin/passenger-config
+#                                                         restart-app'
 set :passenger_restart_with_touch, true
 
 # namespace :deploy do

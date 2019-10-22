@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NewImageEmail
   @queue = :img
   def self.perform(user, category)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Login', driver: :selenium_chrome do
   given(:user) { create(:valid_user) }
 

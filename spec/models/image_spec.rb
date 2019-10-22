@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Image, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -15,7 +17,6 @@ RSpec.describe Image, type: :model do
     it { expect(image).to have_many(:likes) }
   end
   context 'creation' do
-
     it 'is valid with valid attributes' do
       expect(image).to be_valid
     end

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class Burger
   def initialize(ingredients = {})
     @ingredients = ingredients
   end
+
   def with_ketchup?
     @ingredients[:ketchup]
   end

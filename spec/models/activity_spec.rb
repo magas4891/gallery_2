@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Activity, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:activity) { create(:valid_activity) }

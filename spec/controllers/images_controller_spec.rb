@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ImagesController, type: :controller do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -76,12 +78,15 @@ RSpec.describe ImagesController, type: :controller do
 
     context '#create' do
       before do
-        post :create, params: { image:
-                                    { title: Faker::Lorem.word,
-                                      user_id: user.id,
-                                      category_id: category.id,
-                                      picture: Rack::Test::UploadedFile
-                                        .new(Rails.root.join('spec/support/logo_image.jpg'), 'image/jpeg') } }
+        post :create,
+             params: { image:
+                           { title: Faker::Lorem.word,
+                             user_id: user.id,
+                             category_id: category.id,
+                             picture: Rack::Test::UploadedFile
+                               .new(Rails.root
+                                        .join('spec/support/logo_image.jpg'),
+                                    'image/jpeg') } }
       end
 
       it 'after #create redirect to image' do

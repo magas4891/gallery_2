@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page 'Parser' do
   content do
     render partial: 'form'

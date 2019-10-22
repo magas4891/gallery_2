@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :deploy do
   desc 'Upload config files'
   task upload_configs: ['deploy:check:linked_dirs'] do

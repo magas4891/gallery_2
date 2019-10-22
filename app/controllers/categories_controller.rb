@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: %i[show destroy]
   before_action :pre_follow, only: [:show]
 
   def index
@@ -46,8 +48,8 @@ class CategoriesController < ApplicationController
         imgs_likes_arr.append(f.likes.count)
         imgs_cmmnts_arr.append(f.comments.count)
       end
-      category.rank = category.images.count + imgs_likes_arr.sum
-      + imgs_cmmnts_arr.sum
+      category.rank = category.images
+                              .count + imgs_likes_arr.sum + imgs_cmmnts_arr.sum
       category.save!
     end
     @top_categories = Category.where("name != 'NoName'")

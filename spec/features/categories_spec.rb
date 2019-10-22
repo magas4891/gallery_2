@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Category create', driver: :selenium_chrome do
   feature 'with not signing in user' do
     scenario 'should view form for sign_in' do

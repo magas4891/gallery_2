@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe LikesController, type: :controller do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }

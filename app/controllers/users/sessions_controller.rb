@@ -14,29 +14,21 @@ class Users::SessionsController < Devise::SessionsController
 
     user = User.find_by_email(sign_in_params['email'])
 
-    super and return unless user
+    super && return unless user
     adjust_failed_attempts user
 
-    super and return if (user.failed_attempts < User.logins_before_captcha)
-    super and return if verify_recaptcha
+    super && return if user.failed_attempts < User.logins_before_captcha
+    super && return if verify_recaptcha
 
     # Don't increase failed attempts if Recaptcha was not passed
-    decrement_failed_attempts(user) if recaptcha_present?(params) and
-        !verify_recaptcha
+    decrement_failed_attempts(user) if recaptcha_present?(params) &&
+                                       !verify_recaptcha
 
     # Recaptcha was wrong
     self.resource = resource_class.new(sign_in_params)
     sign_out
     flash[:error] = 'Captcha was wrong, please try again.'
     respond_with_navigational(resource) { render :new }
-  end
-
-  private def adjust_failed_attempts(user)
-    if user.failed_attempts > user.cached_failed_attempts
-      user.update cached_failed_attempts: user.failed_attempts
-    else
-      increment_failed_attempts(user)
-    end
   end
 
   def after_sign_in_path_for(user)
@@ -60,10 +52,6 @@ class Users::SessionsController < Devise::SessionsController
   def recaptcha_present?(params)
     params[:recaptcha_challenge_field]
   end
-
-
-
-
 
   # DELETE /resource/sign_out
 

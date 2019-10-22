@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WelcomeMail
   @queue = :welcome
   def self.perform(user)

@@ -79,9 +79,10 @@ RSpec.describe CategoriesController, type: :controller do
 
     context '#create' do
       before do
-        post :create, params: { category: { name: Faker::DcComics.hero,
-                                            description: Faker::ChuckNorris.fact,
-                                            user_id: user.id } }
+        post :create,
+             params: { category: { name: Faker::DcComics.hero,
+                                   description: Faker::ChuckNorris.fact,
+                                   user_id: user.id } }
       end
 
       it 'increases category counter by 1' do

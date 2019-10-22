@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_image, only: [:show]
@@ -48,7 +50,9 @@ class ImagesController < ApplicationController
   private
 
   def pre_like
-    @like_owner = @image.likes.where(user_id: current_user.id).first if current_user
+    if current_user
+      @like_owner = @image.likes.where(user_id: current_user.id).first
+    end
   end
 
   def set_image
@@ -56,6 +60,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:title, :category_id, :picture, :remote_picture_url)
+    params.require(:image).permit(:title, :category_id, :picture,
+                                  :remote_picture_url)
   end
 end

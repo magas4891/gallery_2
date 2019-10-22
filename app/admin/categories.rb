@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Category do
-
   permit_params :user_id, :name, :description, :id
 
   controller do

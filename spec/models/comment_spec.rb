@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Comment, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }

@@ -1,5 +1,6 @@
-namespace :db do
+# frozen_string_literal: true
 
+namespace :db do
   desc 'creating categories'
   task cr: :environment do
     10.times do
@@ -18,7 +19,7 @@ namespace :db do
                            description: Faker::Lorem.sentence(6),
                            user_id: 1)
 
-      Dir.chdir("#{Rails.root.to_s}/lib/assets/images/#{item}")
+      Dir.chdir("#{Rails.root}/lib/assets/images/#{item}")
       image_paths = Dir['*.*']
       category = Category.find_by(name: item)
 

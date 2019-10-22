@@ -11,12 +11,14 @@
 # will add to the boot time of your test suite on EVERY test run, even for an
 # individual file that may not need all of that loaded. Instead, consider making
 # a separate helper file that requires the additional dependencies and performs
-# the additional setup, and require it from the spec files that actually need it.
+# the additional setup, and require it from the spec files that
+#                                                     actually need it.
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+abort('The Rails environment is running in production mode!') if
+    Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
@@ -79,8 +81,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing
@@ -105,9 +107,9 @@ RSpec.configure do |config|
   # file, and it's useful to allow more verbose output when running an
   # individual spec file.
   # if config.files_to_run.one?
-    # Use the documentation formatter for detailed output,
-    # unless a formatter has already been configured
-    # (e.g. via a command-line flag).
+  # Use the documentation formatter for detailed output,
+  # unless a formatter has already been configured
+  # (e.g. via a command-line flag).
   # config.default_formatter = "doc" if
   # config.files.to_run.one?
 

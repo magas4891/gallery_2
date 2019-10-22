@@ -1,5 +1,6 @@
-RSpec.describe User, type: :model do
+# frozen_string_literal: true
 
+RSpec.describe User, type: :model do
   let!(:user) { create(:valid_user) }
 
   context 'validation' do
@@ -25,7 +26,8 @@ RSpec.describe User, type: :model do
 
     it 'is invalid withnot uniq email' do
       user2 = create(:user_with_not_uniq_email)
-      expect(user = build(:valid_user, email: 'bob_smith@gmail.com')).to_not be_valid
+      expect(user = build(:valid_user,
+                          email: 'bob_smith@gmail.com')).to_not be_valid
     end
 
     it 'is invalid withoit password' do
@@ -33,7 +35,8 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid withoit password confirmation' do
-      expect(user = build(:valid_user, password_confirmation: '121212')).to_not be_valid
+      expect(user = build(:valid_user,
+                          password_confirmation: '121212')).to_not be_valid
     end
   end
 

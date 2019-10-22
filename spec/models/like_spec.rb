@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Like, type: :model do
   let!(:user) { create(:valid_user) }
   let!(:category) { create(:valid_category) }
@@ -10,13 +12,13 @@ RSpec.describe Like, type: :model do
   end
 
   context 'createion' do
-    it "is valid with valid attributes" do
+    it 'is valid with valid attributes' do
       expect(like).to be_valid
     end
   end
 
   context 'deleting' do
-    it "count of likes became less on 1" do
+    it 'count of likes became less on 1' do
       expect { like.destroy }.to change { Like.count }.by(-1)
     end
   end

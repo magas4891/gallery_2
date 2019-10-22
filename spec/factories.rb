@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
     factory :valid_user do
-      email { Faker::Internet::email }
+      email { Faker::Internet.email }
       password { 'password' }
       password_confirmation { 'password' }
       name { Faker::DcComics.name }
@@ -16,7 +18,7 @@ FactoryBot.define do
   end
   factory :admin_user do
     factory :valid_admin_user do
-      email { Faker::Internet::email }
+      email { Faker::Internet.email }
       password { 'password' }
       password_confirmation { 'password' }
     end
@@ -35,7 +37,9 @@ FactoryBot.define do
       title { Faker::Lorem.word }
       user_id { User.last.id }
       category_id { Category.last.id }
-      picture { File.open('/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg') }
+      picture do
+        File.open('/home/developer/RoR/gallery_2/public/uploads/image/picture/167/look.com.ua-52254.jpg')
+      end
     end
   end
   factory :comment do

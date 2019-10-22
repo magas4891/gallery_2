@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   after_create :send_congra_mail
   validates :email, presence: true

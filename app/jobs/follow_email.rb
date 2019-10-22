@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FollowMail
   @queue = :follow
   def self.perform(user, category)
