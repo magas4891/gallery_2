@@ -50,7 +50,6 @@ RSpec.describe CategoriesController, type: :controller do
       it 'returns successful response' do
         get :index
         expect(response).to be_successful
-        puts category.slug
       end
       it "creates activity record with 'showing_index_category' action" do
         get :index

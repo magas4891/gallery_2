@@ -112,6 +112,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'fuubar', '~> 2.4', '>= 2.4.1'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-activemodel-mocks'
 end
 group :test do
   gem 'database_cleaner', '~> 1.7'

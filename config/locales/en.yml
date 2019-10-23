@@ -207,6 +207,7 @@ en:
   add_new_image: "ADD NEW IMAGE"
   unfollow: "UnFollow"
   follow: "Follow"
+  delete: "Delete"
   top_categories_description: "The most popular categories, with the largest number of pictures, likes and comments."
   top_categories_info: "Top categories"
   leave_comment: "Leave comment"
