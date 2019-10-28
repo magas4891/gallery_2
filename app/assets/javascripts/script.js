@@ -8,6 +8,9 @@ $( document ).on('turbolinks:load', function(){
 		topSpacing:0,
 	});
 
+    $('.navsticky').on('sticky-start', function() { console.log("Started"); });
+    $('.navsticky').on('sticky-end', function() { console.log("Ended"); });
+
 
     /* Nice Scroll */
     $("body").niceScroll({
@@ -24,5 +27,20 @@ $( document ).on('turbolinks:load', function(){
         $(this).find('.dropdown-menu').stop(true, true);
         $(this).removeClass('open');
     });
+
+
+
+    $('.menu__icon').on('click', function() {
+        $(this).closest('.menu')
+            .toggleClass('menu_state_open');
+    });
+
+    $('.menu__links-item').on('click', function() {
+        // do something
+
+        $(this).closest('.menu')
+            .removeClass('menu_state_open');
+    })(jQuery);
+
 
 });

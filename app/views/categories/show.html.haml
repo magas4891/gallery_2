@@ -28,9 +28,10 @@
     = link_to t('add_new_image'), new_image_path(category_id: @category),
     :class => "btn btn-primary btn-lg"
     .trash
-      -  if @category.user_id == current_user.id
-        = link_to category_path(@category), id: 'trash', method: :delete do
-          = image_tag "trash.png", title: t('delete'), size: "48x48", :class => "swing"
+      - if current_user
+        - if @category.user_id == current_user.id
+          = link_to category_path(@category), id: 'trash', method: :delete do
+            = image_tag "trash.png", title: t('delete'), size: "48x48", :class => "swing"
 
   .pagination_block.montserrat_font
     = paginate @images

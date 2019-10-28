@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comments_params)
     @comment.user = current_user
-    @comment.commenter = current_user.nick
+    @comment.commenter =
+      current_user.nick? ? current_user.nick : current_user.name
     if @comment.save
       user_activity('comment') if current_user
       redirect_to image_path(@image)

@@ -3,19 +3,22 @@
     %nav.navbar.navbar-topaz{:role => "navigation"}
       .container
         .navbar-header
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1",
-          "data-toggle" => "collapse", :type => "button"}
           %a.navbar-brand{:href => root_path}
             = image_tag "logo.png", title: "We are FACEit", :class => "swing"
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              %a{:href => categories_top_path }= t('top_categories')
-            %li
-              %a{:href => images_path }= t('images')
-            %li
-              %a{:href => comments_index_path }= t('comments')
-            %li.dropdown
+        .menu
+          .menu__icon
+            %span
+            %span
+            %span
+            %span
+          %ul.nav.navbar-nav.navbar-right.menu__links
+            %li.menu__links-item
+              %a{ :href => categories_top_path }= t('top_categories')
+            %li.menu__links-item
+              %a{ :href => images_path }= t('images')
+            %li.menu__links-item
+              %a{ :href => comments_index_path }= t('comments')
+            %li.dropdown.menu__links-item
               %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#portfolio" }
                 = t('user_menu')
               %ul.dropdown-menu
@@ -30,7 +33,7 @@
                     %a.linkz_transition{:href => new_user_session_path } #{t('devise.shared.links.sign_in')}
                   %li
                     %a.linkz_transition{:href => new_user_registration_path} #{t('devise.registrations.new.sign_up')}
-            %li.nav-item
+            %li.nav-item.menu__links-item
               -if I18n.locale == :ru
                 =link_to('En', { locale: :en }, class: 'nav-link')
               -else
