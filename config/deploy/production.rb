@@ -27,7 +27,7 @@ set :ssh_options, keys: %w[/home/developer/Downloads/demo.pem],
 
 # Configuration
 # =============
-# You can set any configuration variable like in config/deploy.rb
+# You can set any configuration variable like in config/deploy.rb.capistrano
 # These variables are then only loaded and set in this stage.
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/

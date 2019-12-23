@@ -84,18 +84,21 @@ group :development do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.10', require: false
-  gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
-  gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rails', '~> 1.4', require: false
-  gem 'capistrano-rvm'
+  #gem 'capistrano', '~> 3.10', require: false
+  #gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
+  #gem 'capistrano-passenger', '~> 0.2.0'
+  #gem 'capistrano-rails', '~> 1.4', require: false
+  #gem 'capistrano-rvm'
   gem 'sshkit', '~> 1.20'
   # gem 'rvm1-capistrano3', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'mina', require: false
+  gem 'mina-puma', require: false
 end
 group :development do
-  gem 'capistrano-figaro-yml', '~> 1.0.2'
+  #gem 'capistrano-figaro-yml', '~> 1.0.2'
 end
 # gem 'capistrano-dotenv', require: false
 
