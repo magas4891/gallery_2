@@ -13,7 +13,7 @@ set :application_name, 'gallery'
 set :domain, 'ec2-18-222-207-188.us-east-2.compute.amazonaws.com'
 set :deploy_to, '/var/www/gallery'
 set :repository, 'git@github.com:magas4891/gallery_2.git'
-set :branch, 'master'
+set :branch, 'aws'
 
 # Optional settings:
    set :user, 'deploy'          # Username in the server to SSH to.
