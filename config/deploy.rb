@@ -34,7 +34,7 @@ set :branch, 'aws'
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-   invoke :'rvm:use', 'ruby-2.5.5@default'
+  # invoke :'rvm:use', 'ruby-2.5.5@default'
 #end
 
 # Put any custom commands you need to run at setup
@@ -56,6 +56,7 @@ task :deploy do
     comment "Deploying #{fetch(:application_name)} to #{fetch(:domain)}:#{fetch(:deploy_to)}"
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'rvm:use', 'ruby-2.5.5@default'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
